@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c5i1pjey6fn3x"]
+
+[ext_resource type="Script" uid="uid://pfwq2rry8le0" path="res://Scripts/wild_rat.gd" id="1_wi47e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvg84"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wi47e"]
+radius = 21.023796
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=182547946 groups=["wild_rat"]]
+script = ExtResource("1_wi47e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=346119089]
+shape = SubResource("RectangleShape2D_bvg84")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1906549497]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=532945367]
+shape = SubResource("CircleShape2D_wi47e")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1661166433]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_encounter_start"]
