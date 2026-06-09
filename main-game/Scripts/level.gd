@@ -16,11 +16,16 @@ func _process(delta: float) -> void:
 
 func _tall_grass_entered(body: Node2D) -> void:
 	if body is Player:
-		var spawn_chance: float = 0.8
-		if randf() < spawn_chance:
+		var spawn_chance: float = 0.8 
+		if randf() < spawn_chance: #codes for an 80% encounter chance
 			var wild_rat = wild_rat_scene.instantiate()
 			wild_rat_spawn.progress_ratio = randf()
 			wild_rat.global_position = wild_rat_spawn.global_position
-			add_child(wild_rat)
-			
+			add_child(wild_rat) #spawns the wild rats 
+
+
+func _left_tall_grass(body: Node2D) -> void:
+		if body is Player:
+			for rat in get_tree().get_nodes_in_group("wild_rat"):
+				rat.despawn()#despawns the wild rats when player leaves area
 		

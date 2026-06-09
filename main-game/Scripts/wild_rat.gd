@@ -1,3 +1,4 @@
+class_name Wild_rat
 extends CharacterBody2D
 
 
@@ -10,6 +11,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _encounter_start(body: Node2D) -> void:
-	pass # Replace with function body.
+func despawn() -> void:
+	queue_free()
+	
+	
+func _encounter_start() -> void:
+	pass

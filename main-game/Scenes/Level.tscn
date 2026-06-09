@@ -46,3 +46,4 @@ position = Vector2(733, 381)
 rotation = 0.037020117
 
 [connection signal="body_entered" from="Area2D" to="." method="_tall_grass_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_left_tall_grass"]
