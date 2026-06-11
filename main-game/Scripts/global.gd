@@ -1,6 +1,9 @@
 extends Node
 
-var rat1_hp = 1
+var rat_hp: int = 1
+var rat_attack: int = 1
+var rat_defence: int = 1
+var rat_level: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

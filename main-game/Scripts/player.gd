@@ -1,19 +1,34 @@
 class_name Player
 extends CharacterBody2D
 
-var rat1_level: int = 1
-var rat1_attack: int = 1
 #store rats in dictionary 
 var speed: float = 300.0
 var in_tall_grass: bool = false
-var base_hp: int = 50
-var base_attack: int = 50
+
+const RAT_STATS = {
+	"type1": {
+		"base_hp": 50,
+		"base_attack": 50,
+		"base_defence": 50
+	},
+}
+
+var party = {
+		"type1" :
+		{
+		"level": 10,
+		"current_hp": 11
+		}
+	}
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.rat1_hp = int(floor(0.01 * (2 * base_hp) * rat1_level)) + rat1_level + 10 
-	rat1_attack = int(floor(0.01 * 2 * base_attack * rat1_level)) + 5
+	for rats in party:
+		Global.rat_hp = int(floor(0.01 * (2 * RAT_STATS[rats]["base_hp"]) * party[rats]["level"])) + party[rats]["level"] + 10
+		Global.rat_attack = int(floor(0.01 * 2 * RAT_STATS[rats]["base_attack"] * party[rats]["level"])) + 5
+		Global.rat_defence = int(floor(0.01 * 2 * RAT_STATS[rats]["base_defence"] * party[rats]["level"])) + 5
+		Global.rat_level = party[rats]["level"]
 	#calculations for stats of each rat 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
