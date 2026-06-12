@@ -10,9 +10,9 @@ var damage: int = 0
 func _ready() -> void:
 	current_rat_hp.max_value = Global.rat_hp
 	current_rat_hp.value = current_rat_hp.max_value
-	enemy_rat_hp.max_value = Global.rat_hp
+	enemy_rat_hp.max_value = Global.wild_rat_hp
 	enemy_rat_hp.value = enemy_rat_hp.max_value
-
+	#change enemy_rat_hp to match the enemy rat script 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,5 +20,6 @@ func _process(delta: float) -> void:
 
 
 func _attack_1() -> void:
-	damage = int(floor((0.5 * (0.2 * (2 * Global.rat_level)) + 2 * attack_power * (Global.rat_attack / Global.rat_defence))))
+	damage = int(floor((0.5 * (0.2 * (2 * Global.rat_level)) + 2 * attack_power * (Global.rat_attack / Global.wild_rat_defence))))
 	enemy_rat_hp.value = enemy_rat_hp.value - damage
+	Global.wild_rat_hp = enemy_rat_hp.value

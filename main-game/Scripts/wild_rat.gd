@@ -1,10 +1,47 @@
 class_name Wild_rat
 extends CharacterBody2D
 
+const RAT_STATS = {
+	"type1": {
+		"base_hp": 50,
+		"base_attack": 50,
+		"base_defence": 50
+	},
+	"type2": {
+		"base_hp": 50,
+		"base_attack": 20,
+		"base_defence": 80
+	},
+}
+
+var spicies = {
+		"type1" :
+		{
+		"level": 10,
+		"current_hp": 1
+		},
+		"type2" :
+		{
+		"level": 10,
+		"current_hp": 1
+		},
+	}
+
+var rat_level
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var keys = spicies.keys()
+	var random_key = keys[randi_range(0, keys.size() - 1)]
+	var base_stats = RAT_STATS[random_key]
+	var rat_data = spicies[random_key]
+	
+	Global.wild_rat_level = rat_data["level"]
+	rat_level = rat_data["level"]
+	Global.wild_rat_hp = int(floor(0.01 * (2 * base_stats["base_hp"]) * rat_level)) + rat_level + 10 
+	Global.wild_rat_attack = int(floor(0.01 * 2 * base_stats["base_attack"] * rat_level)) + 5
+	Global.wild_rat_defence = int(floor(0.01 * 2 * base_stats["base_defence"] * rat_level)) + 5
+	rat_data["current_hp"] = Global.wild_rat_hp 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

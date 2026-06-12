@@ -17,7 +17,7 @@ var party = {
 		"type1" :
 		{
 		"level": 10,
-		"current_hp": 11
+		"current_hp": 1
 		}
 	}
 
@@ -26,6 +26,7 @@ var party = {
 func _ready() -> void:
 	for rats in party:
 		Global.rat_hp = int(floor(0.01 * (2 * RAT_STATS[rats]["base_hp"]) * party[rats]["level"])) + party[rats]["level"] + 10
+		party[rats]["current_hp"] = Global.rat_hp
 		Global.rat_attack = int(floor(0.01 * 2 * RAT_STATS[rats]["base_attack"] * party[rats]["level"])) + 5
 		Global.rat_defence = int(floor(0.01 * 2 * RAT_STATS[rats]["base_defence"] * party[rats]["level"])) + 5
 		Global.rat_level = party[rats]["level"]
