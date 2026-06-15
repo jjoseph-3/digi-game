@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cb65dd40ckl3a" path="res://Screenshot 2026-05-20 073607.png" id="1_2dvei"]
 [ext_resource type="Script" uid="uid://73ac3ocget81" path="res://Scripts/combat_ui.gd" id="1_4s1nj"]
+[ext_resource type="PackedScene" uid="uid://bkrvy8uivarhe" path="res://Scenes/Player.tscn" id="2_q8na3"]
+[ext_resource type="PackedScene" uid="uid://c5i1pjey6fn3x" path="res://Scenes/Wild_rat.tscn" id="3_oemdt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4s1nj"]
 bg_color = Color(0.7930027, 0, 0.100829564, 1)
@@ -15,7 +17,7 @@ bg_color = Color(0.9541325, 0, 0.019494109, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oemdt"]
 bg_color = Color(0.2816431, 0.5114015, 2.8878452e-07, 1)
 
-[node name="Control" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp")]
+[node name="Control" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +27,10 @@ grow_vertical = 2
 script = ExtResource("1_4s1nj")
 current_rat_hp = NodePath("ProgressBar")
 enemy_rat_hp = NodePath("ProgressBar2")
+player_spawn = NodePath("Marker2D")
+player_scene = ExtResource("2_q8na3")
+enemy_spawn = NodePath("Marker2D2")
+enemy_scene = ExtResource("3_oemdt")
 
 [node name="Screenshot20260520073607" type="Sprite2D" parent="." unique_id=149493523]
 position = Vector2(577.25, 326.5)
@@ -87,5 +93,11 @@ offset_bottom = 130.0
 theme_override_styles/background = SubResource("StyleBoxFlat_q8na3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_oemdt")
 show_percentage = false
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1105963187]
+position = Vector2(413, 270)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=1828891392]
+position = Vector2(869, 240)
 
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/Button" to="." method="_attack_1"]

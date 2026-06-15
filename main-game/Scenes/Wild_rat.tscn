@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c5i1pjey6fn3x"]
 
 [ext_resource type="Script" uid="uid://pfwq2rry8le0" path="res://Scripts/wild_rat.gd" id="1_wi47e"]
+[ext_resource type="PackedScene" uid="uid://bxfa6qt5n5dr" path="res://Scenes/Johovian_rat.tscn" id="2_o354a"]
+[ext_resource type="PackedScene" uid="uid://cpc2jnhpnofqn" path="res://Scenes/Kartarian_rat.tscn" id="3_eii04"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bvg84"]
 
@@ -9,6 +11,8 @@ size = Vector2(26, 28)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=182547946 groups=["wild_rat"]]
 script = ExtResource("1_wi47e")
+johovian_sprite_scene = ExtResource("2_o354a")
+kartarian_sprite_scene = ExtResource("3_eii04")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=346119089]
 shape = SubResource("RectangleShape2D_bvg84")
@@ -17,11 +21,5 @@ shape = SubResource("RectangleShape2D_bvg84")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=532945367]
 shape = SubResource("RectangleShape2D_wi47e")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1661166433]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_encounter_start"]

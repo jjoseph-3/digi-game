@@ -2,6 +2,10 @@ extends Control
 
 @export var current_rat_hp: ProgressBar
 @export var enemy_rat_hp: ProgressBar
+@export var player_spawn: Marker2D
+@export var player_scene: PackedScene
+@export var enemy_spawn: Marker2D
+@export var enemy_scene: PackedScene
 
 var attack_power: int = 5
 var damage: int = 0 
@@ -13,6 +17,15 @@ func _ready() -> void:
 	enemy_rat_hp.max_value = Global.wild_rat_hp
 	enemy_rat_hp.value = enemy_rat_hp.max_value
 	#change enemy_rat_hp to match the enemy rat script 
+	
+	var player_sprite = player_scene.instantiate()
+	player_sprite.in_combat = true
+	player_sprite.global_position = player_spawn.global_position
+	add_child(player_sprite)
+	
+	var enemy_sprite = enemy_scene.instantiate()
+	enemy_sprite.global_position = enemy_spawn.global_position
+	add_child(enemy_sprite)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
