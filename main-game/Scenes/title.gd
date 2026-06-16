@@ -1,15 +1,5 @@
-extends Node
+extends Control
 
-var rat_hp: int
-var rat_attack: int
-var rat_defence: int
-var rat_speed: int
-var rat_level: int
-var wild_rat_hp: int
-var wild_rat_attack: int
-var wild_rat_defence: int 
-var wild_rat_speed: int
-var wild_rat_level: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,3 +9,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _play_pressed() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")

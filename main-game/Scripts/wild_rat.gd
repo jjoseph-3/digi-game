@@ -8,24 +8,26 @@ const RAT_STATS = {
 	"Johovian": {
 		"base_hp": 50,
 		"base_attack": 50,
-		"base_defence": 50
+		"base_defence": 60,
+		"base_speed": 20
 	},
 	"Kartarian": {
 		"base_hp": 50,
 		"base_attack": 20,
-		"base_defence": 80
+		"base_defence": 80,
+		"base_speed": 50
 	},
 }
 
 var species = {
 		"Johovian" :
 		{
-		"level": 10,
+		"level": 5,
 		"current_hp": 1
 		},
 		"Kartarian" :
 		{
-		"level": 10,
+		"level": 5,
 		"current_hp": 1
 		},
 	}
@@ -44,6 +46,7 @@ func _ready() -> void:
 	Global.wild_rat_hp = int(floor(0.01 * (2 * base_stats["base_hp"]) * rat_level)) + rat_level + 10 
 	Global.wild_rat_attack = int(floor(0.01 * 2 * base_stats["base_attack"] * rat_level)) + 5
 	Global.wild_rat_defence = int(floor(0.01 * 2 * base_stats["base_defence"] * rat_level)) + 5
+	Global.wild_rat_speed = int(floor(0.01 * 2 * base_stats["base_speed"] * rat_level)) + 5
 	rat_data["current_hp"] = Global.wild_rat_hp 
 	
 	if random_key == "Johovian":

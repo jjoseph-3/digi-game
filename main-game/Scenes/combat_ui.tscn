@@ -17,7 +17,7 @@ bg_color = Color(0.9541325, 0, 0.019494109, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oemdt"]
 bg_color = Color(0.2816431, 0.5114015, 2.8878452e-07, 1)
 
-[node name="Control" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn")]
+[node name="Control" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn", "enemy_rat_level")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,11 +31,20 @@ player_spawn = NodePath("Marker2D")
 player_scene = ExtResource("2_q8na3")
 enemy_spawn = NodePath("Marker2D2")
 enemy_scene = ExtResource("3_oemdt")
+enemy_rat_level = NodePath("Label")
 
 [node name="Screenshot20260520073607" type="Sprite2D" parent="." unique_id=149493523]
 position = Vector2(577.25, 326.5)
 scale = Vector2(0.99012876, 0.9954128)
 texture = ExtResource("1_2dvei")
+
+[node name="Label" type="Label" parent="." unique_id=543928835]
+layout_mode = 0
+offset_left = 957.0
+offset_top = 134.0
+offset_right = 1006.0
+offset_bottom = 157.0
+text = "Level: "
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=690380015]
 layout_mode = 0
@@ -101,3 +110,6 @@ position = Vector2(413, 270)
 position = Vector2(869, 240)
 
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/Button" to="." method="_attack_1"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/Button2" to="." method="_block"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer2/Button" to="." method="_attack_2"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer2/Button2" to="." method="_attack_3"]

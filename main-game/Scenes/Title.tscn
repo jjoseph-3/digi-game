@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dojwfw255gfvf"]
+
+[ext_resource type="Script" uid="uid://bf2j8igv4adea" path="res://Scenes/title.gd" id="1_tochr"]
+
+[node name="Control" type="Control" unique_id=1473462412]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tochr")
+
+[node name="Label" type="Label" parent="." unique_id=1870305928]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 147.0
+offset_right = 780.0
+offset_bottom = 219.0
+theme_override_font_sizes/font_size = 52
+text = "Title"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1938834229]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 348.0
+offset_right = 780.0
+offset_bottom = 414.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=447790430]
+layout_mode = 2
+alignment = 1
+
+[node name="Button2" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1283170195]
+layout_mode = 2
+text = "Play"
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer" unique_id=881606751]
+layout_mode = 2
+text = "Options"
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/Button2" to="." method="_play_pressed"]

@@ -10,7 +10,8 @@ const RAT_STATS = {
 	"Johovian": {
 		"base_hp": 50,
 		"base_attack": 50,
-		"base_defence": 50
+		"base_defence": 60,
+		"base_speed": 20
 	},
 }
 
@@ -30,6 +31,7 @@ func _ready() -> void:
 		party[rats]["current_hp"] = Global.rat_hp
 		Global.rat_attack = int(floor(0.01 * 2 * RAT_STATS[rats]["base_attack"] * party[rats]["level"])) + 5
 		Global.rat_defence = int(floor(0.01 * 2 * RAT_STATS[rats]["base_defence"] * party[rats]["level"])) + 5
+		Global.rat_speed = int(floor(0.01 * 2 * RAT_STATS[rats]["base_speed"] * party[rats]["level"])) + 5
 		Global.rat_level = party[rats]["level"]
 	#calculations for stats of each rat 
 
