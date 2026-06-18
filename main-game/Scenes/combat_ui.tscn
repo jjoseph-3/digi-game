@@ -17,7 +17,7 @@ bg_color = Color(0.9541325, 0, 0.019494109, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oemdt"]
 bg_color = Color(0.2816431, 0.5114015, 2.8878452e-07, 1)
 
-[node name="Control" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn", "enemy_rat_level")]
+[node name="Control" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn", "current_rat_level", "enemy_rat_level")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,12 +31,21 @@ player_spawn = NodePath("Marker2D")
 player_scene = ExtResource("2_q8na3")
 enemy_spawn = NodePath("Marker2D2")
 enemy_scene = ExtResource("3_oemdt")
+current_rat_level = NodePath("Label2")
 enemy_rat_level = NodePath("Label")
 
 [node name="Screenshot20260520073607" type="Sprite2D" parent="." unique_id=149493523]
 position = Vector2(577.25, 326.5)
 scale = Vector2(0.99012876, 0.9954128)
 texture = ExtResource("1_2dvei")
+
+[node name="Label2" type="Label" parent="." unique_id=879825671]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 546.0
+offset_right = 185.0
+offset_bottom = 569.0
+text = "Level: "
 
 [node name="Label" type="Label" parent="." unique_id=543928835]
 layout_mode = 0
@@ -91,7 +100,6 @@ offset_bottom = 538.0
 theme_override_styles/background = SubResource("StyleBoxFlat_4s1nj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sovtu")
 step = 1.0
-show_percentage = false
 
 [node name="ProgressBar2" type="ProgressBar" parent="." unique_id=91403300]
 layout_mode = 0
@@ -101,7 +109,6 @@ offset_right = 1084.0
 offset_bottom = 130.0
 theme_override_styles/background = SubResource("StyleBoxFlat_q8na3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_oemdt")
-show_percentage = false
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1105963187]
 position = Vector2(413, 270)

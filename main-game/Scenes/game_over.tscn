@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c811x3w6nwy5p"]
+
+[ext_resource type="Script" uid="uid://c8ig5l2autll0" path="res://Scripts/game_over.gd" id="1_ojehl"]
+
+[node name="Control" type="Control" unique_id=1666646319]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ojehl")
+
+[node name="Label" type="Label" parent="." unique_id=2054724244]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 127.0
+offset_right = 880.0
+offset_bottom = 292.0
+theme_override_font_sizes/font_size = 120
+text = "Game over"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1427243094]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 340.0
+offset_right = 690.0
+offset_bottom = 380.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=488779446]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer" unique_id=506217331]
+layout_mode = 2
+text = "Retry"
+
+[node name="Button2" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1722456638]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/Button" to="." method="_retry_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/Button2" to="." method="_quit_pressed"]

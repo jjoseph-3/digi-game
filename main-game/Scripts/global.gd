@@ -1,15 +1,15 @@
 extends Node
 
-var rat_hp: int
-var rat_attack: int
-var rat_defence: int
-var rat_speed: int
-var rat_level: int
-var wild_rat_hp: int
-var wild_rat_attack: int
-var wild_rat_defence: int 
-var wild_rat_speed: int
-var wild_rat_level: int
+var rat_hp: float
+var rat_attack: float
+var rat_defence: float
+var rat_speed: float
+var rat_level: float
+var wild_rat_hp: float
+var wild_rat_attack: float
+var wild_rat_defence: float 
+var wild_rat_speed: float
+var wild_rat_level: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

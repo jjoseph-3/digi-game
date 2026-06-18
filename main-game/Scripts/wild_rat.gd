@@ -9,25 +9,25 @@ const RAT_STATS = {
 		"base_hp": 50,
 		"base_attack": 50,
 		"base_defence": 60,
-		"base_speed": 20
+		"base_speed": 10
 	},
 	"Kartarian": {
 		"base_hp": 50,
 		"base_attack": 20,
 		"base_defence": 80,
-		"base_speed": 50
+		"base_speed": 30
 	},
 }
 
 var species = {
 		"Johovian" :
 		{
-		"level": 5,
+		"level": 10,
 		"current_hp": 1
 		},
 		"Kartarian" :
 		{
-		"level": 5,
+		"level": 10,
 		"current_hp": 1
 		},
 	}
