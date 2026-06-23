@@ -17,7 +17,7 @@ bg_color = Color(0.9541325, 0, 0.019494109, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oemdt"]
 bg_color = Color(0.2816431, 0.5114015, 2.8878452e-07, 1)
 
-[node name="Control" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn", "current_rat_level", "enemy_rat_level")]
+[node name="Combat" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn", "current_rat_level", "enemy_rat_level")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,7 +72,7 @@ theme_override_constants/separation = 12
 [node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=838355126]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Attack 1"
+text = "Basic Attack"
 
 [node name="Button2" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1137690091]
 layout_mode = 2
@@ -85,11 +85,11 @@ theme_override_constants/separation = 12
 [node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=47817503]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Attack 2"
+text = "Power Attack"
 
 [node name="Button2" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=1724752139]
 layout_mode = 2
-text = "Attack 3"
+text = "Quick Attack"
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=2110666770]
 layout_mode = 0
@@ -116,7 +116,16 @@ position = Vector2(413, 270)
 [node name="Marker2D2" type="Marker2D" parent="." unique_id=1828891392]
 position = Vector2(869, 240)
 
+[node name="Button" type="Button" parent="." unique_id=1164415197]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 87.0
+offset_right = 112.0
+offset_bottom = 118.0
+text = "Bag"
+
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/Button" to="." method="_attack_1"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/Button2" to="." method="_block"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer2/Button" to="." method="_attack_2"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer2/Button2" to="." method="_attack_3"]
+[connection signal="pressed" from="Button" to="." method="_bag_opened"]

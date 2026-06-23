@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bwwbmgmm0ab3g"]
+
+[ext_resource type="Texture2D" uid="uid://c81g657t7k1wk" path="res://icon.svg" id="1_ixi5s"]
+[ext_resource type="Script" uid="uid://22e45cys52ih" path="res://Scripts/rat_in_party.gd" id="2_rmtaj"]
+
+[node name="Button" type="Button" unique_id=1704011318]
+offset_right = 96.0
+offset_bottom = 46.0
+text = "Name"
+icon = ExtResource("1_ixi5s")
+expand_icon = true
+script = ExtResource("2_rmtaj")
+
+[connection signal="pressed" from="." to="." method="_rat_selected"]

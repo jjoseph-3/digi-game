@@ -10,12 +10,19 @@ var wild_rat_attack: float
 var wild_rat_defence: float 
 var wild_rat_speed: float
 var wild_rat_level: float
+var party: Dictionary
+var bag: Dictionary
+var lead_rat: String
+var player: CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	for node in get_tree().get_nodes_in_group("Player"):
+		player = node
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if not player == null:
+		if player.lead_rat != lead_rat:
+			player.lead_changed()

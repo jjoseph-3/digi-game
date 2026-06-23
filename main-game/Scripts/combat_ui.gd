@@ -64,44 +64,45 @@ func _process(delta: float) -> void:
 	
 	
 func enemy_turn() -> void:
-	if Global.rat_hp <= current_rat_hp.max_value * 0.25:
-		Global.wild_rat_speed = Global.wild_rat_speed * 2
-		enemy_damage = int(floor((0.5 * (0.2 * (2 * Global.wild_rat_level)) + 2 * attack3_power * (Global.wild_rat_attack / Global.rat_defence))))
-		current_rat_hp.value = current_rat_hp.value - enemy_damage
-		Global.rat_hp = current_rat_hp.value
-		Global.wild_rat_speed = Global.wild_rat_speed * 0.5
-		print("enemy did: ", enemy_damage, "damage")
-		enemy_moved = true
-		# if player hp is less than 1/4 of max enemy does a quick attack
-		
-	elif Global.wild_rat_hp <= enemy_rat_hp.max_value * 0.25:
-		Global.wild_rat_speed = Global.wild_rat_speed * 2
-		enemy_damage = int(floor((0.5 * (0.2 * (2 * Global.wild_rat_level)) + 2 * attack3_power * (Global.wild_rat_attack / Global.rat_defence))))
-		current_rat_hp.value = current_rat_hp.value - enemy_damage
-		Global.rat_hp = current_rat_hp.value
-		Global.wild_rat_speed = Global.wild_rat_speed * 0.5
-		print("enemy did: ", enemy_damage, "damage")
-		enemy_moved = true
-		# if own hp is less than 1/4 of max enemy does a quick attack
-		
-	else:
-	# random chance for "attack 1" or "attack 2" for enemy
-		var enemy_attack = randi_range(0, 1)
-		if enemy_attack == 0:
-			enemy_damage = int(floor((0.5 * (0.2 * (2 * Global.wild_rat_level)) + 2 * attack1_power * (Global.wild_rat_attack / Global.rat_defence))))
+	if not enemy_rat_hp.value == 0:
+		if Global.rat_hp <= current_rat_hp.max_value * 0.25:
+			Global.wild_rat_speed = Global.wild_rat_speed * 2
+			enemy_damage = int(floor((0.5 * (0.2 * (2 * Global.wild_rat_level)) + 2 * attack3_power * (Global.wild_rat_attack / Global.rat_defence))))
 			current_rat_hp.value = current_rat_hp.value - enemy_damage
 			Global.rat_hp = current_rat_hp.value
+			Global.wild_rat_speed = Global.wild_rat_speed * 0.5
 			print("enemy did: ", enemy_damage, "damage")
 			enemy_moved = true
-		
-		if enemy_attack == 1:
-			var enemy_hit_chance: float = 0.75 
-			if randf() < enemy_hit_chance:
-				enemy_damage = int(floor((0.5 * (0.2 * (2 * Global.wild_rat_level)) + 2 * attack2_power * (Global.wild_rat_attack / Global.rat_defence))))
+			# if player hp is less than 1/4 of max enemy does a quick attack
+			
+		elif Global.wild_rat_hp <= enemy_rat_hp.max_value * 0.25:
+			Global.wild_rat_speed = Global.wild_rat_speed * 2
+			enemy_damage = int(floor((0.5 * (0.2 * (2 * Global.wild_rat_level)) + 2 * attack3_power * (Global.wild_rat_attack / Global.rat_defence))))
+			current_rat_hp.value = current_rat_hp.value - enemy_damage
+			Global.rat_hp = current_rat_hp.value
+			Global.wild_rat_speed = Global.wild_rat_speed * 0.5
+			print("enemy did: ", enemy_damage, "damage")
+			enemy_moved = true
+			# if own hp is less than 1/4 of max enemy does a quick attack
+			
+		else:
+		# random chance for "attack 1" or "attack 2" for enemy
+			var enemy_attack = randi_range(0, 1)
+			if enemy_attack == 0:
+				enemy_damage = int(floor((0.5 * (0.2 * (2 * Global.wild_rat_level)) + 2 * attack1_power * (Global.wild_rat_attack / Global.rat_defence))))
 				current_rat_hp.value = current_rat_hp.value - enemy_damage
 				Global.rat_hp = current_rat_hp.value
 				print("enemy did: ", enemy_damage, "damage")
 				enemy_moved = true
+			
+			if enemy_attack == 1:
+				var enemy_hit_chance: float = 0.75 
+				if randf() < enemy_hit_chance:
+					enemy_damage = int(floor((0.5 * (0.2 * (2 * Global.wild_rat_level)) + 2 * attack2_power * (Global.wild_rat_attack / Global.rat_defence))))
+					current_rat_hp.value = current_rat_hp.value - enemy_damage
+					Global.rat_hp = current_rat_hp.value
+					print("enemy did: ", enemy_damage, "damage")
+					enemy_moved = true
 				
 
 
@@ -116,13 +117,13 @@ func _attack_1() -> void:
 			print("you did: ", damage, "damage")
 			player_moved = true
 		
-		elif Global.wild_rat_speed < Global.rat_speed:
+		elif Global.wild_rat_speed <= Global.rat_speed:
 			damage = int(floor((0.5 * (0.2 * (2 * Global.rat_level)) + 2 * attack1_power * (Global.rat_attack / Global.wild_rat_defence))))
 			enemy_rat_hp.value = enemy_rat_hp.value - damage
 			Global.wild_rat_hp = enemy_rat_hp.value
 			print("you did: ", damage, "damage")
 			player_moved = true
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(0.2).timeout
 			enemy_turn()
 
 func _attack_2() -> void:
@@ -139,17 +140,23 @@ func _attack_2() -> void:
 			# 3x power but 75% hit chance 
 			player_moved = true
 			
-		elif Global.wild_rat_speed < Global.rat_speed:
+		elif Global.wild_rat_speed <= Global.rat_speed:
 			var hit_chance: float = 0.75 
 			if randf() < hit_chance:
 				damage = int(floor((0.5 * (0.2 * (2 * Global.rat_level)) + 2 * attack2_power * (Global.rat_attack / Global.wild_rat_defence))))
 				enemy_rat_hp.value = enemy_rat_hp.value - damage
 				Global.wild_rat_hp = enemy_rat_hp.value
 				print("you did: ", damage, "damage")
-			# 3x power but 75% hit chance 
-			player_moved = true
-			await get_tree().create_timer(1.0).timeout
-			enemy_turn()
+				player_moved = true
+				await get_tree().create_timer(1.0).timeout
+				enemy_turn()
+
+			else:
+				print("you missed") 
+				player_moved = true
+				await get_tree().create_timer(1.0).timeout
+				enemy_turn()
+		# 3x power but 75% hit chance
 
 func _attack_3() -> void:
 	if player_moved == false:
@@ -165,7 +172,7 @@ func _attack_3() -> void:
 			# "Quick attack" 
 			player_moved = true
 			
-		elif Global.wild_rat_speed < Global.rat_speed:
+		elif Global.wild_rat_speed <= Global.rat_speed:
 			damage = int(floor((0.5 * (0.2 * (2 * Global.rat_level)) + 2 * attack3_power * (Global.rat_attack / Global.wild_rat_defence))))
 			enemy_rat_hp.value = enemy_rat_hp.value - damage
 			Global.wild_rat_hp = enemy_rat_hp.value
@@ -189,3 +196,7 @@ func _block() -> void:
 		enemy_turn()
 	
 	
+
+
+func _bag_opened() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/bag.tscn")

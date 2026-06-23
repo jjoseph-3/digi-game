@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://itivmqx4d6lm"]
+
+[ext_resource type="Texture2D" uid="uid://c81g657t7k1wk" path="res://icon.svg" id="1_0kpiu"]
+[ext_resource type="Script" uid="uid://c78flyciug1wl" path="res://Scripts/button.gd" id="2_smycg"]
+
+[node name="Button" type="Button" unique_id=482543754]
+offset_right = 222.0
+offset_bottom = 71.0
+text = "Heal"
+icon = ExtResource("1_0kpiu")
+expand_icon = true
+script = ExtResource("2_smycg")
+
+[connection signal="pressed" from="." to="." method="_item_used"]
