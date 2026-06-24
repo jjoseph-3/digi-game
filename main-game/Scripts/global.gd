@@ -13,6 +13,7 @@ var wild_rat_level: float
 var party: Dictionary
 var bag: Dictionary
 var lead_rat: String
+var enemy_type: String
 var player: CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.

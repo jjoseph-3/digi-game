@@ -1,3 +1,4 @@
+class_name comabat_ui
 extends Control
 
 @export var current_rat_hp: ProgressBar
@@ -102,6 +103,9 @@ func enemy_turn() -> void:
 					current_rat_hp.value = current_rat_hp.value - enemy_damage
 					Global.rat_hp = current_rat_hp.value
 					print("enemy did: ", enemy_damage, "damage")
+					enemy_moved = true
+				else:
+					print("enemy missed")
 					enemy_moved = true
 				
 

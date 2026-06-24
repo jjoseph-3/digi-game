@@ -1,7 +1,9 @@
 class_name Player
 extends CharacterBody2D
 
-#store rats in dictionary 
+@export var johovian_sprite_scene: PackedScene
+@export var kartarian_sprite_scene:PackedScene
+
 var speed: float = 300.0
 var in_tall_grass: bool = false
 var in_combat: bool = false
@@ -93,3 +95,11 @@ func lead_changed() -> void:
 	print(Global.rat_defence)
 	print(Global.rat_speed)
 	print(Global.rat_level)
+	
+	if lead_rat == "Johovian":
+		var sprite = johovian_sprite_scene.instantiate()
+		add_child(sprite)
+		
+	if lead_rat == "Kartarian":
+		var sprite = kartarian_sprite_scene.instantiate()
+		add_child(sprite)
