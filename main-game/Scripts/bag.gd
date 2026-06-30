@@ -5,8 +5,6 @@ extends Control
 @export var vbox: VBoxContainer
 
 var bag = {
-	"Rat net": 12,
-	"Heal spray": 5
 }
 
 var item_buttons = {
@@ -15,7 +13,7 @@ var item_buttons = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.bag = bag
+	bag = Global.bag
 	print(Global.bag)
 	for item in bag:
 		var button = button_scene.instantiate()
@@ -30,4 +28,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	bag = Global.bag
-	#update bag when it gets changed (this does not work)
+	print(bag)
