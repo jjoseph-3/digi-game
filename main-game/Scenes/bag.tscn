@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bdprtnk8vdjyg" path="res://Scripts/bag.gd" id="1_5tw1m"]
 [ext_resource type="PackedScene" uid="uid://itivmqx4d6lm" path="res://Scenes/bag_button.tscn" id="2_yeinl"]
 
-[node name="Control" type="Control" unique_id=1060790555 node_paths=PackedStringArray("button_spawn", "vbox")]
+[node name="Control" type="Control" unique_id=1060790555 node_paths=PackedStringArray("button_spawn", "vbox") groups=["bag"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

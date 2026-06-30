@@ -46,6 +46,7 @@ func _ready() -> void:
 		#transports the party list into Global
 		
 		lead_rat = party.keys()[0]
+		Global.lead_rat = lead_rat
 		print(party.keys()[0])
 		Global.lead_rat = lead_rat
 		Global.rat_hp = int(floor(0.01 * (2 * RAT_STATS[lead_rat]["base_hp"]) * party[lead_rat]["level"])) + party[lead_rat]["level"] + 10
@@ -103,3 +104,7 @@ func lead_changed() -> void:
 	if lead_rat == "Kartarian":
 		var sprite = kartarian_sprite_scene.instantiate()
 		add_child(sprite)
+		
+		
+func rat_caught() -> void:
+	print("rat caught")

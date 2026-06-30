@@ -1,9 +1,13 @@
 extends Button
 
+var key = Global.bag.keys()
+var item: String
+var combat_ui: Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	for node in get_tree().get_nodes_in_group("combat_ui"):
+		combat_ui = node
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,8 +16,16 @@ func _process(delta: float) -> void:
 
 
 func _item_used() -> void:
-	if text == str("Rat net", ": ", Global.bag["Rat net"]):
-		Global.bag["Rat net"] -= 1
-		print(str("Rat net", ": ", Global.bag["Rat net"]))
-		print("button clicked")
+	if Global.bag.has(item):
+		Global.bag[item] -= 1
+		print(Global.bag)
+		text = str(item, ": ", Global.bag[item])
+		
+		if Global.bag[item] <= 0:
+			queue_free()
+		
+		if item == "Rat net":
+			combat_ui.net_thrown()
+			get_tree().get_first_node_in_group("bag").queue_free()
+			get_tree().call_deferred("change_scene_to_file", "res://combat_ui/bag.tscn")
 		

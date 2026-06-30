@@ -17,7 +17,7 @@ bg_color = Color(0.9541325, 0, 0.019494109, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oemdt"]
 bg_color = Color(0.2816431, 0.5114015, 2.8878452e-07, 1)
 
-[node name="Combat" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn", "current_rat_level", "enemy_rat_level")]
+[node name="Combat" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn", "current_rat_level", "enemy_rat_level") groups=["combat_ui"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,7 +117,6 @@ position = Vector2(413, 270)
 position = Vector2(869, 240)
 
 [node name="Button" type="Button" parent="." unique_id=1164415197]
-visible = false
 layout_mode = 0
 offset_left = 42.0
 offset_top = 87.0

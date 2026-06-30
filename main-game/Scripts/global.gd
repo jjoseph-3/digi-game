@@ -10,8 +10,10 @@ var wild_rat_attack: float
 var wild_rat_defence: float 
 var wild_rat_speed: float
 var wild_rat_level: float
+var wild_rat_catch_rate: float
 var party: Dictionary
 var bag: Dictionary
+var item_buttons: Dictionary
 var lead_rat: String
 var enemy_type: String
 var player: CharacterBody2D

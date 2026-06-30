@@ -20,14 +20,14 @@ func _ready() -> void:
 	for item in bag:
 		var button = button_scene.instantiate()
 		button.text = str(item, ": ", bag[item])
+		button.item = item
 		button.global_position = button_spawn.global_position
 		item_buttons[item] = button
+		Global.item_buttons = item_buttons
 		vbox.add_child(button)
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Global.bag["Rat net"] != bag["Rat net"]:
-		bag["Rat net"] = Global.bag["Rat net"]
-		print(bag)
-		item_buttons.text = str("Rat net", ": ", Global.bag["Rat net"])
+	bag = Global.bag
+	#update bag when it gets changed (this does not work)

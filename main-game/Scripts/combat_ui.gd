@@ -1,4 +1,3 @@
-class_name comabat_ui
 extends Control
 
 @export var current_rat_hp: ProgressBar
@@ -18,6 +17,8 @@ var attack2_power: float = 15
 var attack3_power: float = 3
 var damage: int  
 var enemy_damage: int
+var catch_chance: float
+var player: CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,6 +37,7 @@ func _ready() -> void:
 	var player_sprite = player_scene.instantiate()
 	player_sprite.in_combat = true
 	player_sprite.global_position = player_spawn.global_position
+	player = player_sprite
 	add_child(player_sprite)
 	
 	var enemy_sprite = enemy_scene.instantiate()
@@ -199,8 +201,19 @@ func _block() -> void:
 		await get_tree().create_timer(1.0).timeout
 		enemy_turn()
 	
-	
-
 
 func _bag_opened() -> void:
-	get_tree().call_deferred("change_scene_to_file", "res://Scenes/bag.tscn")
+	if player_moved == false:
+		var new_scene = load("res://Scenes/bag.tscn").instantiate()
+		add_child(new_scene)
+
+
+func net_thrown() -> void:
+	if player_moved == false:
+		catch_chance = ( ( (3 * enemy_rat_hp.max_value) - (2 * enemy_rat_hp.value) ) * Global.wild_rat_catch_rate) / (3.0  * enemy_rat_hp.max_value)
+		print("net thrown", catch_chance)
+		if randf() < catch_chance:
+			player.rat_caught()
+		player_moved = true
+		await get_tree().create_timer(1.0).timeout
+		enemy_turn()
