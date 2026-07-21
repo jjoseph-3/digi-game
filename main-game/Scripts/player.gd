@@ -44,6 +44,8 @@ func _ready() -> void:
 	if not get_parent().name == "Combat":
 		Global.party = party
 		#transports the party list into Global
+	if get_parent().name == "Combat":
+		$Player_sprite.hide()
 		
 		lead_rat = party.keys()[0]
 		Global.lead_rat = lead_rat
@@ -71,12 +73,24 @@ func _process(delta: float) -> void:
 	# Codes for my player movement 	
 		if Input.is_action_pressed("ui_left"):
 			direction = Vector2.LEFT
-		if Input.is_action_pressed("ui_right"):
+			$Player_sprite.flip_h = true
+			$Player_sprite.animation = "run side"
+
+		elif Input.is_action_pressed("ui_right"):
 			direction = Vector2.RIGHT
-		if Input.is_action_pressed("ui_up"):
+			$Player_sprite.flip_h = false
+			$Player_sprite.animation = "run side"
+			
+		elif Input.is_action_pressed("ui_up"):
 			direction = Vector2.UP
-		if Input.is_action_pressed("ui_down"):
+			$Player_sprite.animation = "run up"
+
+		elif Input.is_action_pressed("ui_down"):
 			direction = Vector2.DOWN
+			$Player_sprite.animation = "run down"
+
+		else: 
+			$Player_sprite.animation = "idle"
 	# Ensures that the player can only move in one direction at a time		
 		velocity = speed * direction.normalized()
 
@@ -84,6 +98,7 @@ func _process(delta: float) -> void:
 	
 	
 func lead_changed() -> void:
+	print(Global.lead_rat)
 	lead_rat = Global.lead_rat
 	Global.rat_hp = int(floor(0.01 * (2 * RAT_STATS[lead_rat]["base_hp"]) * party[lead_rat]["level"])) + party[lead_rat]["level"] + 10
 	party[lead_rat]["current_hp"] = Global.rat_hp
@@ -108,3 +123,4 @@ func lead_changed() -> void:
 		
 func rat_caught() -> void:
 	print("rat caught")
+	

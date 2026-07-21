@@ -12,6 +12,8 @@ extends Control
 var player_moved: bool = false
 var enemy_moved: bool = false
 var blocked: bool = false 
+var enemy_alive: bool = true 
+var player_alive: bool = true 
 var attack1_power: float = 5
 var attack2_power: float = 15
 var attack3_power: float = 3
@@ -44,18 +46,26 @@ func _ready() -> void:
 	enemy_sprite.global_position = enemy_spawn.global_position
 	add_child(enemy_sprite)
 
+	if player.lead_rat != Global.lead_rat:
+			player.lead_changed()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if enemy_rat_hp.value <= 0:
-		print("enemy rat done")
-		await get_tree().create_timer(1.0).timeout
-		get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")
-	
-	if current_rat_hp.value <= 0:
-		print("your rat is done")
-		await get_tree().create_timer(1.0).timeout
-		get_tree().call_deferred("change_scene_to_file", "res://Scenes/game_over.tscn")
+	if enemy_moved or player_moved == true:
+		if enemy_rat_hp.value <= 0:
+			enemy_alive = false
 		
+		elif current_rat_hp.value <= 0:
+			player_dead()
+			
+		if enemy_alive == false:
+			enemy_dead()
+			enemy_alive = true
+			
+		elif player_alive == false:
+			player_dead()
+			player_alive = true
+	
 	if enemy_moved and player_moved == true:
 		enemy_moved = false
 		player_moved = false
@@ -211,9 +221,19 @@ func _bag_opened() -> void:
 func net_thrown() -> void:
 	if player_moved == false:
 		catch_chance = ( ( (3 * enemy_rat_hp.max_value) - (2 * enemy_rat_hp.value) ) * Global.wild_rat_catch_rate) / (3.0  * enemy_rat_hp.max_value)
-		print("net thrown", catch_chance)
+		player_moved = true
 		if randf() < catch_chance:
 			player.rat_caught()
-		player_moved = true
-		await get_tree().create_timer(1.0).timeout
-		enemy_turn()
+		else:
+			await get_tree().create_timer(1.0).timeout
+			enemy_turn()
+
+func enemy_dead() -> void:
+	print("enemy rat done")
+	await get_tree().create_timer(1.0).timeout
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")
+
+func player_dead() -> void:
+	print("your rat is done")
+	await get_tree().create_timer(1.0).timeout
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/game_over.tscn")

@@ -22,6 +22,11 @@ wild_rat_scene = ExtResource("2_8rbpu")
 y_sort_enabled = true
 position = Vector2(501, 282)
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D2" unique_id=1260822308]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 30.0
+
 [node name="Area2D" type="Area2D" parent="." unique_id=548017983]
 z_index = -1
 y_sort_enabled = true

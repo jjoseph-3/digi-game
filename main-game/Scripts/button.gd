@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 func _item_used() -> void:
 	if Global.bag.has(item):
 		Global.bag[item] -= 1
+		get_tree().get_first_node_in_group("bag").bag = Global.bag
 		print(Global.bag)
 		text = str(item, ": ", Global.bag[item])
 		
