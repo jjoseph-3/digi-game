@@ -44,8 +44,6 @@ func _ready() -> void:
 	if not get_parent().name == "Combat":
 		Global.party = party
 		#transports the party list into Global
-	if get_parent().name == "Combat":
-		$Player_sprite.hide()
 		
 		lead_rat = party.keys()[0]
 		Global.lead_rat = lead_rat
@@ -64,6 +62,9 @@ func _ready() -> void:
 		print(Global.rat_defence)
 		print(Global.rat_speed)
 		print(Global.rat_level)
+		
+	if get_parent().name == "Combat":
+		$Player_sprite.hide()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
