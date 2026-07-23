@@ -21,6 +21,7 @@ var damage: int
 var enemy_damage: int
 var catch_chance: float
 var player: CharacterBody2D
+var new_rat: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,9 +46,14 @@ func _ready() -> void:
 	var enemy_sprite = enemy_scene.instantiate()
 	enemy_sprite.global_position = enemy_spawn.global_position
 	add_child(enemy_sprite)
+	#spawns enemy and player sprites
+	
+	new_rat = "Wild" + Global.enemy_type
+	#sets the name of the new rat (if caught)
 
 	if player.lead_rat != Global.lead_rat:
 			player.lead_changed()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -223,6 +229,11 @@ func net_thrown() -> void:
 		catch_chance = ( ( (3 * enemy_rat_hp.max_value) - (2 * enemy_rat_hp.value) ) * Global.wild_rat_catch_rate) / (3.0  * enemy_rat_hp.max_value)
 		player_moved = true
 		if randf() < catch_chance:
+			Global.party[new_rat] = {
+				"level" : Global.wild_rat_level,
+				"current_hp" : Global.wild_rat_hp
+			}
+			print(Global.party)
 			player.rat_caught()
 		else:
 			await get_tree().create_timer(1.0).timeout

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://b1unt45i1urvx"]
+
+[ext_resource type="PackedScene" uid="uid://bkrvy8uivarhe" path="res://Scenes/Player.tscn" id="1_0ba56"]
+[ext_resource type="Script" uid="uid://vcqffrur7y1a" path="res://Scripts/level.gd" id="1_vsvp5"]
+[ext_resource type="PackedScene" uid="uid://c5i1pjey6fn3x" path="res://Scenes/Wild_rat.tscn" id="2_8rbpu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ba56"]
+size = Vector2(163, 56)
+
+[sub_resource type="Curve2D" id="Curve2D_vsvp5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 733, 381, 0, 0, 0, 0, 868, 386, 0, 0, 0, 0, 872, 408, 0, 0, 0, 0, 839, 404, 0, 0, 0, 0, 787, 392, 0, 0, 0, 0, 755, 414, 0, 0, 0, 0, 741, 419, 0, 0, 0, 0, 808, 395, 0, 0, 0, 0, 764, 397, 0, 0, 0, 0, 840, 419, 0, 0, 0, 0, 774, 376, 0, 0, 0, 0, 843, 381, 0, 0, 0, 0, 879, 378, 0, 0, 0, 0, 728, 407, 0, 0, 0, 0, 799, 408)
+}
+point_count = 15
+
+[node name="Node2D" type="Node2D" unique_id=2114800605 node_paths=PackedStringArray("wild_rat_spawn")]
+script = ExtResource("1_vsvp5")
+wild_rat_spawn = NodePath("Path2D/PathFollow2D")
+wild_rat_scene = ExtResource("2_8rbpu")
+
+[node name="CharacterBody2D2" parent="." unique_id=1051577985 instance=ExtResource("1_0ba56")]
+y_sort_enabled = true
+position = Vector2(501, 282)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D2" unique_id=1260822308]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 30.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=548017983]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(804, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1682713469]
+shape = SubResource("RectangleShape2D_0ba56")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=1197028036]
+y_sort_enabled = true
+offset_left = -83.0
+offset_top = -28.0
+offset_right = 81.0
+offset_bottom = 28.0
+color = Color(0.5137255, 1, 1, 1)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1638732688]
+curve = SubResource("Curve2D_vsvp5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=190050368]
+position = Vector2(733, 381)
+rotation = 0.037020117
+
+[connection signal="body_entered" from="Area2D" to="." method="_tall_grass_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_left_tall_grass"]
