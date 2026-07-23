@@ -17,6 +17,9 @@ const RAT_STATS = {
 	},
 }
 
+signal player_controlable
+
+var rat_max_hp: float
 var rat_hp: float
 var rat_attack: float
 var rat_defence: float
@@ -28,7 +31,19 @@ var wild_rat_defence: float
 var wild_rat_speed: float
 var wild_rat_level: float
 var wild_rat_catch_rate: float
-var party: Dictionary
+
+var party: Dictionary = {
+		"Johovian" :
+		{
+		"level" : 10,
+		"current_hp" : 1
+		},
+		"Kartarian" :
+		{
+		"level" : 10,
+		"current_hp" : 1
+		},
+	}
 
 var bag: Dictionary = {
 	"Rat net": 12,

@@ -3,7 +3,8 @@ extends Control
 @export var current_rat_hp: ProgressBar
 @export var enemy_rat_hp: ProgressBar
 @export var player_spawn: Marker2D
-@export var player_scene: PackedScene
+@export var johovian_sprite_scene: PackedScene
+@export var kartarian_sprite_scene:PackedScene
 @export var enemy_spawn: Marker2D
 @export var enemy_scene: PackedScene
 @export var current_rat_level: Label
@@ -25,8 +26,8 @@ var new_rat: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	current_rat_hp.max_value = Global.rat_hp
-	current_rat_hp.value = current_rat_hp.max_value
+	current_rat_hp.max_value = Global.rat_max_hp
+	current_rat_hp.value = Global.rat_hp
 	enemy_rat_hp.max_value = Global.wild_rat_hp
 	enemy_rat_hp.value = enemy_rat_hp.max_value
 	#change enemy_rat_hp to match the enemy rat script 
@@ -37,22 +38,25 @@ func _ready() -> void:
 	current_rat_level.text = str("Level: ", Global.rat_level)
 	# Displays level of each rat 
 	
-	var player_sprite = player_scene.instantiate()
-	player_sprite.in_combat = true
-	player_sprite.global_position = player_spawn.global_position
-	player = player_sprite
-	add_child(player_sprite)
+	if Global.lead_rat == "Johovian":
+		var player_sprite = johovian_sprite_scene.instantiate()
+		player_sprite.global_position = player_spawn.global_position
+		add_child(player_sprite)
+		
+	elif Global.lead_rat == "Kartarian":
+		var player_sprite = kartarian_sprite_scene.instantiate()
+		player_sprite.global_position = player_spawn.global_position
+		add_child(player_sprite)
 	
 	var enemy_sprite = enemy_scene.instantiate()
 	enemy_sprite.global_position = enemy_spawn.global_position
 	add_child(enemy_sprite)
 	#spawns enemy and player sprites
 	
-	new_rat = "Wild" + Global.enemy_type
+	new_rat = "Wild " + Global.enemy_type
 	#sets the name of the new rat (if caught)
 
-	if player.lead_rat != Global.lead_rat:
-			player.lead_changed()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -235,6 +239,8 @@ func net_thrown() -> void:
 			}
 			print(Global.party)
 			player.rat_caught()
+			await get_tree().create_timer(1.0).timeout
+			get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")
 		else:
 			await get_tree().create_timer(1.0).timeout
 			enemy_turn()

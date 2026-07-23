@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*uid://c20cyriq64x5r"
+Player_auto="*uid://bkrvy8uivarhe"
 
 [input]
 

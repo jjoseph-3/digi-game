@@ -13,7 +13,7 @@ _data = {
 }
 point_count = 15
 
-[node name="Node2D" type="Node2D" unique_id=2114800605 node_paths=PackedStringArray("wild_rat_spawn")]
+[node name="Level" type="Node2D" unique_id=2114800605 node_paths=PackedStringArray("wild_rat_spawn")]
 script = ExtResource("1_vsvp5")
 wild_rat_spawn = NodePath("Path2D/PathFollow2D")
 wild_rat_scene = ExtResource("2_8rbpu")
