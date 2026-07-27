@@ -8,7 +8,21 @@ const RAT_STATS = {
 		"base_speed" : 20,
 		"catch_rate" : 0.9
 	},
+		"Wild Johovian" : {
+		"base_hp" : 50,
+		"base_attack" : 50,
+		"base_defence" : 60,
+		"base_speed" : 20,
+		"catch_rate" : 0.9
+	},
 		"Kartarian" : {
+		"base_hp" : 50,
+		"base_attack" : 20,
+		"base_defence" : 80,
+		"base_speed" : 30,
+		"catch_rate" : 0.7
+	},
+		"Wild Kartarian" : {
 		"base_hp" : 50,
 		"base_attack" : 20,
 		"base_defence" : 80,

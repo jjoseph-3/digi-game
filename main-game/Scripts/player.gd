@@ -29,8 +29,6 @@ func _ready() -> void:
 	Global.player_controllable.connect(player_controllable)
 	
 	Global.player = self
-	Global.party = party
-		#transports the party list into Global
 	print("player loaded")
 	
 	lead_rat = party.keys()[0]
@@ -53,6 +51,7 @@ func _ready() -> void:
 	print(Global.rat_defence)
 	print(Global.rat_speed)
 	print(Global.rat_level)
+	print(party)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -88,7 +87,7 @@ func lead_changed() -> void:
 	lead_rat = Global.lead_rat
 	Global.rat_max_hp = int(floor(0.01 * (2 * Global.RAT_STATS[lead_rat]["base_hp"]) * party[lead_rat]["level"])) + party[lead_rat]["level"] + 10
 	party[lead_rat]["max_hp"] = Global.rat_max_hp
-	party[lead_rat]["current_hp"] = Global.rat_hp
+	Global.rat_hp = party[lead_rat]["current_hp"]
 	Global.rat_attack = int(floor(0.01 * 2 * Global.RAT_STATS[lead_rat]["base_attack"] * party[lead_rat]["level"])) + 5
 	Global.rat_defence = int(floor(0.01 * 2 * Global.RAT_STATS[lead_rat]["base_defence"] * party[lead_rat]["level"])) + 5
 	Global.rat_speed = int(floor(0.01 * 2 * Global.RAT_STATS[lead_rat]["base_speed"] * party[lead_rat]["level"])) + 5

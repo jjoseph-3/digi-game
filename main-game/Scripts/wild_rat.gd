@@ -56,3 +56,4 @@ func despawn() -> void:
 func _encounter_start(body: Node2D) -> void:
 	if body is Player:
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/rat_screen.tscn")
+		queue_free()
