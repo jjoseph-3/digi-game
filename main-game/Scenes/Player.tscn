@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://bkrvy8uivarhe"]
 
 [ext_resource type="Script" uid="uid://d1h6nnd6n60lu" path="res://Scripts/player.gd" id="1_rpqav"]
-[ext_resource type="PackedScene" uid="uid://bxfa6qt5n5dr" path="res://Scenes/Johovian_rat.tscn" id="2_gntrk"]
-[ext_resource type="PackedScene" uid="uid://cpc2jnhpnofqn" path="res://Scenes/Kartarian_rat.tscn" id="3_dewec"]
 [ext_resource type="Texture2D" uid="uid://dvvhnebqw5jg0" path="res://idle frame0001.png" id="4_yoq75"]
 [ext_resource type="Texture2D" uid="uid://bivvjg2yp5myy" path="res://idle frame0002.png" id="5_ksbbd"]
 [ext_resource type="Texture2D" uid="uid://dl8s12jk4mgu6" path="res://idle frame0000.png" id="6_glx4g"]
@@ -91,9 +89,8 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1051577985 groups=["Player"]]
+process_mode = 4
 script = ExtResource("1_rpqav")
-johovian_sprite_scene = ExtResource("2_gntrk")
-kartarian_sprite_scene = ExtResource("3_dewec")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645461844]
 shape = SubResource("RectangleShape2D_qbkls")
@@ -104,3 +101,7 @@ scale = Vector2(1.46875, 1.5)
 sprite_frames = SubResource("SpriteFrames_lslt6")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=845239393]
+zoom = Vector2(2, 2)
+rotation_smoothing_enabled = true

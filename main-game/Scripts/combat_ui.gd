@@ -61,6 +61,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	Global.player_not_controllable.emit()
+	
+	
 	if enemy_moved or player_moved == true:
 		if enemy_rat_hp.value <= 0:
 			enemy_alive = false
@@ -238,7 +241,6 @@ func net_thrown() -> void:
 				"current_hp" : Global.wild_rat_hp
 			}
 			print(Global.party)
-			player.rat_caught()
 			await get_tree().create_timer(1.0).timeout
 			get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")
 		else:

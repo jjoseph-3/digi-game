@@ -17,7 +17,8 @@ const RAT_STATS = {
 	},
 }
 
-signal player_controlable
+signal player_controllable
+signal player_not_controllable
 
 var rat_max_hp: float
 var rat_hp: float
@@ -36,12 +37,12 @@ var party: Dictionary = {
 		"Johovian" :
 		{
 		"level" : 10,
-		"current_hp" : 1
+		"current_hp" : 30
 		},
 		"Kartarian" :
 		{
 		"level" : 10,
-		"current_hp" : 1
+		"current_hp" : 30
 		},
 	}
 

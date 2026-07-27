@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://b1unt45i1urvx"]
 
-[ext_resource type="PackedScene" uid="uid://bkrvy8uivarhe" path="res://Scenes/Player.tscn" id="1_0ba56"]
 [ext_resource type="Script" uid="uid://vcqffrur7y1a" path="res://Scripts/level.gd" id="1_vsvp5"]
 [ext_resource type="PackedScene" uid="uid://c5i1pjey6fn3x" path="res://Scenes/Wild_rat.tscn" id="2_8rbpu"]
 
@@ -18,19 +17,10 @@ script = ExtResource("1_vsvp5")
 wild_rat_spawn = NodePath("Path2D/PathFollow2D")
 wild_rat_scene = ExtResource("2_8rbpu")
 
-[node name="CharacterBody2D2" parent="." unique_id=1051577985 instance=ExtResource("1_0ba56")]
-y_sort_enabled = true
-position = Vector2(501, 282)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D2" unique_id=1260822308]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-position_smoothing_speed = 30.0
-
 [node name="Area2D" type="Area2D" parent="." unique_id=548017983]
 z_index = -1
 y_sort_enabled = true
-position = Vector2(804, 400)
+position = Vector2(202, 123)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1682713469]
 shape = SubResource("RectangleShape2D_0ba56")
@@ -42,8 +32,10 @@ offset_top = -28.0
 offset_right = 81.0
 offset_bottom = 28.0
 color = Color(0.5137255, 1, 1, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1638732688]
+position = Vector2(-602, -277)
 curve = SubResource("Curve2D_vsvp5")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=190050368]

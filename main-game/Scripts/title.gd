@@ -8,10 +8,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	Global.player_not_controllable.emit()
 
 
 func _play_pressed() -> void:
+	Player_auto.global_position = Vector2.ZERO
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")
 
 
