@@ -23,7 +23,9 @@ var enemy_damage: int
 var catch_chance: float
 var player: CharacterBody2D
 var new_rat: String
-
+var trainer_bonus: float = 1
+	
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_rat_hp.max_value = Global.rat_max_hp
@@ -250,6 +252,11 @@ func net_thrown() -> void:
 
 func enemy_dead() -> void:
 	print("enemy rat done")
+	Global.party[Global.lead_rat]["exp"] += ((Global.base_yield * Global.wild_rat_level) / 7) * trainer_bonus
+	while Global.party[Global.lead_rat]["exp"] >= pow(Global.rat_level + 1, 3):
+		print("level up")
+		Global.party[Global.lead_rat]["level"] += 1
+		Player_auto.lead_changed()
 	await get_tree().create_timer(1.0).timeout
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")
 

@@ -6,28 +6,32 @@ const RAT_STATS = {
 		"base_attack" : 50,
 		"base_defence" : 60,
 		"base_speed" : 20,
-		"catch_rate" : 0.9
+		"catch_rate" : 0.9,
+		"base_yeild" : 60
 	},
 		"Wild Johovian" : {
 		"base_hp" : 50,
 		"base_attack" : 50,
 		"base_defence" : 60,
 		"base_speed" : 20,
-		"catch_rate" : 0.9
+		"catch_rate" : 0.9,
+		"base_yeild" : 60
 	},
 		"Kartarian" : {
 		"base_hp" : 50,
 		"base_attack" : 20,
 		"base_defence" : 80,
 		"base_speed" : 30,
-		"catch_rate" : 0.7
+		"catch_rate" : 0.7,
+		"base_yeild" : 90
 	},
 		"Wild Kartarian" : {
 		"base_hp" : 50,
 		"base_attack" : 20,
 		"base_defence" : 80,
 		"base_speed" : 30,
-		"catch_rate" : 0.7
+		"catch_rate" : 0.7,
+		"base_yeild" : 60
 	},
 }
 
@@ -46,18 +50,9 @@ var wild_rat_defence: float
 var wild_rat_speed: float
 var wild_rat_level: float
 var wild_rat_catch_rate: float
+var base_yield: float
 
 var party: Dictionary = {
-		"Johovian" :
-		{
-		"level" : 10,
-		"current_hp" : 30
-		},
-		"Kartarian" :
-		{
-		"level" : 10,
-		"current_hp" : 30
-		},
 	}
 
 var bag: Dictionary = {
@@ -81,3 +76,10 @@ func _process(delta: float) -> void:
 	if not player == null:
 		if player.lead_rat != lead_rat:
 			player.lead_changed()
+			
+			
+func reset():
+	var script_path = Global.get_script().resource_path
+	var autoload_script = load(script_path)
+	Global.set_script(autoload_script)
+	Global._ready()

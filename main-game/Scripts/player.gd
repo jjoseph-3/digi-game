@@ -10,15 +10,17 @@ var lead_rat: String
 var party = {
 		"Johovian" :
 		{
-		"level" : 10,
+		"level" : 1,
 		"current_hp" : 30,
-		"max_hp": 30
+		"max_hp": 30,
+		"exp" : 0
 		},
 		"Kartarian" :
 		{
-		"level" : 10,
+		"level" : 1,
 		"current_hp" : 30,
-		"max_hp": 30
+		"max_hp": 30,
+		"exp" : 0
 		},
 	}
 
@@ -31,6 +33,7 @@ func _ready() -> void:
 	Global.player = self
 	print("player loaded")
 	
+	Global.party = party
 	lead_rat = party.keys()[0]
 	Global.lead_rat = lead_rat
 	print(party.keys()[0])
@@ -40,10 +43,14 @@ func _ready() -> void:
 		Global.rat_hp = Global.rat_max_hp
 		party[rats]["max_hp"] = Global.rat_max_hp
 		party[rats]["current_hp"] = Global.rat_hp
-		Global.rat_attack = int(floor(0.01 * 2 * Global.RAT_STATS[rats]["base_attack"] * party[rats]["level"])) + 5
-		Global.rat_defence = int(floor(0.01 * 2 * Global.RAT_STATS[rats]["base_defence"] * party[rats]["level"])) + 5
-		Global.rat_speed = int(floor(0.01 * 2 * Global.RAT_STATS[rats]["base_speed"] * party[rats]["level"])) + 5
-		Global.rat_level = party[rats]["level"]
+		
+	Global.rat_max_hp = int(floor(0.01 * (2 * Global.RAT_STATS[lead_rat]["base_hp"]) * party[lead_rat]["level"])) + party[lead_rat]["level"] + 10
+	Global.rat_hp = Global.rat_max_hp
+	Global.rat_attack = int(floor(0.01 * 2 * Global.RAT_STATS[lead_rat]["base_attack"] * party[lead_rat]["level"])) + 5
+	Global.rat_defence = int(floor(0.01 * 2 * Global.RAT_STATS[lead_rat]["base_defence"] * party[lead_rat]["level"])) + 5
+	Global.rat_speed = int(floor(0.01 * 2 * Global.RAT_STATS[lead_rat]["base_speed"] * party[lead_rat]["level"])) + 5
+	Global.rat_level = party[lead_rat]["level"]
+	Global.base_yield = Global.RAT_STATS[lead_rat]["base_yeild"]
 	#calculations for stats of each rat 
 	
 	print(Global.rat_hp)
@@ -107,3 +114,9 @@ func player_controllable():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	$Camera2D.enabled = true
 	$Player_sprite.show()
+	
+func reset():
+	var script_path = Player_auto.get_script().resource_path
+	var autoload_script = load(script_path)
+	Player_auto.set_script(autoload_script)
+	Player_auto._ready()

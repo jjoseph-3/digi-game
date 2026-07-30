@@ -28,6 +28,9 @@ func _ready() -> void:
 		var base_stats = Global.RAT_STATS[random_key]
 		var rat_data = species[random_key]
 	
+		rat_data["level"] = randi_range(max(1, Global.rat_level - 3), Global.rat_level)
+		#sets level based on player level
+		
 		Global.wild_rat_level = rat_data["level"]
 		rat_level = rat_data["level"]
 		Global.wild_rat_hp = int(floor(0.01 * (2 * base_stats["base_hp"]) * rat_level)) + rat_level + 10 
@@ -35,6 +38,7 @@ func _ready() -> void:
 		Global.wild_rat_defence = int(floor(0.01 * 2 * base_stats["base_defence"] * rat_level)) + 5
 		Global.wild_rat_speed = int(floor(0.01 * 2 * base_stats["base_speed"] * rat_level)) + 5
 		Global.wild_rat_catch_rate = base_stats["catch_rate"]
+		Global.base_yield = base_stats["base_yeild"]
 		rat_data["current_hp"] = Global.wild_rat_hp 
 		
 	if Global.enemy_type == "Johovian":
