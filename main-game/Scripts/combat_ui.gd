@@ -42,15 +42,18 @@ func _ready() -> void:
 	
 	if Global.lead_rat == "Johovian":
 		var player_sprite = johovian_sprite_scene.instantiate()
+		player_sprite.scale = Vector2(5, 5)
 		player_sprite.global_position = player_spawn.global_position
 		add_child(player_sprite)
 		
 	elif Global.lead_rat == "Kartarian":
 		var player_sprite = kartarian_sprite_scene.instantiate()
+		player_sprite.scale = Vector2(5, 5)
 		player_sprite.global_position = player_spawn.global_position
 		add_child(player_sprite)
 	
 	var enemy_sprite = enemy_scene.instantiate()
+	enemy_sprite.scale = Vector2(8, 8)
 	enemy_sprite.global_position = enemy_spawn.global_position
 	add_child(enemy_sprite)
 	#spawns enemy and player sprites

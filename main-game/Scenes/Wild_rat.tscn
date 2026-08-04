@@ -5,9 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cpc2jnhpnofqn" path="res://Scenes/Kartarian_rat.tscn" id="3_eii04"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bvg84"]
+size = Vector2(20, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wi47e"]
-size = Vector2(26, 28)
+size = Vector2(26, 11)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=182547946 groups=["wild_rat"]]
 script = ExtResource("1_wi47e")

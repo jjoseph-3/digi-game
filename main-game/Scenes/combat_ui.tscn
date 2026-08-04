@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://57nhcfpxukm0"]
 
-[ext_resource type="Texture2D" uid="uid://cb65dd40ckl3a" path="res://Screenshot 2026-05-20 073607.png" id="1_2dvei"]
 [ext_resource type="Script" uid="uid://73ac3ocget81" path="res://Scripts/combat_ui.gd" id="1_4s1nj"]
 [ext_resource type="PackedScene" uid="uid://bxfa6qt5n5dr" path="res://Scenes/Johovian_rat.tscn" id="2_oemdt"]
 [ext_resource type="PackedScene" uid="uid://cpc2jnhpnofqn" path="res://Scenes/Kartarian_rat.tscn" id="3_8xikn"]
@@ -35,11 +34,6 @@ enemy_spawn = NodePath("Marker2D2")
 enemy_scene = ExtResource("3_oemdt")
 current_rat_level = NodePath("Label2")
 enemy_rat_level = NodePath("Label")
-
-[node name="Screenshot20260520073607" type="Sprite2D" parent="." unique_id=149493523]
-position = Vector2(577.25, 326.5)
-scale = Vector2(0.99012876, 0.9954128)
-texture = ExtResource("1_2dvei")
 
 [node name="Label2" type="Label" parent="." unique_id=879825671]
 layout_mode = 0

@@ -51,8 +51,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if get_parent().name == "Level":
+		look_at(Player_auto.global_position)
+		
+	elif get_parent().name == "Combat":
+		look_at(get_tree().current_scene.player_spawn.global_position)
+	
 func despawn() -> void:
 	queue_free()
 	

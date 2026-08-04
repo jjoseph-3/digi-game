@@ -1,11 +1,8 @@
 [gd_scene format=3 uid="uid://bxfa6qt5n5dr"]
 
-[sub_resource type="Gradient" id="Gradient_w1m33"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_w4qep"]
-gradient = SubResource("Gradient_w1m33")
-width = 20
+[ext_resource type="Texture2D" uid="uid://b6p2mvjjwxqu2" path="res://johovian.png" id="1_w4qep"]
 
 [node name="Sprite2D" type="Sprite2D" unique_id=1926953989]
-scale = Vector2(1, 21)
-texture = SubResource("GradientTexture1D_w4qep")
+position = Vector2(0, 3.0000005)
+rotation = 1.5754753
+texture = ExtResource("1_w4qep")

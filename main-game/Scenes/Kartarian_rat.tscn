@@ -1,13 +1,8 @@
 [gd_scene format=3 uid="uid://cpc2jnhpnofqn"]
 
-[sub_resource type="Gradient" id="Gradient_toi4q"]
-offsets = PackedFloat32Array(0, 0.99375, 1)
-colors = PackedColorArray(0.7539986, 0.26127663, 0, 1, 0.51875, 0.51875, 0.51875, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_pfjvq"]
-gradient = SubResource("Gradient_toi4q")
-width = 20
+[ext_resource type="Texture2D" uid="uid://cglarmevqfc0c" path="res://karartian.png" id="1_pfjvq"]
 
 [node name="Sprite2D" type="Sprite2D" unique_id=815725108]
-scale = Vector2(1, 20.5)
-texture = SubResource("GradientTexture1D_pfjvq")
+position = Vector2(-1.1175871e-08, 3)
+rotation = 1.6068543
+texture = ExtResource("1_pfjvq")
