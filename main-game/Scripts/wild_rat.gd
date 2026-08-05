@@ -4,6 +4,10 @@ extends CharacterBody2D
 @export var johovian_sprite_scene: PackedScene
 @export var kartarian_sprite_scene: PackedScene
 
+const BASE_HP: float = 10
+const BASE_STAT: float = 5
+const LEVEL_SCALING: float = 0.01
+
 var species = {
 		"Johovian" :
 		{
@@ -33,10 +37,10 @@ func _ready() -> void:
 		
 		Global.wild_rat_level = rat_data["level"]
 		rat_level = rat_data["level"]
-		Global.wild_rat_hp = int(floor(0.01 * (2 * base_stats["base_hp"]) * rat_level)) + rat_level + 10 
-		Global.wild_rat_attack = int(floor(0.01 * 2 * base_stats["base_attack"] * rat_level)) + 5
-		Global.wild_rat_defence = int(floor(0.01 * 2 * base_stats["base_defence"] * rat_level)) + 5
-		Global.wild_rat_speed = int(floor(0.01 * 2 * base_stats["base_speed"] * rat_level)) + 5
+		Global.wild_rat_hp = int(floor(LEVEL_SCALING * (base_stats["base_hp"]) * rat_level)) + rat_level + BASE_HP 
+		Global.wild_rat_attack = int(floor(LEVEL_SCALING * base_stats["base_attack"] * rat_level)) + BASE_STAT
+		Global.wild_rat_defence = int(floor(LEVEL_SCALING * base_stats["base_defence"] * rat_level)) + BASE_STAT
+		Global.wild_rat_speed = int(floor(LEVEL_SCALING * base_stats["base_speed"] * rat_level)) + BASE_STAT
 		Global.wild_rat_catch_rate = base_stats["catch_rate"]
 		Global.base_yield = base_stats["base_yeild"]
 		rat_data["current_hp"] = Global.wild_rat_hp 
