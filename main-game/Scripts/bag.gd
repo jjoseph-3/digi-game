@@ -1,15 +1,11 @@
 extends Control
 
+var bag: Dictionary
+var item_buttons: Dictionary
+
 @export var button_scene: PackedScene
 @export var button_spawn: VBoxContainer
 @export var vbox: VBoxContainer
-
-var bag = {
-}
-
-var item_buttons = {
-	
-}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,12 +1,10 @@
 class_name Wild_rat
 extends CharacterBody2D
 
-@export var johovian_sprite_scene: PackedScene
-@export var kartarian_sprite_scene: PackedScene
-
 const BASE_HP: float = 10
 const BASE_STAT: float = 5
 const LEVEL_SCALING: float = 0.01
+const MIN_LEVEL: float = 3.0
 
 var species = {
 		"Johovian" :
@@ -20,8 +18,10 @@ var species = {
 		"current_hp" : 1
 		},
 	}
-
 var rat_level
+
+@export var johovian_sprite_scene: PackedScene
+@export var kartarian_sprite_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,7 +32,7 @@ func _ready() -> void:
 		var base_stats = Global.RAT_STATS[random_key]
 		var rat_data = species[random_key]
 	
-		rat_data["level"] = randi_range(max(1, Global.rat_level - 3), Global.rat_level)
+		rat_data["level"] = randi_range(max(1, Global.rat_level - MIN_LEVEL), Global.rat_level)
 		#sets level based on player level
 		
 		Global.wild_rat_level = rat_data["level"]

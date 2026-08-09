@@ -1,6 +1,7 @@
 extends Button
 
-var key = Global.bag.keys()
+const RAT_NET_NAME: String = "Rat net"
+
 var item: String
 var combat_ui: Control
 
@@ -25,7 +26,7 @@ func _item_used() -> void:
 		if Global.bag[item] <= 0:
 			queue_free()
 		
-		if item == "Rat net":
+		if item == RAT_NET_NAME:
 			combat_ui.net_thrown()
 			get_tree().get_first_node_in_group("bag").queue_free()
 			get_tree().call_deferred("change_scene_to_file", "res://combat_ui/bag.tscn")

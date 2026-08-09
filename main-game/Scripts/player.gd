@@ -9,6 +9,8 @@ var speed: float = 300.0
 var in_tall_grass: bool = false
 var lead_rat: String
 
+@onready var player_sprite: AnimatedSprite2D = $Player_sprite
+@onready var camera: Camera2D = $Camera2D
 
 var party = {
 		"Johovian" :
@@ -69,24 +71,24 @@ func _process(delta: float) -> void:
 # Codes for my player movement 	
 	if Input.is_action_pressed("ui_left"):
 		direction = Vector2.LEFT
-		$Player_sprite.flip_h = true
-		$Player_sprite.animation = "run side"
+		player_sprite.flip_h = true
+		player_sprite.animation = "run side"
 
 	elif Input.is_action_pressed("ui_right"):
 		direction = Vector2.RIGHT
-		$Player_sprite.flip_h = false
-		$Player_sprite.animation = "run side"
+		player_sprite.flip_h = false
+		player_sprite.animation = "run side"
 		
 	elif Input.is_action_pressed("ui_up"):
 		direction = Vector2.UP
-		$Player_sprite.animation = "run up"
+		player_sprite.animation = "run up"
 
 	elif Input.is_action_pressed("ui_down"):
 		direction = Vector2.DOWN
-		$Player_sprite.animation = "run down"
+		player_sprite.animation = "run down"
 
 	else: 
-		$Player_sprite.animation = "idle"
+		player_sprite.animation = "idle"
 # Ensures that the player can only move in one direction at a time		
 	velocity = speed * direction.normalized()
 
@@ -110,13 +112,13 @@ func lead_changed() -> void:
 	
 func player_not_controllable():
 	process_mode = Node.PROCESS_MODE_DISABLED
-	$Camera2D.enabled = false
-	$Player_sprite.hide()
+	camera.enabled = false
+	player_sprite.hide()
 	
 func player_controllable():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	$Camera2D.enabled = true
-	$Player_sprite.show()
+	camera.enabled = true
+	player_sprite.show()
 	
 func reset():
 	var script_path = Player_auto.get_script().resource_path

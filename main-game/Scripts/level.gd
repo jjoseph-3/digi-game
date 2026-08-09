@@ -1,5 +1,7 @@
 extends Node2D
 
+const SPAWN_CHANCE: float = 0.8
+
 @export var wild_rat_spawn: PathFollow2D
 @export var wild_rat_scene: PackedScene
 
@@ -16,8 +18,7 @@ func _process(delta: float) -> void:
 
 func _tall_grass_entered(body: Node2D) -> void:
 	if body is Player:
-		var spawn_chance: float = 0.8 
-		if randf() < spawn_chance: #codes for an 80% encounter chance
+		if randf() < SPAWN_CHANCE: #codes for an 80% encounter chance
 			var wild_rat = wild_rat_scene.instantiate()
 			wild_rat_spawn.progress_ratio = randf()
 			wild_rat.global_position = wild_rat_spawn.global_position
