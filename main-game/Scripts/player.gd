@@ -12,7 +12,12 @@ var lead_rat: String
 @onready var player_sprite: AnimatedSprite2D = $Player_sprite
 @onready var camera: Camera2D = $Camera2D
 
-var party = {
+var party: Dictionary
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	party = {
 		"Johovian" :
 		{
 		"level" : 1,
@@ -28,10 +33,7 @@ var party = {
 		"exp" : 0
 		},
 	}
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+	
 	Global.player_not_controllable.connect(player_not_controllable)
 	Global.player_controllable.connect(player_controllable)
 	

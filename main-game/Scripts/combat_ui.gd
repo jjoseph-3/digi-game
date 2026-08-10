@@ -1,7 +1,7 @@
 extends Control
 
-const JOHOVIAN_NAME: String = "Johovian"
-const KARTARIAN_NAME: String = "Kartarian"
+const JOHOVIAN_NAME: Array = ["Johovian", "Wild Johovian"]
+const KARTARIAN_NAME: Array = ["Kartarian", "Wild Kartarian"]
 const WILD_NAME_MODIFYER: String = "Wild "
 const PLAYER_SCALE: float = 5.0
 const ENEMY_SCALE: float = 8.0
@@ -34,6 +34,7 @@ var catch_chance: float
 var player: CharacterBody2D
 var new_rat: String
 var trainer_bonus: float = 1
+var current_rat_max_hp_percent: float
 
 @export var current_rat_hp: ProgressBar
 @export var enemy_rat_hp: ProgressBar
@@ -60,13 +61,13 @@ func _ready() -> void:
 	current_rat_level.text = str("Level: ", Global.rat_level)
 	# Displays level of each rat 
 	
-	if Global.lead_rat == JOHOVIAN_NAME:
+	if Global.lead_rat in JOHOVIAN_NAME:
 		var player_sprite = johovian_sprite_scene.instantiate()
 		player_sprite.scale = Vector2(PLAYER_SCALE, PLAYER_SCALE)
 		player_sprite.global_position = player_spawn.global_position
 		add_child(player_sprite)
 		
-	elif Global.lead_rat == KARTARIAN_NAME:
+	elif Global.lead_rat in KARTARIAN_NAME:
 		var player_sprite = kartarian_sprite_scene.instantiate()
 		player_sprite.scale = Vector2(PLAYER_SCALE, PLAYER_SCALE)
 		player_sprite.global_position = player_spawn.global_position
@@ -115,7 +116,7 @@ func _process(delta: float) -> void:
 	
 	
 func enemy_turn() -> void:
-	if not enemy_rat_hp.value <= 0:
+	if enemy_alive == true and enemy_moved == false:
 		if Global.rat_hp <= current_rat_hp.max_value * LOW_HP_THRESHOLD:
 			Global.wild_rat_speed = Global.wild_rat_speed * SPEED_MULTI
 			enemy_damage = int(floor((DAMAGE_SCALING * Global.wild_rat_level) + DAMAGE_FLOOR
@@ -283,12 +284,14 @@ func net_thrown() -> void:
 			enemy_turn()
 
 func enemy_dead() -> void:
+	current_rat_max_hp_percent = current_rat_hp.value / Global.rat_max_hp
 	print("enemy rat done")
 	Global.party[Global.lead_rat]["exp"] += ((Global.base_yield * Global.wild_rat_level)
 	/ EXP_DIVIDER) * trainer_bonus
 	while Global.party[Global.lead_rat]["exp"] >= pow(Global.rat_level + 1, EXP_CURVE):
 		print("level up")
 		Global.party[Global.lead_rat]["level"] += 1
+		current_rat_hp.value = Global.rat_max_hp * current_rat_max_hp_percent
 		Player_auto.lead_changed()
 	await get_tree().create_timer(TURN_DELAY).timeout
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")
