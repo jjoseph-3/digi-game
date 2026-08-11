@@ -291,8 +291,8 @@ func enemy_dead() -> void:
 	while Global.party[Global.lead_rat]["exp"] >= pow(Global.rat_level + 1, EXP_CURVE):
 		print("level up")
 		Global.party[Global.lead_rat]["level"] += 1
-		current_rat_hp.value = Global.rat_max_hp * current_rat_max_hp_percent
 		Player_auto.lead_changed()
+		current_rat_hp.value = Global.rat_max_hp * current_rat_max_hp_percent
 	await get_tree().create_timer(TURN_DELAY).timeout
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")
 

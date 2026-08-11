@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bxfa6qt5n5dr" path="res://Scenes/Johovian_rat.tscn" id="2_oemdt"]
 [ext_resource type="PackedScene" uid="uid://cpc2jnhpnofqn" path="res://Scenes/Kartarian_rat.tscn" id="3_8xikn"]
 [ext_resource type="PackedScene" uid="uid://c5i1pjey6fn3x" path="res://Scenes/Wild_rat.tscn" id="3_oemdt"]
+[ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="5_oemdt"]
+[ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="6_8xikn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4s1nj"]
 bg_color = Color(0.7930027, 0, 0.100829564, 1)
@@ -35,12 +37,17 @@ enemy_scene = ExtResource("3_oemdt")
 current_rat_level = NodePath("Label2")
 enemy_rat_level = NodePath("Label")
 
+[node name="GameBackground" type="Sprite2D" parent="." unique_id=2029155510]
+position = Vector2(575.5, 324.99997)
+scale = Vector2(6.005208, 5.9814816)
+texture = ExtResource("6_8xikn")
+
 [node name="Label2" type="Label" parent="." unique_id=879825671]
 layout_mode = 0
 offset_left = 136.0
 offset_top = 546.0
-offset_right = 185.0
-offset_bottom = 569.0
+offset_right = 266.0
+offset_bottom = 571.0
 text = "Level: "
 
 [node name="Label" type="Label" parent="." unique_id=543928835]
@@ -55,8 +62,8 @@ text = "Level: "
 layout_mode = 0
 offset_left = 310.0
 offset_top = 499.0
-offset_right = 641.0
-offset_bottom = 592.0
+offset_right = 584.0
+offset_bottom = 577.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1647821656]
 layout_mode = 2
@@ -66,12 +73,17 @@ layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=838355126]
-custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Basic Attack"
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("5_oemdt")
+theme_override_font_sizes/font_size = 28
+text = "Default attack"
 
 [node name="Button2" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1137690091]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("5_oemdt")
+theme_override_font_sizes/font_size = 28
 text = "Block"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1567574980]
@@ -79,13 +91,18 @@ layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=47817503]
-custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Power Attack"
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("5_oemdt")
+theme_override_font_sizes/font_size = 28
+text = "Power attack"
 
 [node name="Button2" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=1724752139]
 layout_mode = 2
-text = "Quick Attack"
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("5_oemdt")
+theme_override_font_sizes/font_size = 28
+text = "Quick attack"
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=2110666770]
 layout_mode = 0

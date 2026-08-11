@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://dojwfw255gfvf"]
 
 [ext_resource type="Script" uid="uid://bf2j8igv4adea" path="res://Scripts/title.gd" id="1_tochr"]
+[ext_resource type="Texture2D" uid="uid://dtutcrgb3x126" path="res://mainmenu_3.png" id="2_phf2g"]
+[ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="3_6khh7"]
+
+[sub_resource type="Theme" id="Theme_tochr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwrlp"]
+font = ExtResource("3_6khh7")
+font_size = 76
+font_color = Color(0.44578058, 0.4427783, 0.09793685, 1)
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_6khh7"]
 
 [node name="Control" type="Control" unique_id=1473462412]
 layout_mode = 3
@@ -9,36 +22,50 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_tochr")
 script = ExtResource("1_tochr")
+
+[node name="Mainmenu3" type="Sprite2D" parent="." unique_id=122608849]
+position = Vector2(576, 324)
+scale = Vector2(6, 6)
+texture = ExtResource("2_phf2g")
 
 [node name="Label" type="Label" parent="." unique_id=1870305928]
 layout_mode = 0
 offset_left = 380.0
-offset_top = 147.0
+offset_top = 213.0
 offset_right = 780.0
-offset_bottom = 219.0
-theme_override_font_sizes/font_size = 52
-text = "Title"
+offset_bottom = 285.0
+theme_override_colors/font_color = Color(0.38431373, 0.4392157, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_6khh7")
+theme_override_font_sizes/font_size = 72
+text = "E RAT ICATE"
+label_settings = SubResource("LabelSettings_bwrlp")
 horizontal_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1938834229]
+[node name="Button2" type="Button" parent="." unique_id=1283170195]
 layout_mode = 0
-offset_left = 380.0
-offset_top = 348.0
-offset_right = 780.0
-offset_bottom = 414.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=447790430]
-layout_mode = 2
-alignment = 1
-
-[node name="Button2" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1283170195]
-layout_mode = 2
+offset_left = 458.0
+offset_top = 476.0
+offset_right = 540.0
+offset_bottom = 533.0
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("3_6khh7")
+theme_override_font_sizes/font_size = 56
 text = "Play"
 
-[node name="Button" type="Button" parent="PanelContainer/HBoxContainer" unique_id=881606751]
-layout_mode = 2
+[node name="Button" type="Button" parent="." unique_id=881606751]
+layout_mode = 0
+offset_left = 573.0
+offset_top = 476.0
+offset_right = 721.0
+offset_bottom = 533.0
+theme = SubResource("Theme_6khh7")
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("3_6khh7")
+theme_override_font_sizes/font_size = 56
 text = "Options"
 
-[connection signal="pressed" from="PanelContainer/HBoxContainer/Button2" to="." method="_play_pressed"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/Button" to="." method="_options_opened"]
+[connection signal="pressed" from="Button2" to="." method="_play_pressed"]
+[connection signal="pressed" from="Button" to="." method="_options_opened"]

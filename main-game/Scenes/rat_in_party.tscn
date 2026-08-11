@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://bwwbmgmm0ab3g"]
 
-[ext_resource type="Texture2D" uid="uid://c81g657t7k1wk" path="res://icon.svg" id="1_ixi5s"]
+[ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="1_rmtaj"]
 [ext_resource type="Script" uid="uid://22e45cys52ih" path="res://Scripts/rat_in_party.gd" id="2_rmtaj"]
 
 [node name="Button" type="Button" unique_id=1704011318]
-offset_right = 96.0
-offset_bottom = 46.0
-text = "Name"
-icon = ExtResource("1_ixi5s")
-expand_icon = true
+offset_right = 110.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("1_rmtaj")
+theme_override_font_sizes/font_size = 56
+text = "Filler"
 script = ExtResource("2_rmtaj")
 
 [connection signal="pressed" from="." to="." method="_rat_selected"]

@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://itivmqx4d6lm"]
 
-[ext_resource type="Texture2D" uid="uid://c81g657t7k1wk" path="res://icon.svg" id="1_0kpiu"]
+[ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="1_fxe6q"]
 [ext_resource type="Script" uid="uid://c78flyciug1wl" path="res://Scripts/button.gd" id="2_smycg"]
 
 [node name="Button" type="Button" unique_id=482543754]
-offset_right = 222.0
-offset_bottom = 71.0
-text = "Heal"
-icon = ExtResource("1_0kpiu")
-expand_icon = true
+offset_right = 110.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("1_fxe6q")
+theme_override_font_sizes/font_size = 56
+text = "Filler"
 script = ExtResource("2_smycg")
 
 [connection signal="pressed" from="." to="." method="_item_used"]

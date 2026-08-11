@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b2lx41we68ujc"]
 
+[ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="1_prnvy"]
+
 [node name="Control" type="Control" unique_id=1270880793]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GameBackground" type="Sprite2D" parent="." unique_id=945381217]
+position = Vector2(575.5, 324.99997)
+scale = Vector2(6.005208, 5.9814816)
+texture = ExtResource("1_prnvy")
 
 [node name="Label" type="Label" parent="." unique_id=69562105]
 layout_mode = 0

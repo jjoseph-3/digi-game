@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://c811x3w6nwy5p"]
 
 [ext_resource type="Script" uid="uid://c8ig5l2autll0" path="res://Scripts/game_over.gd" id="1_ojehl"]
+[ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="2_8fo1c"]
+[ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="2_ek8ke"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ek8ke"]
+font = ExtResource("2_8fo1c")
+font_size = 120
+font_color = Color(0.54681724, 0, 0.060349457, 1)
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control" unique_id=1666646319]
 layout_mode = 3
@@ -11,33 +20,46 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ojehl")
 
+[node name="GameBackground" type="Sprite2D" parent="." unique_id=721619444]
+position = Vector2(575.5, 324.99997)
+scale = Vector2(6.005208, 5.9814816)
+texture = ExtResource("2_ek8ke")
+
 [node name="Label" type="Label" parent="." unique_id=2054724244]
 layout_mode = 0
-offset_left = 251.0
-offset_top = 127.0
-offset_right = 880.0
-offset_bottom = 292.0
-theme_override_font_sizes/font_size = 120
-text = "Game over"
+offset_left = -2.0
+offset_top = 258.0
+offset_right = 1152.0
+offset_bottom = 423.0
+theme_override_colors/font_color = Color(0.38431373, 0.4392157, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_8fo1c")
+theme_override_font_sizes/font_size = 74
+text = "Game Over"
+label_settings = SubResource("LabelSettings_ek8ke")
+horizontal_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1427243094]
+[node name="Button" type="Button" parent="." unique_id=506217331]
 layout_mode = 0
-offset_left = 446.0
-offset_top = 340.0
-offset_right = 690.0
-offset_bottom = 380.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=488779446]
-layout_mode = 2
-alignment = 1
-
-[node name="Button" type="Button" parent="PanelContainer/HBoxContainer" unique_id=506217331]
-layout_mode = 2
+offset_left = 454.0
+offset_top = 398.0
+offset_right = 564.0
+offset_bottom = 455.0
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("2_8fo1c")
+theme_override_font_sizes/font_size = 56
 text = "Retry"
 
-[node name="Button2" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1722456638]
-layout_mode = 2
+[node name="Button2" type="Button" parent="." unique_id=1722456638]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 399.0
+offset_right = 685.0
+offset_bottom = 456.0
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("2_8fo1c")
+theme_override_font_sizes/font_size = 56
 text = "Quit"
 
-[connection signal="pressed" from="PanelContainer/HBoxContainer/Button" to="." method="_retry_pressed"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/Button2" to="." method="_quit_pressed"]
+[connection signal="pressed" from="Button" to="." method="_retry_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_quit_pressed"]

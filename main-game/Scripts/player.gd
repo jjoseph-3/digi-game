@@ -8,11 +8,10 @@ const LEVEL_SCALING: float = 0.01
 var speed: float = 300.0
 var in_tall_grass: bool = false
 var lead_rat: String
+var party: Dictionary
 
 @onready var player_sprite: AnimatedSprite2D = $Player_sprite
 @onready var camera: Camera2D = $Camera2D
-
-var party: Dictionary
 
 
 # Called when the node enters the scene tree for the first time.
