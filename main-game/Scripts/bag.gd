@@ -1,5 +1,7 @@
 extends Control
 
+const COLONISER: String = ": "
+
 var bag: Dictionary
 var item_buttons: Dictionary
 
@@ -13,7 +15,7 @@ func _ready() -> void:
 	print(Global.bag)
 	for item in bag:
 		var button = button_scene.instantiate()
-		button.text = str(item, ": ", bag[item])
+		button.text = str(item, COLONISER, bag[item])
 		button.item = item
 		button.global_position = button_spawn.global_position
 		item_buttons[item] = button

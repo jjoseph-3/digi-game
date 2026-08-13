@@ -91,19 +91,15 @@ func _process(delta: float) -> void:
 	
 	
 	if enemy_moved or player_moved == true:
-		if enemy_rat_hp.value <= 0:
-			enemy_alive = false
 		
-		elif current_rat_hp.value <= 0:
-			player_dead()
-			
-		if enemy_alive == false:
+		if enemy_rat_hp.value <= 0 and enemy_alive == true:
+			enemy_alive = false
 			enemy_dead()
-			enemy_alive = true
-			
-		elif player_alive == false:
+		
+		elif current_rat_hp.value <= 0 and player_alive == true:
+			player_alive = false
 			player_dead()
-			player_alive = true
+			
 	
 	if enemy_moved and player_moved == true:
 		enemy_moved = false
@@ -263,12 +259,22 @@ func _bag_opened() -> void:
 		var new_scene = load("res://Scenes/bag.tscn").instantiate()
 		add_child(new_scene)
 
-
+func heal_used() -> void:
+	if player_moved == false:
+		current_rat_hp.value = Global.rat_max_hp
+		player_moved = true
+		await get_tree().create_timer(TURN_DELAY).timeout
+		enemy_turn()
+	else: 
+		await get_tree().create_timer(TURN_DELAY).timeout
+		enemy_turn()
+		
 func net_thrown() -> void:
 	if player_moved == false:
 		catch_chance = (((MAX_HP_MULTI * enemy_rat_hp.max_value) - (CURRENT_HP_MULTI
 		* enemy_rat_hp.value)) * Global.wild_rat_catch_rate) \
 		/ (MAX_HP_MULTI * enemy_rat_hp.max_value)
+		#checks for player_moved and calculates a catch chance
 		player_moved = true
 		if randf() < catch_chance:
 			Global.party[new_rat] = {
@@ -284,7 +290,9 @@ func net_thrown() -> void:
 			enemy_turn()
 
 func enemy_dead() -> void:
-	current_rat_max_hp_percent = current_rat_hp.value / Global.rat_max_hp
+	current_rat_max_hp_percent = current_rat_hp.value / Player_auto.party[Player_auto.lead_rat] \
+	["max_hp"]
+	print(current_rat_max_hp_percent, "%")
 	print("enemy rat done")
 	Global.party[Global.lead_rat]["exp"] += ((Global.base_yield * Global.wild_rat_level)
 	/ EXP_DIVIDER) * trainer_bonus
@@ -292,7 +300,8 @@ func enemy_dead() -> void:
 		print("level up")
 		Global.party[Global.lead_rat]["level"] += 1
 		Player_auto.lead_changed()
-		current_rat_hp.value = Global.rat_max_hp * current_rat_max_hp_percent
+		
+		
 	await get_tree().create_timer(TURN_DELAY).timeout
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")
 

@@ -38,18 +38,18 @@ func _ready() -> void:
 	
 	Global.player = self
 	print("player loaded")
-	
-	Global.party = party
-	lead_rat = party.keys()[0]
-	Global.lead_rat = lead_rat
-	print(party.keys()[0])
 
 	for rats in party:
 		Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[rats]["base_hp"]) * party[rats]["level"]) + party[rats]["level"] + BASE_HP
 		Global.rat_hp = Global.rat_max_hp
 		party[rats]["max_hp"] = Global.rat_max_hp
 		party[rats]["current_hp"] = Global.rat_hp
+		#puts the max and current hps into the party dictionary
 		
+	Global.party = party
+	lead_rat = party.keys()[0]
+	Global.lead_rat = lead_rat
+	print(party.keys()[0])
 	Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_hp"]) * party[lead_rat]["level"]) + party[lead_rat]["level"] + BASE_STAT
 	Global.rat_hp = Global.rat_max_hp
 	Global.rat_attack = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_attack"]) * party[lead_rat]["level"]) + BASE_STAT
@@ -98,12 +98,30 @@ func _process(delta: float) -> void:
 func lead_changed() -> void:
 	print(Global.lead_rat)
 	lead_rat = Global.lead_rat
-	Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_hp"]) * party[lead_rat]["level"]) + party[lead_rat]["level"] + BASE_HP
+	
+	Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_hp"]) 
+	* party[lead_rat]["level"]) + party[lead_rat]["level"] + BASE_HP
+	
+	var hp_diff: float = Global.rat_max_hp - party[lead_rat]["max_hp"]
+	print("HP Diff: ", hp_diff)
+	
 	party[lead_rat]["max_hp"] = Global.rat_max_hp
-	Global.rat_hp = party[lead_rat]["current_hp"]
-	Global.rat_attack = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_attack"]) * party[lead_rat]["level"]) + BASE_STAT
-	Global.rat_defence = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_defence"]) * party[lead_rat]["level"]) + BASE_STAT
-	Global.rat_speed = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_speed"]) * party[lead_rat]["level"]) + BASE_STAT
+	
+	Global.rat_hp = party[lead_rat]["current_hp"] if hp_diff == 0 else party[lead_rat] \
+	["current_hp"] + hp_diff
+	
+	party[lead_rat]["current_hp"] = Global.rat_hp
+	#Global.rat_hp = party[lead_rat]["current_hp"]
+	
+	Global.rat_attack = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_attack"]) 
+	* party[lead_rat]["level"]) + BASE_STAT
+	
+	Global.rat_defence = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_defence"])
+	* party[lead_rat]["level"]) + BASE_STAT
+	
+	Global.rat_speed = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_speed"]) 
+	* party[lead_rat]["level"]) + BASE_STAT
+	
 	Global.rat_level = party[lead_rat]["level"]
 	print(Global.rat_hp)
 	print(Global.rat_attack)
