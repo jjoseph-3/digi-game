@@ -38,6 +38,7 @@ func _ready() -> void:
 		Global.wild_rat_level = rat_data["level"]
 		rat_level = rat_data["level"]
 		Global.wild_rat_hp = int(floor(LEVEL_SCALING * (base_stats["base_hp"]) * rat_level)) + rat_level + BASE_HP 
+		Global.wild_rat_max_hp = Global.rat_hp
 		Global.wild_rat_attack = int(floor(LEVEL_SCALING * base_stats["base_attack"] * rat_level)) + BASE_STAT
 		Global.wild_rat_defence = int(floor(LEVEL_SCALING * base_stats["base_defence"] * rat_level)) + BASE_STAT
 		Global.wild_rat_speed = int(floor(LEVEL_SCALING * base_stats["base_speed"] * rat_level)) + BASE_STAT
@@ -61,11 +62,11 @@ func _process(delta: float) -> void:
 	elif get_parent().name == "Combat":
 		look_at(get_tree().current_scene.player_spawn.global_position)
 	
-func despawn() -> void:
+func despawn_triggered() -> void:
 	queue_free()
 	
 	
-func _encounter_start(body: Node2D) -> void:
+func encounter_started(body: Node2D) -> void:
 	if body is Player:
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/rat_screen.tscn")
 		queue_free()

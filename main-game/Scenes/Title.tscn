@@ -67,5 +67,5 @@ theme_override_fonts/font = ExtResource("3_6khh7")
 theme_override_font_sizes/font_size = 56
 text = "Options"
 
-[connection signal="pressed" from="Button2" to="." method="_play_pressed"]
-[connection signal="pressed" from="Button" to="." method="_options_opened"]
+[connection signal="pressed" from="Button2" to="." method="play_pressed"]
+[connection signal="pressed" from="Button" to="." method="options_opened"]

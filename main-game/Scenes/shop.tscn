@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://d23bjpfvi5rxf"]
+
+[ext_resource type="Script" uid="uid://bhax661e8qmhg" path="res://Scripts/shop.gd" id="1_2shtd"]
+[ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="1_a0mxf"]
+
+[node name="Control" type="Control" unique_id=1008011839]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2shtd")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=756321611]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 268.0
+offset_right = 653.0
+offset_bottom = 346.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=211879192]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=985198080]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=217225567]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("1_a0mxf")
+theme_override_font_sizes/font_size = 28
+text = "Heal Spray"
+
+[node name="Button2" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=971603858]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("1_a0mxf")
+theme_override_font_sizes/font_size = 28
+text = "Rat net"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1917150481]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=433208003]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("1_a0mxf")
+theme_override_font_sizes/font_size = 28
+text = "Buy"
+
+[node name="Button2" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=1051941936]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("1_a0mxf")
+theme_override_font_sizes/font_size = 28
+text = "Buy"
+
+[node name="Button" type="Button" parent="." unique_id=378396481]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 107.0
+offset_right = 201.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("1_a0mxf")
+theme_override_font_sizes/font_size = 28
+text = "Exit"
+
+[connection signal="pressed" from="Button" to="." method="shop_exited"]

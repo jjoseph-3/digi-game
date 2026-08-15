@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dv3pjhgixtt3t" path="res://Scripts/rat_screen.gd" id="1_vnipi"]
 [ext_resource type="PackedScene" uid="uid://bwwbmgmm0ab3g" path="res://Scenes/rat_in_party.tscn" id="2_7t316"]
-[ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="3_fa5rd"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="4_cq1lg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yyl5t"]
@@ -23,11 +22,6 @@ script = ExtResource("1_vnipi")
 party_rat_scene = ExtResource("2_7t316")
 party_rat_spawn = NodePath("PanelContainer/VBoxContainer")
 vbox = NodePath("PanelContainer/VBoxContainer")
-
-[node name="GameBackground" type="Sprite2D" parent="." unique_id=245320862]
-position = Vector2(575.5, 324.99997)
-scale = Vector2(6.005208, 5.9814816)
-texture = ExtResource("3_fa5rd")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=710611410]
 layout_mode = 0

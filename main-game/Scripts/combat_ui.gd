@@ -3,6 +3,10 @@ extends Control
 const JOHOVIAN_NAME: Array = ["Johovian", "Wild Johovian"]
 const KARTARIAN_NAME: Array = ["Kartarian", "Wild Kartarian"]
 const WILD_NAME_MODIFYER: String = "Wild "
+const NEW_RAT_LEVEL: String = "level"
+const NEW_RAT_HP: String = "current_hp"
+const NEW_RAT_MAX_HP: String = "max_hp"
+const NEW_RAT_EXP: String = "exp"
 const PLAYER_SCALE: float = 5.0
 const ENEMY_SCALE: float = 8.0
 const TURN_DELAY: float = 0.5
@@ -148,8 +152,9 @@ func enemy_turn() -> void:
 			
 			if enemy_attack == OPTION_TWO: 
 				if randf() < HIT_CHANCE:
-					enemy_damage = int(floor((DAMAGE_SCALING * Global.wild_rat_level)
-					+ DAMAGE_FLOOR * attack2_power * (Global.wild_rat_attack / Global.rat_defence)))
+					enemy_damage = int(floor((DAMAGE_SCALING * Global.wild_rat_level) + 
+					DAMAGE_FLOOR * attack2_power * (Global.wild_rat_attack / Global.rat_defence)))
+					# the + has to be at the end of line to meet line limit 
 					current_rat_hp.value = current_rat_hp.value - enemy_damage
 					Global.rat_hp = current_rat_hp.value
 					print("enemy did: ", enemy_damage, "damage")
@@ -160,7 +165,7 @@ func enemy_turn() -> void:
 				
 
 
-func _attack_1() -> void:
+func basic_attack() -> void:
 	if player_moved == false:
 		if Global.wild_rat_speed > Global.rat_speed:
 			enemy_turn()
@@ -182,7 +187,7 @@ func _attack_1() -> void:
 			await get_tree().create_timer(TURN_DELAY).timeout
 			enemy_turn()
 
-func _attack_2() -> void:
+func power_attack() -> void:
 	if player_moved == false:
 		if Global.wild_rat_speed > Global.rat_speed:
 			enemy_turn()
@@ -214,7 +219,7 @@ func _attack_2() -> void:
 				enemy_turn()
 		# 3x power but 75% hit chance
 
-func _attack_3() -> void:
+func quick_attack() -> void:
 	if player_moved == false:
 		Global.rat_speed = Global.rat_speed * SPEED_MULTI
 		if Global.wild_rat_speed > Global.rat_speed:
@@ -241,7 +246,7 @@ func _attack_3() -> void:
 			await get_tree().create_timer(TURN_DELAY).timeout
 			enemy_turn()
 
-func _block() -> void:
+func block() -> void:
 	if player_moved == false:
 		Global.rat_speed = Global.rat_speed * BLOCK_SPEED_MULTI
 		Global.rat_defence = Global.rat_defence * DEFENCE_MULTIPLIER
@@ -254,7 +259,7 @@ func _block() -> void:
 		enemy_turn()
 	
 
-func _bag_opened() -> void:
+func bag_opened() -> void:
 	if player_moved == false:
 		var new_scene = load("res://Scenes/bag.tscn").instantiate()
 		add_child(new_scene)
@@ -278,9 +283,12 @@ func net_thrown() -> void:
 		player_moved = true
 		if randf() < catch_chance:
 			Global.party[new_rat] = {
-				"level" : Global.wild_rat_level,
-				"current_hp" : Global.wild_rat_hp
+				NEW_RAT_LEVEL : Global.wild_rat_level,
+				NEW_RAT_HP : Global.wild_rat_hp,
+				NEW_RAT_MAX_HP : Global.wild_rat_max_hp,
+				NEW_RAT_EXP : 0
 			}
+			#magic strings
 			Player_auto.party = Global.party
 			print(Global.party)
 			await get_tree().create_timer(TURN_DELAY).timeout
@@ -290,8 +298,8 @@ func net_thrown() -> void:
 			enemy_turn()
 
 func enemy_dead() -> void:
-	current_rat_max_hp_percent = current_rat_hp.value / Player_auto.party[Player_auto.lead_rat] \
-	["max_hp"]
+	Global.current_rat_max_hp_percent = current_rat_hp.value \
+	/ Player_auto.party[Player_auto.lead_rat]["max_hp"]
 	print(current_rat_max_hp_percent, "%")
 	print("enemy rat done")
 	Global.party[Global.lead_rat]["exp"] += ((Global.base_yield * Global.wild_rat_level)
@@ -301,7 +309,7 @@ func enemy_dead() -> void:
 		Global.party[Global.lead_rat]["level"] += 1
 		Player_auto.lead_changed()
 		
-		
+	Player_auto.global_position = Vector2.ZERO
 	await get_tree().create_timer(TURN_DELAY).timeout
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/Level.tscn")
 
@@ -309,3 +317,8 @@ func player_dead() -> void:
 	print("your rat is done")
 	await get_tree().create_timer(TURN_DELAY).timeout
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/game_over.tscn")
+
+
+func pause_menu() -> void:
+	var new_scene = load("res://Scenes/pause_menu.tscn").instantiate()
+	add_child(new_scene)

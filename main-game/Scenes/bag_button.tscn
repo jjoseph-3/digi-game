@@ -12,4 +12,4 @@ theme_override_font_sizes/font_size = 56
 text = "Filler"
 script = ExtResource("2_smycg")
 
-[connection signal="pressed" from="." to="." method="_item_used"]
+[connection signal="pressed" from="." to="." method="item_used"]

@@ -10,12 +10,15 @@ var in_tall_grass: bool = false
 var lead_rat: String
 var party: Dictionary
 
+@export var new_scene_spawn: Camera2D
+
 @onready var player_sprite: AnimatedSprite2D = $Player_sprite
 @onready var camera: Camera2D = $Camera2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	party = {
 		"Johovian" :
 		{
@@ -40,7 +43,8 @@ func _ready() -> void:
 	print("player loaded")
 
 	for rats in party:
-		Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[rats]["base_hp"]) * party[rats]["level"]) + party[rats]["level"] + BASE_HP
+		Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[rats]["base_hp"]) 
+		* party[rats]["level"]) + party[rats]["level"] + BASE_HP
 		Global.rat_hp = Global.rat_max_hp
 		party[rats]["max_hp"] = Global.rat_max_hp
 		party[rats]["current_hp"] = Global.rat_hp
@@ -50,11 +54,15 @@ func _ready() -> void:
 	lead_rat = party.keys()[0]
 	Global.lead_rat = lead_rat
 	print(party.keys()[0])
-	Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_hp"]) * party[lead_rat]["level"]) + party[lead_rat]["level"] + BASE_STAT
+	Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_hp"]) 
+	* party[lead_rat]["level"]) + party[lead_rat]["level"] + BASE_STAT
 	Global.rat_hp = Global.rat_max_hp
-	Global.rat_attack = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_attack"]) * party[lead_rat]["level"]) + BASE_STAT
-	Global.rat_defence = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_defence"]) * party[lead_rat]["level"]) + BASE_STAT
-	Global.rat_speed = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_speed"]) * party[lead_rat]["level"]) + BASE_STAT
+	Global.rat_attack = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_attack"]) 
+	* party[lead_rat]["level"]) + BASE_STAT
+	Global.rat_defence = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_defence"]) 
+	* party[lead_rat]["level"]) + BASE_STAT
+	Global.rat_speed = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_speed"]) 
+	* party[lead_rat]["level"]) + BASE_STAT
 	Global.rat_level = party[lead_rat]["level"]
 	Global.base_yield = Global.RAT_STATS[lead_rat]["base_yeild"]
 	#calculations for stats of each rat 
@@ -107,11 +115,9 @@ func lead_changed() -> void:
 	
 	party[lead_rat]["max_hp"] = Global.rat_max_hp
 	
-	Global.rat_hp = party[lead_rat]["current_hp"] if hp_diff == 0 else party[lead_rat] \
-	["current_hp"] + hp_diff
-	
-	party[lead_rat]["current_hp"] = Global.rat_hp
-	#Global.rat_hp = party[lead_rat]["current_hp"]
+	party[lead_rat]["current_hp"] = Global.rat_max_hp if Global.current_rat_max_hp_percent == 0 \
+	else roundf(Global.current_rat_max_hp_percent * Global.rat_max_hp)
+	Global.rat_hp = party[lead_rat]["current_hp"]
 	
 	Global.rat_attack = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_attack"]) 
 	* party[lead_rat]["level"]) + BASE_STAT
@@ -144,3 +150,10 @@ func reset():
 	var autoload_script = load(script_path)
 	Player_auto.set_script(autoload_script)
 	Player_auto._ready()
+
+
+func bag_opened() -> void:
+	var new_scene = load("res://Scenes/bag.tscn").instantiate()
+	new_scene.global_position = Vector2.ZERO
+	new_scene_spawn.add_child(new_scene)
+	#need to fix camera issues

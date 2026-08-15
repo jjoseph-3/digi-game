@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _tall_grass_entered(body: Node2D) -> void:
+func tall_grass_entered(body: Node2D) -> void:
 	if body is Player:
 		if randf() < SPAWN_CHANCE: #codes for an 80% encounter chance
 			var wild_rat = wild_rat_scene.instantiate()
@@ -26,9 +26,15 @@ func _tall_grass_entered(body: Node2D) -> void:
 			#spawns the wild rats 
 
 
-func _left_tall_grass(body: Node2D) -> void:
+func left_tall_grass(body: Node2D) -> void:
 		if body is Player:
 			for rat in get_tree().get_nodes_in_group("wild_rat"):
-				rat.despawn()
+				rat.despawn_triggered()
 				#despawns the wild rats when player leaves area
 		
+
+
+func shop_opened(body: Node2D) -> void:
+	if body is Player:
+		Player_auto.global_position = Vector2.ZERO
+		get_tree().call_deferred("change_scene_to_file", "res://Scenes/shop.tscn")

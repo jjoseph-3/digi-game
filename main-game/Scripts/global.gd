@@ -45,6 +45,8 @@ var rat_defence: float
 var rat_speed: float
 var rat_level: float
 var wild_rat_hp: float
+var wild_rat_max_hp: float
+var current_rat_max_hp_percent: float
 var wild_rat_attack: float
 var wild_rat_defence: float 
 var wild_rat_speed: float
@@ -53,6 +55,7 @@ var wild_rat_catch_rate: float
 var base_yield: float
 var party: Dictionary
 var bag: Dictionary = {
+	"Money": 120,
 	"Rat net": 12,
 	"Heal spray": 5
 }
@@ -60,6 +63,7 @@ var item_buttons: Dictionary
 var lead_rat: String
 var enemy_type: String
 var player: CharacterBody2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

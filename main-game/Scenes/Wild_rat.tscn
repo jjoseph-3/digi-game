@@ -23,4 +23,4 @@ shape = SubResource("RectangleShape2D_bvg84")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=532945367]
 shape = SubResource("RectangleShape2D_wi47e")
 
-[connection signal="body_entered" from="Area2D" to="." method="_encounter_start"]
+[connection signal="body_entered" from="Area2D" to="." method="encounter_started"]

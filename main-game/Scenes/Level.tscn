@@ -12,6 +12,12 @@ _data = {
 }
 point_count = 15
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsvp5"]
+size = Vector2(17, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rbpu"]
+size = Vector2(20.5, 17.25)
+
 [node name="Level" type="Node2D" unique_id=2114800605 node_paths=PackedStringArray("wild_rat_spawn")]
 script = ExtResource("1_vsvp5")
 wild_rat_spawn = NodePath("Path2D/PathFollow2D")
@@ -42,5 +48,25 @@ curve = SubResource("Curve2D_vsvp5")
 position = Vector2(733, 381)
 rotation = 0.037020117
 
-[connection signal="body_entered" from="Area2D" to="." method="_tall_grass_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_left_tall_grass"]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=547232726]
+position = Vector2(57.5, 10.5)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1040601729]
+shape = SubResource("RectangleShape2D_vsvp5")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D/CollisionShape2D2" unique_id=849400214]
+offset_left = -10.5
+offset_top = -8.5
+offset_right = 10.5
+offset_bottom = 8.5
+color = Color(0.52863, 0.5247975, 9.62615e-07, 1)
+
+[node name="Area2D2" type="Area2D" parent="StaticBody2D/CollisionShape2D2" unique_id=15644440]
+position = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/CollisionShape2D2/Area2D2" unique_id=680394578]
+shape = SubResource("RectangleShape2D_8rbpu")
+
+[connection signal="body_entered" from="Area2D" to="." method="tall_grass_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="left_tall_grass"]
+[connection signal="body_entered" from="StaticBody2D/CollisionShape2D2/Area2D2" to="." method="shop_opened"]

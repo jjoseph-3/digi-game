@@ -12,4 +12,4 @@ theme_override_font_sizes/font_size = 56
 text = "Filler"
 script = ExtResource("2_rmtaj")
 
-[connection signal="pressed" from="." to="." method="_rat_selected"]
+[connection signal="pressed" from="." to="." method="rat_selected"]
