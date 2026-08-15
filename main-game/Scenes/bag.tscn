@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdprtnk8vdjyg" path="res://Scripts/bag.gd" id="1_5tw1m"]
 [ext_resource type="PackedScene" uid="uid://itivmqx4d6lm" path="res://Scenes/bag_button.tscn" id="2_yeinl"]
+[ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="3_5bm2g"]
 
 [sub_resource type="Theme" id="Theme_yeinl"]
 
@@ -23,6 +24,11 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0.5411765)
+
+[node name="GameBackground" type="Sprite2D" parent="." unique_id=1708068173]
+position = Vector2(575.5, 324.99997)
+scale = Vector2(6.005208, 5.9814816)
+texture = ExtResource("3_5bm2g")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1284565475]
 layout_mode = 0

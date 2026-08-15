@@ -15,10 +15,12 @@ var party: Dictionary
 @onready var player_sprite: AnimatedSprite2D = $Player_sprite
 @onready var camera: Camera2D = $Camera2D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	if Global.has_saved_position:
+		global_position = Global.saved_position
+		Global.has_saved_position = false 
+		
 	party = {
 		"Johovian" :
 		{
@@ -36,6 +38,11 @@ func _ready() -> void:
 		},
 	}
 	
+	Global.party = party
+	lead_rat = party.keys()[0]
+	Global.lead_rat = lead_rat
+	print(party.keys()[0])
+	
 	Global.player_not_controllable.connect(player_not_controllable)
 	Global.player_controllable.connect(player_controllable)
 	
@@ -50,10 +57,6 @@ func _ready() -> void:
 		party[rats]["current_hp"] = Global.rat_hp
 		#puts the max and current hps into the party dictionary
 		
-	Global.party = party
-	lead_rat = party.keys()[0]
-	Global.lead_rat = lead_rat
-	print(party.keys()[0])
 	Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_hp"]) 
 	* party[lead_rat]["level"]) + party[lead_rat]["level"] + BASE_STAT
 	Global.rat_hp = Global.rat_max_hp
@@ -103,21 +106,16 @@ func _process(delta: float) -> void:
 
 	move_and_slide()
 	
-func lead_changed() -> void:
+func lead_changed(called_from_combat: bool = false) -> void:
 	print(Global.lead_rat)
 	lead_rat = Global.lead_rat
 	
-	Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_hp"]) 
+	party[lead_rat]["max_hp"] = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_hp"]) 
 	* party[lead_rat]["level"]) + party[lead_rat]["level"] + BASE_HP
 	
-	var hp_diff: float = Global.rat_max_hp - party[lead_rat]["max_hp"]
-	print("HP Diff: ", hp_diff)
-	
-	party[lead_rat]["max_hp"] = Global.rat_max_hp
-	
-	party[lead_rat]["current_hp"] = Global.rat_max_hp if Global.current_rat_max_hp_percent == 0 \
-	else roundf(Global.current_rat_max_hp_percent * Global.rat_max_hp)
-	Global.rat_hp = party[lead_rat]["current_hp"]
+	if called_from_combat:
+		party[lead_rat]["current_hp"] = party[lead_rat]["max_hp"] if Global.current_rat_max_hp_percent \
+		== 0 else roundf(Global.current_rat_max_hp_percent * party[lead_rat]["max_hp"])
 	
 	Global.rat_attack = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_attack"]) 
 	* party[lead_rat]["level"]) + BASE_STAT
@@ -151,9 +149,10 @@ func reset():
 	Player_auto.set_script(autoload_script)
 	Player_auto._ready()
 
+func save_position() -> void:
+	Global.saved_position = global_position
+	Global.has_saved_position = true
 
 func bag_opened() -> void:
-	var new_scene = load("res://Scenes/bag.tscn").instantiate()
-	new_scene.global_position = Vector2.ZERO
-	new_scene_spawn.add_child(new_scene)
-	#need to fix camera issues
+	save_position()
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/shop.tscn")

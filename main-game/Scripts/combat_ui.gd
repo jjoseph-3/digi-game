@@ -299,15 +299,15 @@ func net_thrown() -> void:
 
 func enemy_dead() -> void:
 	Global.current_rat_max_hp_percent = current_rat_hp.value \
-	/ Player_auto.party[Player_auto.lead_rat]["max_hp"]
-	print(current_rat_max_hp_percent, "%")
+	/ Player_auto.party[Global.lead_rat]["max_hp"]
+	print(Global.current_rat_max_hp_percent, "%")
 	print("enemy rat done")
 	Global.party[Global.lead_rat]["exp"] += ((Global.base_yield * Global.wild_rat_level)
 	/ EXP_DIVIDER) * trainer_bonus
 	while Global.party[Global.lead_rat]["exp"] >= pow(Global.rat_level + 1, EXP_CURVE):
 		print("level up")
 		Global.party[Global.lead_rat]["level"] += 1
-		Player_auto.lead_changed()
+		Player_auto.lead_changed(true)
 		
 	Player_auto.global_position = Vector2.ZERO
 	await get_tree().create_timer(TURN_DELAY).timeout

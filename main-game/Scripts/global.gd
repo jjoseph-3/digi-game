@@ -63,6 +63,8 @@ var item_buttons: Dictionary
 var lead_rat: String
 var enemy_type: String
 var player: CharacterBody2D
+var saved_position: Vector2 = Vector2.ZERO
+var has_saved_position: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
