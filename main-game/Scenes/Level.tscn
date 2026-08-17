@@ -18,7 +18,7 @@ size = Vector2(17, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rbpu"]
 size = Vector2(20.5, 17.25)
 
-[node name="Level" type="Node2D" unique_id=2114800605 node_paths=PackedStringArray("wild_rat_spawn")]
+[node name="Level" type="Node2D" unique_id=2114800605 node_paths=PackedStringArray("wild_rat_spawn") groups=["Level"]]
 script = ExtResource("1_vsvp5")
 wild_rat_spawn = NodePath("Path2D/PathFollow2D")
 wild_rat_scene = ExtResource("2_8rbpu")

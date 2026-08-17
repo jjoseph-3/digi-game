@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bhax661e8qmhg" path="res://Scripts/shop.gd" id="1_2shtd"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="1_a0mxf"]
+[ext_resource type="PackedScene" uid="uid://itivmqx4d6lm" path="res://Scenes/bag_button.tscn" id="2_fdj0q"]
+[ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="2_io27d"]
 
-[node name="Control" type="Control" unique_id=1008011839]
+[node name="Control" type="Control" unique_id=1008011839 node_paths=PackedStringArray("button_spawn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,12 +13,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2shtd")
+button_scene = ExtResource("2_fdj0q")
+button_spawn = NodePath("Marker2D")
+
+[node name="GameBackground" type="Sprite2D" parent="." unique_id=670101480]
+position = Vector2(575.5, 324.99997)
+scale = Vector2(6.005208, 5.9814816)
+texture = ExtResource("2_io27d")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=756321611]
 layout_mode = 0
-offset_left = 506.0
+offset_left = 478.0
 offset_top = 268.0
-offset_right = 653.0
+offset_right = 676.0
 offset_bottom = 346.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=211879192]
@@ -49,14 +58,14 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("1_a0mxf")
 theme_override_font_sizes/font_size = 28
-text = "Buy"
+text = "Buy ($50)"
 
 [node name="Button2" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=1051941936]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("1_a0mxf")
 theme_override_font_sizes/font_size = 28
-text = "Buy"
+text = "Buy ($20)"
 
 [node name="Button" type="Button" parent="." unique_id=378396481]
 layout_mode = 0
@@ -69,4 +78,9 @@ theme_override_fonts/font = ExtResource("1_a0mxf")
 theme_override_font_sizes/font_size = 28
 text = "Exit"
 
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1792526335]
+position = Vector2(478, 187)
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer2/Button" to="." method="bought_heal_spray"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer2/Button2" to="." method="bought_rat_net"]
 [connection signal="pressed" from="Button" to="." method="shop_exited"]

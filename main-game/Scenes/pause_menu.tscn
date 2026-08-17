@@ -1,5 +1,17 @@
 [gd_scene format=3 uid="uid://njv32jqdcvq0"]
 
+[ext_resource type="Script" uid="uid://bimsc583fawol" path="res://Scripts/pause_menu.gd" id="1_k0w1u"]
+[ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="2_k0w1u"]
+
+[sub_resource type="Theme" id="Theme_1och7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0w1u"]
+font = ExtResource("2_k0w1u")
+font_size = 99
+font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Control" type="Control" unique_id=1789768903]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +19,63 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_k0w1u")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1451595256]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.5411765)
+
+[node name="Button2" type="Button" parent="." unique_id=309699131]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 239.0
+offset_right = 542.0
+offset_bottom = 296.0
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("2_k0w1u")
+theme_override_font_sizes/font_size = 56
+text = "Resume"
+
+[node name="Button" type="Button" parent="." unique_id=2058586450]
+layout_mode = 0
+offset_left = 617.0
+offset_top = 239.0
+offset_right = 765.00024
+offset_bottom = 296.0
+theme = SubResource("Theme_1och7")
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("2_k0w1u")
+theme_override_font_sizes/font_size = 56
+text = "Options"
+
+[node name="Label" type="Label" parent="." unique_id=1009463650]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 59.0
+offset_right = 1152.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0.38431373, 0.4392157, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_k0w1u")
+theme_override_font_sizes/font_size = 86
+text = "Game Paused"
+label_settings = SubResource("LabelSettings_k0w1u")
+horizontal_alignment = 1
+
+[node name="Button3" type="Button" parent="." unique_id=1782041115]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 352.0
+offset_right = 652.00024
+offset_bottom = 409.0
+theme = SubResource("Theme_1och7")
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("2_k0w1u")
+theme_override_font_sizes/font_size = 56
+text = "Quit"
+
+[connection signal="pressed" from="Button2" to="." method="resume_pressed"]
+[connection signal="pressed" from="Button" to="." method="options_pressed"]
+[connection signal="pressed" from="Button3" to="." method="quit_pressed"]

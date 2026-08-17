@@ -58,7 +58,7 @@ func _ready() -> void:
 		#puts the max and current hps into the party dictionary
 		
 	Global.rat_max_hp = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_hp"]) 
-	* party[lead_rat]["level"]) + party[lead_rat]["level"] + BASE_STAT
+	* party[lead_rat]["level"]) + party[lead_rat]["level"] + BASE_HP
 	Global.rat_hp = Global.rat_max_hp
 	Global.rat_attack = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_attack"]) 
 	* party[lead_rat]["level"]) + BASE_STAT
@@ -114,9 +114,13 @@ func lead_changed(called_from_combat: bool = false) -> void:
 	* party[lead_rat]["level"]) + party[lead_rat]["level"] + BASE_HP
 	
 	if called_from_combat:
+		print("called from combat")
 		party[lead_rat]["current_hp"] = party[lead_rat]["max_hp"] if Global.current_rat_max_hp_percent \
 		== 0 else roundf(Global.current_rat_max_hp_percent * party[lead_rat]["max_hp"])
-	
+		#keeps the rats hp between battles
+	else: 
+		party[lead_rat]["current_hp"] = party[lead_rat]["current_hp"]
+		
 	Global.rat_attack = int(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat]["base_attack"]) 
 	* party[lead_rat]["level"]) + BASE_STAT
 	
@@ -132,6 +136,7 @@ func lead_changed(called_from_combat: bool = false) -> void:
 	print(Global.rat_defence)
 	print(Global.rat_speed)
 	print(Global.rat_level)
+	print(party)
 	
 func player_not_controllable():
 	process_mode = Node.PROCESS_MODE_DISABLED
@@ -155,4 +160,6 @@ func save_position() -> void:
 
 func bag_opened() -> void:
 	save_position()
-	get_tree().call_deferred("change_scene_to_file", "res://Scenes/shop.tscn")
+	var new_scene = load("res://Scenes/bag.tscn").instantiate()
+	var level = get_tree().get_first_node_in_group("Level")
+	level.add_child(new_scene)
