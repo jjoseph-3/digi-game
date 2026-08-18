@@ -9,7 +9,7 @@ const RAT_STATS = {
 		"catch_rate" : 0.9,
 		"base_yeild" : 60
 	},
-		"Wild Johovian" : {
+	"Wild Johovian" : {
 		"base_hp" : 50,
 		"base_attack" : 50,
 		"base_defence" : 60,
@@ -17,7 +17,7 @@ const RAT_STATS = {
 		"catch_rate" : 0.9,
 		"base_yeild" : 60
 	},
-		"Kartarian" : {
+	"Kartarian" : {
 		"base_hp" : 50,
 		"base_attack" : 20,
 		"base_defence" : 80,
@@ -25,7 +25,7 @@ const RAT_STATS = {
 		"catch_rate" : 0.7,
 		"base_yeild" : 90
 	},
-		"Wild Kartarian" : {
+	"Wild Kartarian" : {
 		"base_hp" : 50,
 		"base_attack" : 20,
 		"base_defence" : 80,
@@ -67,19 +67,17 @@ var saved_position: Vector2 = Vector2.ZERO
 var has_saved_position: bool = false
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("Player"):
 		player = node
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not player == null:
 		if player.lead_rat != lead_rat:
 			player.lead_changed()
-			
-			
+
+
 func reset():
 	var script_path = Global.get_script().resource_path
 	var autoload_script = load(script_path)
