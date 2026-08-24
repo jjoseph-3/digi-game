@@ -49,7 +49,9 @@ func _ready() -> void:
 		global_position = Global.saved_position
 		Global.has_saved_position = false 
 		
-	party = PARTY_BASE
+	# Fix to a bug where declaring a dict with a const makes it read only
+	party = PARTY_BASE.duplicate_deep() 
+	
 	
 	Global.party = party
 	lead_rat = party.keys()[0]
@@ -87,7 +89,6 @@ func _ready() -> void:
 	Global.rat_level = party[lead_rat][PARTY_LEVEL]
 	
 	Global.base_yield = Global.RAT_STATS[lead_rat][STATS_BASE_YEILD]
-	# Calculations for stats of each rat 
 	
 	print(Global.rat_hp)
 	print(Global.rat_attack)
@@ -136,12 +137,13 @@ func lead_changed(called_from_combat: bool = false) -> void:
 	* Global.RAT_STATS[lead_rat][STATS_BASE_HP]) 
 	* party[lead_rat][PARTY_LEVEL]) + party[lead_rat][PARTY_LEVEL] + BASE_HP
 	
+	# Keeps the rats hp between battles
 	if called_from_combat:
 		print("called from combat")
 		party[lead_rat][PARTY_CURRENT_HP] = party[lead_rat][PARTY_MAX_HP] \
 		if Global.current_rat_max_hp_percent \
 		== 0 else roundf(Global.current_rat_max_hp_percent * party[lead_rat][PARTY_MAX_HP])
-		# Keeps the rats hp between battles
+		
 	else: 
 		party[lead_rat][PARTY_CURRENT_HP] = party[lead_rat][PARTY_CURRENT_HP]
 		

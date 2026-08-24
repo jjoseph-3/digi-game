@@ -27,7 +27,7 @@ const MONEY: String = "Money"
 const JOHO_MONEY_MULTI: float = 5.0
 const KART_MONEY_MULTI: float = 8.0
 const BASIC_ATTACK_POWER: float = 5
-const POWER_ATTACK_POWER: float = 10
+const POWER_ATTACK_POWER: float = 8
 const QUICK_ATTACK_POWER: float = 3
 
 var player_moved: bool = false
@@ -40,6 +40,7 @@ var enemy_damage: int
 var catch_chance: float:
 	set(new_value):
 		catch_chance = clampf(new_value, 0, 1)
+# Ensures that this variable is always between 0 and 1
 var player: CharacterBody2D
 var new_rat: String
 var trainer_bonus: float = 1
@@ -140,8 +141,7 @@ func enemy_turn() -> void:
 			# If own hp is less than 1/4 of max enemy does a quick attack
 			
 		else:
-		# Random chance for "normal attack" or "power attack" for enemy
-			var enemy_attack = randi_range(1, 2)
+			var enemy_attack = randi_range(OPTION_ONE, OPTION_TWO)
 			if enemy_attack == OPTION_ONE:
 				enemy_damage = int(floor((DAMAGE_SCALING * Global.wild_rat_level) + DAMAGE_FLOOR
 				* BASIC_ATTACK_POWER * (Global.wild_rat_attack /  max(Global.rat_defence, 1))))
@@ -162,7 +162,7 @@ func enemy_turn() -> void:
 				else:
 					print("enemy missed")
 					enemy_moved = true
-
+			# Random chance for "normal attack" or "power attack" for enemy
 
 func basic_attack() -> void:
 	if player_moved == false:

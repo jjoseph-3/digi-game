@@ -11,8 +11,6 @@ var item_buttons: Dictionary
 
 
 func _ready() -> void:
-	
-	# Creates buttons using the bag dictionary
 	bag = Global.bag
 	print(Global.bag)
 	
@@ -24,8 +22,9 @@ func _ready() -> void:
 		item_buttons[item] = button
 		Global.item_buttons = item_buttons
 		vbox.add_child(button) 
-
-
+	# Creates buttons using the bag dictionary
+	
+	
 func _process(delta: float) -> void:
 	pass
 
