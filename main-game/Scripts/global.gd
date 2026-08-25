@@ -66,6 +66,8 @@ var player: CharacterBody2D
 var saved_position: Vector2 = Vector2.ZERO
 var has_saved_position: bool = false
 
+@onready var enemy_sprite: AnimatedSprite2D
+
 
 func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("Player"):

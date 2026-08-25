@@ -28,9 +28,9 @@ const STATS_BASE_ATTACK: String = "base_attack"
 const STATS_BASE_DEFENCE: String = "base_defence"
 const STATS_BASE_SPEED: String = "base_speed"
 const STATS_BASE_YEILD: String = "base_yeild"
-const ANIMATION_SIDE: String = "run side"
-const ANIMATION_UP: String = "run up"
-const ANIMATION_DOWN: String = "run down"
+const ANIMATION_SIDE: String = "run_side"
+const ANIMATION_UP: String = "run_up"
+const ANIMATION_DOWN: String = "run_down"
 const ANIMATION_IDLE: String = "idle"
 
 var speed: float = 300.0

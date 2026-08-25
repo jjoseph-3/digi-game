@@ -1,8 +1,57 @@
 [gd_scene format=3 uid="uid://bxfa6qt5n5dr"]
 
 [ext_resource type="Texture2D" uid="uid://b6p2mvjjwxqu2" path="res://johovian.png" id="1_w4qep"]
+[ext_resource type="Texture2D" uid="uid://cb0xoo7h2jr00" path="res://johovian(attack).png" id="2_vwtbe"]
+[ext_resource type="Texture2D" uid="uid://b4hol33s2kv5j" path="res://johovian_strong_attack.png" id="3_3flq8"]
+[ext_resource type="Texture2D" uid="uid://bfc7oh7kc2evl" path="res://johovian_quick_attack.png" id="4_tpco1"]
 
-[node name="Sprite2D" type="Sprite2D" unique_id=1926953989]
-position = Vector2(0, 3.0000005)
-rotation = 1.5754753
-texture = ExtResource("1_w4qep")
+[sub_resource type="SpriteFrames" id="SpriteFrames_3flq8"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("2_vwtbe")
+}, {
+"duration": 3.1,
+"texture": ExtResource("1_w4qep")
+}],
+"loop": true,
+"name": &"basic_attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w4qep")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("3_3flq8")
+}, {
+"duration": 3.1,
+"texture": ExtResource("1_w4qep")
+}],
+"loop": true,
+"name": &"power_attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("4_tpco1")
+}, {
+"duration": 3.1,
+"texture": ExtResource("1_w4qep")
+}],
+"loop": true,
+"name": &"quick_attack",
+"speed": 4.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1572971900]
+position = Vector2(0, 2.0000002)
+rotation = 1.7307757
+sprite_frames = SubResource("SpriteFrames_3flq8")
+animation = &"quick_attack"
+autoplay = "default"

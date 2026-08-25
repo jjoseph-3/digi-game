@@ -71,12 +71,12 @@ func _ready() -> void:
 		
 	# Adds sprites depending on what 'species' is being spawned
 	if Global.enemy_type == JOHOVIAN_NAME:
-		var sprite = johovian_sprite_scene.instantiate()
-		add_child(sprite)
+		Global.enemy_sprite = johovian_sprite_scene.instantiate()
+		add_child(Global.enemy_sprite)
 		
 	if Global.enemy_type == KARTARIAN_NAME:
-		var sprite = kartarian_sprite_scene.instantiate()
-		add_child(sprite)
+		Global.enemy_sprite = kartarian_sprite_scene.instantiate()
+		add_child(Global.enemy_sprite)
 
 
 func _process(delta: float) -> void:

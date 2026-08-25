@@ -51,7 +51,7 @@ animations = [{
 "texture": ExtResource("10_arntx")
 }],
 "loop": true,
-"name": &"run down",
+"name": &"run_down",
 "speed": 8.0
 }, {
 "frames": [{
@@ -68,7 +68,7 @@ animations = [{
 "texture": ExtResource("14_5v66d")
 }],
 "loop": true,
-"name": &"run side",
+"name": &"run_side",
 "speed": 8.0
 }, {
 "frames": [{
@@ -85,7 +85,7 @@ animations = [{
 "texture": ExtResource("14_lslt6")
 }],
 "loop": true,
-"name": &"run up",
+"name": &"run_up",
 "speed": 8.0
 }]
 
