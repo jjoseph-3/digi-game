@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vcqffrur7y1a" path="res://Scripts/level.gd" id="1_vsvp5"]
 [ext_resource type="PackedScene" uid="uid://c5i1pjey6fn3x" path="res://Scenes/Wild_rat.tscn" id="2_8rbpu"]
+[ext_resource type="PackedScene" uid="uid://cjv5ey7mtbhy5" path="res://Scenes/boss.tscn" id="3_8rbpu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ba56"]
 size = Vector2(163, 56)
@@ -66,6 +67,9 @@ position = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/CollisionShape2D2/Area2D2" unique_id=680394578]
 shape = SubResource("RectangleShape2D_8rbpu")
+
+[node name="CharacterBody2D" parent="." unique_id=625856921 instance=ExtResource("3_8rbpu")]
+position = Vector2(159, -29)
 
 [connection signal="body_entered" from="Area2D" to="." method="tall_grass_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="left_tall_grass"]

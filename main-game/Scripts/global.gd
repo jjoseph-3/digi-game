@@ -65,6 +65,7 @@ var enemy_type: String
 var player: CharacterBody2D
 var saved_position: Vector2 = Vector2.ZERO
 var has_saved_position: bool = false
+var player_moved: bool = false
 
 @onready var enemy_sprite: AnimatedSprite2D
 

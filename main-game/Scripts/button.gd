@@ -18,28 +18,28 @@ func _process(delta: float) -> void:
 
 
 func item_used() -> void:
-	
 	if item == RAT_NET_NAME:
-		if Global.bag.has(item):
+		if Global.bag.has(item) and Global.wild_rat_catch_rate > 0 \
+		and Global.player_moved == false:
 			Global.bag[item] -= 1
 			get_tree().get_first_node_in_group("bag").bag = Global.bag
 			print(Global.bag)
 			text = str(item, COLONISER, Global.bag[item])
 		
-		combat_ui.net_thrown()
-		get_tree().get_first_node_in_group("bag").queue_free()
-		get_tree().call_deferred("change_scene_to_file", "res://combat_ui/bag.tscn")
+			combat_ui.net_thrown()
+			get_tree().get_first_node_in_group("bag").queue_free()
+			get_tree().call_deferred("change_scene_to_file", "res://combat_ui/bag.tscn")
 		
 	elif item == HEAL_SPRAY_NAME:
-		if Global.bag.has(item):
+		if Global.bag.has(item) and Global.player_moved == false:
 			Global.bag[item] -= 1
 			get_tree().get_first_node_in_group("bag").bag = Global.bag
 			print(Global.bag)
 			text = str(item, COLONISER, Global.bag[item])
 		
-		combat_ui.heal_used()
-		get_tree().get_first_node_in_group("bag").queue_free()
-		get_tree().call_deferred("change_scene_to_file", "res://combat_ui/bag.tscn")
+			combat_ui.heal_used()
+			get_tree().get_first_node_in_group("bag").queue_free()
+			get_tree().call_deferred("change_scene_to_file", "res://combat_ui/bag.tscn")
 		
 	if Global.bag[item] <= 0:
 		queue_free()

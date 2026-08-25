@@ -28,7 +28,6 @@ var species = {
 			"current_hp" : 1
 		},
 	}
-var rat_level
 
 @export var johovian_sprite_scene: PackedScene
 @export var kartarian_sprite_scene: PackedScene
@@ -48,7 +47,7 @@ func _ready() -> void:
 		
 		# Calculations of stats
 		Global.wild_rat_level = rat_data[SPECIES_LEVEL]
-		rat_level = rat_data[SPECIES_LEVEL]
+		var rat_level = rat_data[SPECIES_LEVEL]
 		
 		Global.wild_rat_hp = float(floor(LEVEL_SCALING * (base_stats[STATS_BASE_HP]) 
 		* rat_level)) + rat_level + BASE_HP 
@@ -64,6 +63,7 @@ func _ready() -> void:
 		* rat_level)) + BASE_STAT
 		
 		Global.wild_rat_catch_rate = base_stats[STATS_CATCH_RATE]
+		print("catch chance: ", Global.wild_rat_catch_rate)
 		
 		Global.base_yield = base_stats[STATS_BASE_YEILD]
 		
