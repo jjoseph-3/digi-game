@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hk400wgylyog"
-path="res://.godot/imported/tilemap_extra_water.png-fd2f1b79f313d831d8692f94fb260948.ctex"
+uid="uid://ny4cnsn7260v"
+path="res://.godot/imported/shopkeeper0001.png-535f2089c401d1d03b7120a20b49790b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap_extra_water.png"
-dest_files=["res://.godot/imported/tilemap_extra_water.png-fd2f1b79f313d831d8692f94fb260948.ctex"]
+source_file="res://shopkeeper0001.png"
+dest_files=["res://.godot/imported/shopkeeper0001.png-535f2089c401d1d03b7120a20b49790b.ctex"]
 
 [params]
 

@@ -38,6 +38,7 @@ const RAT_STATS = {
 signal player_controllable
 signal player_not_controllable
 
+
 var rat_max_hp: float
 var rat_hp: float
 var rat_attack: float
@@ -66,6 +67,7 @@ var player: CharacterBody2D
 var saved_position: Vector2 = Vector2.ZERO
 var has_saved_position: bool = false
 var player_moved: bool = false
+var relative_positon: Node2D
 
 @onready var enemy_sprite: AnimatedSprite2D
 

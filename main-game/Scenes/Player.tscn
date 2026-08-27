@@ -1,112 +1,22 @@
 [gd_scene format=3 uid="uid://bkrvy8uivarhe"]
 
 [ext_resource type="Script" uid="uid://d1h6nnd6n60lu" path="res://Scripts/player.gd" id="1_rpqav"]
-[ext_resource type="Texture2D" uid="uid://dvvhnebqw5jg0" path="res://idle frame0001.png" id="4_yoq75"]
-[ext_resource type="Texture2D" uid="uid://bivvjg2yp5myy" path="res://idle frame0002.png" id="5_ksbbd"]
-[ext_resource type="Texture2D" uid="uid://dl8s12jk4mgu6" path="res://idle frame0000.png" id="6_glx4g"]
-[ext_resource type="Texture2D" uid="uid://xfdurctubrmr" path="res://run frame0001.png" id="7_miouo"]
-[ext_resource type="Texture2D" uid="uid://drnbejjiojair" path="res://run frame0002.png" id="8_o3h8g"]
-[ext_resource type="Texture2D" uid="uid://dpivdgyb36wr7" path="res://run frame0003.png" id="9_1e7my"]
-[ext_resource type="Texture2D" uid="uid://blk0mu2rpme8q" path="res://run frame0004.png" id="10_arntx"]
-[ext_resource type="Texture2D" uid="uid://tb8vp70os5g" path="res://run up frame0001.png" id="11_o3h8g"]
-[ext_resource type="Texture2D" uid="uid://dxlwj724a6xgl" path="res://run side frame0001.png" id="11_ulo2v"]
-[ext_resource type="Texture2D" uid="uid://b01xuucm7m35j" path="res://run up frame0002.png" id="12_1e7my"]
-[ext_resource type="Texture2D" uid="uid://162ddh6qr2xf" path="res://run side frame0002.png" id="12_1iu4k"]
-[ext_resource type="Texture2D" uid="uid://bwuvx41ih4hcg" path="res://run up frame0003.png" id="13_arntx"]
-[ext_resource type="Texture2D" uid="uid://c406o48h6nwg" path="res://run side frame0003.png" id="13_m0x7a"]
-[ext_resource type="Texture2D" uid="uid://btqa82ugcujkc" path="res://run side frame0004.png" id="14_5v66d"]
-[ext_resource type="Texture2D" uid="uid://dc85ukrc53367" path="res://run up frame0004.png" id="14_lslt6"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="17_lslt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbkls"]
 size = Vector2(21, 43)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_lslt6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_glx4g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_yoq75")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_ksbbd")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_miouo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_o3h8g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_1e7my")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_arntx")
-}],
-"loop": true,
-"name": &"run_down",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_ulo2v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_1iu4k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_m0x7a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_5v66d")
-}],
-"loop": true,
-"name": &"run_side",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_o3h8g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_1e7my")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_arntx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_lslt6")
-}],
-"loop": true,
-"name": &"run_up",
-"speed": 8.0
-}]
-
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1051577985 node_paths=PackedStringArray("new_scene_spawn") groups=["Player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1051577985 node_paths=PackedStringArray("new_scene_spawn", "remote_distance_matcher") groups=["Player"]]
 process_mode = 4
 y_sort_enabled = true
 script = ExtResource("1_rpqav")
 new_scene_spawn = NodePath("Camera2D")
+remote_distance_matcher = NodePath("RemoteTransform2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645461844]
 y_sort_enabled = true
 position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_qbkls")
-
-[node name="Player_sprite" type="AnimatedSprite2D" parent="." unique_id=443361311]
-y_sort_enabled = true
-position = Vector2(0, -23.999996)
-scale = Vector2(1.46875, 1.5)
-sprite_frames = SubResource("SpriteFrames_lslt6")
-animation = &"idle"
-autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=845239393]
 zoom = Vector2(2, 2)
@@ -121,5 +31,7 @@ theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("17_lslt6")
 theme_override_font_sizes/font_size = 22
 text = "Bag"
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1093974613]
 
 [connection signal="pressed" from="Camera2D/Button" to="." method="bag_opened"]

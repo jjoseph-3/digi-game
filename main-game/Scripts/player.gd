@@ -33,12 +33,14 @@ const ANIMATION_UP: String = "run_up"
 const ANIMATION_DOWN: String = "run_down"
 const ANIMATION_IDLE: String = "idle"
 
+var direction: Vector2
 var speed: float = 300.0
 var in_tall_grass: bool = false
 var lead_rat: String
 var party: Dictionary
 
 @export var new_scene_spawn: Camera2D
+@export var remote_distance_matcher: RemoteTransform2D
 
 @onready var player_sprite: AnimatedSprite2D = $Player_sprite
 @onready var camera: Camera2D = $Camera2D
@@ -51,8 +53,6 @@ func _ready() -> void:
 		
 	# Fix to a bug where declaring a dict with a const makes it read only
 	party = PARTY_BASE.duplicate_deep() 
-	
-	
 	Global.party = party
 	lead_rat = party.keys()[0]
 	Global.lead_rat = lead_rat
@@ -60,7 +60,7 @@ func _ready() -> void:
 	
 	Global.player_not_controllable.connect(player_not_controllable)
 	Global.player_controllable.connect(player_controllable)
-	
+
 	Global.player = self
 	print("player loaded")
 
@@ -99,29 +99,20 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	var direction = Vector2.ZERO
+	direction = Vector2.ZERO
 	
 # Codes for my player movement 	
 	if Input.is_action_pressed("ui_left"):
 		direction = Vector2.LEFT
-		player_sprite.flip_h = true
-		player_sprite.animation = ANIMATION_SIDE
 
 	elif Input.is_action_pressed("ui_right"):
 		direction = Vector2.RIGHT
-		player_sprite.flip_h = false
-		player_sprite.animation = ANIMATION_SIDE
 		
 	elif Input.is_action_pressed("ui_up"):
 		direction = Vector2.UP
-		player_sprite.animation = ANIMATION_UP
-
+		
 	elif Input.is_action_pressed("ui_down"):
 		direction = Vector2.DOWN
-		player_sprite.animation = ANIMATION_DOWN
-
-	else: 
-		player_sprite.animation = ANIMATION_IDLE
 
 # Ensures that the player can only move in one direction at a time
 	velocity = speed * direction.normalized()
@@ -169,13 +160,13 @@ func lead_changed(called_from_combat: bool = false) -> void:
 func player_not_controllable() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 	camera.enabled = false
-	player_sprite.hide()
 
 
 func player_controllable() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	camera.enabled = true
-	player_sprite.show()
+	remote_distance_matcher.remote_path = \
+	remote_distance_matcher.get_path_to(Global.relative_positon)
 
 
 func reset() -> void:
@@ -193,5 +184,10 @@ func save_position() -> void:
 func bag_opened() -> void:
 	save_position()
 	var new_scene = load("res://Scenes/bag.tscn").instantiate()
+	var level = get_tree().get_first_node_in_group("Level")
+	level.add_child(new_scene)
+
+func shop_opened() -> void:
+	var new_scene = load("res://Scenes/shop.tscn").instantiate()
 	var level = get_tree().get_first_node_in_group("Level")
 	level.add_child(new_scene)
