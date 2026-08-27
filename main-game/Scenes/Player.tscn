@@ -91,14 +91,18 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1051577985 node_paths=PackedStringArray("new_scene_spawn") groups=["Player"]]
 process_mode = 4
+y_sort_enabled = true
 script = ExtResource("1_rpqav")
 new_scene_spawn = NodePath("Camera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645461844]
+y_sort_enabled = true
+position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_qbkls")
 
 [node name="Player_sprite" type="AnimatedSprite2D" parent="." unique_id=443361311]
-position = Vector2(0, -1.9999999)
+y_sort_enabled = true
+position = Vector2(0, -23.999996)
 scale = Vector2(1.46875, 1.5)
 sprite_frames = SubResource("SpriteFrames_lslt6")
 animation = &"idle"

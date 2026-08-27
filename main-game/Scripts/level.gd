@@ -1,3 +1,4 @@
+class_name Level
 extends Node2D
 
 const SPAWN_CHANCE: float = 0.8
