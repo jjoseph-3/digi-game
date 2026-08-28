@@ -53,5 +53,5 @@ animations = [{
 position = Vector2(0, 2.0000002)
 rotation = 1.7307757
 sprite_frames = SubResource("SpriteFrames_3flq8")
-animation = &"quick_attack"
+animation = &"power_attack"
 autoplay = "default"

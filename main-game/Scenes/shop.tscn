@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="1_a0mxf"]
 [ext_resource type="PackedScene" uid="uid://itivmqx4d6lm" path="res://Scenes/bag_button.tscn" id="2_fdj0q"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1830272983]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1830272983 groups=["shop"]]
 
 [node name="Control" type="Control" parent="." unique_id=1008011839 node_paths=PackedStringArray("button_spawn")]
 layout_mode = 3

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bf2j8igv4adea" path="res://Scripts/title.gd" id="1_tochr"]
 [ext_resource type="Texture2D" uid="uid://dtutcrgb3x126" path="res://mainmenu_3.png" id="2_phf2g"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="3_6khh7"]
+[ext_resource type="Texture2D" uid="uid://ckil7mi13t0rl" path="res://box.png" id="4_bwrlp"]
 
 [sub_resource type="Theme" id="Theme_tochr"]
 
@@ -13,7 +14,37 @@ font_color = Color(0.44578058, 0.4427783, 0.09793685, 1)
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwrlp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84h87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71b5n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t32dt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w1iyi"]
+
 [sub_resource type="Theme" id="Theme_6khh7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pld1e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7t0me"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_me1mv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_epiv6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3do78"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_obtlk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wgu5v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1pdhp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3xlv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ablst"]
 
 [node name="Control" type="Control" unique_id=1473462412]
 layout_mode = 3
@@ -29,6 +60,45 @@ script = ExtResource("1_tochr")
 position = Vector2(576, 324)
 scale = Vector2(6, 6)
 texture = ExtResource("2_phf2g")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=292315763]
+layout_mode = 1
+offset_left = 445.0
+offset_top = 448.0
+offset_right = 550.0
+offset_bottom = 514.0
+texture = ExtResource("4_bwrlp")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=1515170717]
+layout_mode = 0
+offset_left = 561.0
+offset_top = 448.0
+offset_right = 728.0
+offset_bottom = 514.0
+texture = ExtResource("4_bwrlp")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="." unique_id=914353427]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 525.0
+offset_right = 626.0
+offset_bottom = 591.0
+texture = ExtResource("4_bwrlp")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 
 [node name="Label" type="Label" parent="." unique_id=1870305928]
 layout_mode = 0
@@ -53,6 +123,11 @@ offset_bottom = 507.0
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("3_6khh7")
 theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bwrlp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_84h87")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_71b5n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t32dt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w1iyi")
 text = "Play"
 
 [node name="Button" type="Button" parent="." unique_id=881606751]
@@ -65,6 +140,11 @@ theme = SubResource("Theme_6khh7")
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("3_6khh7")
 theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pld1e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7t0me")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_me1mv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_epiv6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3do78")
 text = "Options"
 
 [node name="Button3" type="Button" parent="." unique_id=1408041847]
@@ -76,6 +156,11 @@ offset_bottom = 584.0
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("3_6khh7")
 theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxEmpty_obtlk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wgu5v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1pdhp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f3xlv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ablst")
 text = "Quit"
 
 [connection signal="pressed" from="Button2" to="." method="play_pressed"]

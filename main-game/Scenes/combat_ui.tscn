@@ -6,11 +6,54 @@
 [ext_resource type="PackedScene" uid="uid://c5i1pjey6fn3x" path="res://Scenes/Wild_rat.tscn" id="3_oemdt"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="5_oemdt"]
 [ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="6_8xikn"]
+[ext_resource type="Texture2D" uid="uid://ckil7mi13t0rl" path="res://box.png" id="6_d65p1"]
 [ext_resource type="Texture2D" uid="uid://c81g657t7k1wk" path="res://icon.svg" id="7_bcns5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bcns5"]
 font = ExtResource("5_oemdt")
 font_color = Color(0.52863, 0.5247975, 9.62615e-07, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d65p1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ij20"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84nwx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ldhc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2llrr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o38a4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06b1h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pm821"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xlmxx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vaslw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_law8v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0wt5g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8xti"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfpe3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dkv7u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6fc4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_un6rj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_31srg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ysgtw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4h0t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mjm28"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4s1nj"]
 bg_color = Color(0.7930027, 0, 0.100829564, 1)
@@ -23,6 +66,16 @@ bg_color = Color(0.9541325, 0, 0.019494109, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oemdt"]
 bg_color = Color(0.2816431, 0.5114015, 2.8878452e-07, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jn30w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fav32"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ybn4w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nber6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hlxbc"]
 
 [node name="Combat" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn", "current_rat_level", "enemy_rat_level") groups=["combat_ui"]]
 layout_mode = 3
@@ -47,13 +100,124 @@ position = Vector2(575.5, 324.99997)
 scale = Vector2(6.005208, 5.9814816)
 texture = ExtResource("6_8xikn")
 
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1148185104]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 477.0
+offset_right = 605.0
+offset_bottom = 593.0
+texture = ExtResource("6_d65p1")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=1909779223]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 495.0
+offset_right = 590.0
+offset_bottom = 565.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_d65p1")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="." unique_id=444321477]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 495.0
+offset_right = 726.0
+offset_bottom = 565.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_d65p1")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="." unique_id=87718313]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 539.0
+offset_right = 726.0
+offset_bottom = 609.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_d65p1")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect5" type="NinePatchRect" parent="." unique_id=15595045]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 539.0
+offset_right = 590.0
+offset_bottom = 609.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_d65p1")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect6" type="NinePatchRect" parent="." unique_id=1153091663]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 541.0
+offset_right = 283.0
+offset_bottom = 589.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_d65p1")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect7" type="NinePatchRect" parent="." unique_id=1468871617]
+layout_mode = 0
+offset_left = 955.0
+offset_top = 132.0
+offset_right = 1103.0
+offset_bottom = 180.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_d65p1")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect8" type="NinePatchRect" parent="." unique_id=153345949]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 81.0
+offset_right = 152.0
+offset_bottom = 149.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_d65p1")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
 [node name="Label2" type="Label" parent="." unique_id=879825671]
 layout_mode = 0
-offset_left = 156.0
+offset_left = 143.0
 offset_top = 545.0
-offset_right = 205.0
+offset_right = 202.0
 offset_bottom = 568.0
-text = "Level: "
+text = "Level: 100.0"
 label_settings = SubResource("LabelSettings_bcns5")
 
 [node name="Label" type="Label" parent="." unique_id=543928835]
@@ -71,19 +235,26 @@ offset_left = 310.0
 offset_top = 499.0
 offset_right = 584.0
 offset_bottom = 577.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d65p1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1647821656]
 layout_mode = 2
+theme_override_constants/separation = 19
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=969976298]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 19
 
 [node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=838355126]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("5_oemdt")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2ij20")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_84nwx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3ldhc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2llrr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o38a4")
 text = "Default attack"
 
 [node name="Button2" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1137690091]
@@ -91,17 +262,27 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("5_oemdt")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_06b1h")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pm821")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xlmxx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vaslw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_law8v")
 text = "Block"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1567574980]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 19
 
 [node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=47817503]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("5_oemdt")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0wt5g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_p8xti")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hfpe3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dkv7u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o6fc4")
 text = "Power attack"
 
 [node name="Button2" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=1724752139]
@@ -109,24 +290,31 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("5_oemdt")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_un6rj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_31srg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ysgtw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_q4h0t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mjm28")
 text = "Quick attack"
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=2110666770]
 layout_mode = 0
-offset_left = 86.0
+offset_left = 73.0
 offset_top = 517.0
-offset_right = 277.0
+offset_right = 264.0
 offset_bottom = 538.0
+theme_override_fonts/font = ExtResource("5_oemdt")
 theme_override_styles/background = SubResource("StyleBoxFlat_4s1nj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sovtu")
 step = 1.0
 
 [node name="ProgressBar2" type="ProgressBar" parent="." unique_id=91403300]
 layout_mode = 0
-offset_left = 893.0
-offset_top = 109.0
-offset_right = 1084.0
-offset_bottom = 130.0
+offset_left = 896.0
+offset_top = 106.0
+offset_right = 1087.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("5_oemdt")
 theme_override_styles/background = SubResource("StyleBoxFlat_q8na3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_oemdt")
 
@@ -145,6 +333,11 @@ offset_bottom = 114.0
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("5_oemdt")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jn30w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fav32")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ybn4w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nber6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hlxbc")
 text = "Bag"
 
 [node name="Button2" type="Button" parent="." unique_id=812599717]

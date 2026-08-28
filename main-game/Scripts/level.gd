@@ -63,3 +63,10 @@ func shop_opened(body: Node2D) -> void:
 	if body is Player:
 		Player_auto.global_position = Vector2.ZERO
 		Player_auto.shop_opened()
+
+
+func shop_radius_left(body: Node2D) -> void:
+	var shop = get_tree().get_first_node_in_group("shop")
+	if shop != null:
+		if body is Player:
+			shop.queue_free()

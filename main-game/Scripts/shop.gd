@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	Global.player_not_controllable.emit()
+	pass
 
 
 func shop_exited() -> void:

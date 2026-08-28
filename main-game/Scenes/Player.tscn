@@ -1,10 +1,21 @@
 [gd_scene format=3 uid="uid://bkrvy8uivarhe"]
 
 [ext_resource type="Script" uid="uid://d1h6nnd6n60lu" path="res://Scripts/player.gd" id="1_rpqav"]
+[ext_resource type="Texture2D" uid="uid://ckil7mi13t0rl" path="res://box.png" id="2_gntrk"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="17_lslt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbkls"]
 size = Vector2(21, 43)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dewec"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ixxa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nn08x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_52ee3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhhdu"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1051577985 node_paths=PackedStringArray("new_scene_spawn", "remote_distance_matcher") groups=["Player"]]
 process_mode = 4
@@ -22,6 +33,19 @@ shape = SubResource("RectangleShape2D_qbkls")
 zoom = Vector2(2, 2)
 rotation_smoothing_enabled = true
 
+[node name="NinePatchRect" type="NinePatchRect" parent="Camera2D" unique_id=1536207027]
+offset_left = -268.0
+offset_top = -149.0
+offset_right = -190.0
+offset_bottom = -89.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_gntrk")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
 [node name="Button" type="Button" parent="Camera2D" unique_id=169383713]
 offset_left = -272.0
 offset_top = -149.0
@@ -30,6 +54,11 @@ offset_bottom = -121.0
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("17_lslt6")
 theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dewec")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5ixxa")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nn08x")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_52ee3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bhhdu")
 text = "Bag"
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1093974613]
