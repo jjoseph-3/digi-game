@@ -13,6 +13,7 @@ const DEFAULT_ANIMATION: String = "default"
 const NEW_RAT_EXP: String = "exp"
 const PLAYER_SCALE: float = 5.0
 const ENEMY_SCALE: float = 8.0
+const BOSS_SCALE: float = 10.0
 const TURN_DELAY: float = 1.5
 const OPTION_ONE: int = 1
 const OPTION_TWO: int = 2
@@ -56,15 +57,16 @@ var current_rat_max_hp_percent: float
 @export var kartarian_sprite_scene:PackedScene
 @export var enemy_spawn: Marker2D
 @export var enemy_scene: PackedScene
+@export var boss_scene: PackedScene
 @export var current_rat_level: Label
 @export var enemy_rat_level: Label
 
 @onready var player_sprite: AnimatedSprite2D
 @onready var enemy: CharacterBody2D
+@onready var boss: AnimatedSprite2D
 
 
 func _ready() -> void:
-	
 	current_rat_hp.max_value = Player_auto.party[Global.lead_rat]["max_hp"]
 	current_rat_hp.value = Player_auto.party[Global.lead_rat]["current_hp"]
 	enemy_rat_hp.max_value = Global.wild_rat_hp
@@ -89,14 +91,27 @@ func _ready() -> void:
 		player_sprite.global_position = player_spawn.global_position
 		add_child(player_sprite)
 	
-	enemy = enemy_scene.instantiate()
-	enemy.scale = Vector2(ENEMY_SCALE, ENEMY_SCALE)
-	enemy.global_position = enemy_spawn.global_position
-	add_child(enemy)
-	# Spawns enemy and player sprites
+	# Checks if its a boss fight or not
+	if Global.boss_active == false:
+		enemy = enemy_scene.instantiate()
+		enemy.scale = Vector2(ENEMY_SCALE, ENEMY_SCALE)
+		enemy.global_position = enemy_spawn.global_position
+		add_child(enemy)
+		# Spawns enemy and player sprites
+		
+		new_rat = WILD_NAME_MODIFYER + str(Global.enemy_type)
+		# Sets the name of the new rat (if caught)
+		
+	elif Global.boss_active == true:
+		boss = boss_scene.instantiate()
+		boss.scale = Vector2(BOSS_SCALE, BOSS_SCALE)
+		boss.global_position = enemy_spawn.global_position
+		add_child(boss)
+		# Spawns boss rat
 	
-	new_rat = WILD_NAME_MODIFYER + str(Global.enemy_type)
-	# Sets the name of the new rat (if caught)
+	Global.player_moved = false
+	enemy_moved = false
+	# Sets player moved to flase so player can always move when scene is opened
 
 
 func _process(delta: float) -> void:
@@ -237,7 +252,9 @@ func power_attack() -> void:
 				Global.wild_rat_hp = enemy_rat_hp.value
 				print("you did: ", damage, "damage")
 				Global.player_moved = true
+				player_sprite.animation = POWER_ATTACK_ANIMATION
 				await get_tree().create_timer(TURN_DELAY).timeout
+				player_sprite.animation = DEFAULT_ANIMATION
 				enemy_turn()
 
 			else:

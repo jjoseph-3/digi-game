@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bxfa6qt5n5dr" path="res://Scenes/Johovian_rat.tscn" id="2_oemdt"]
 [ext_resource type="PackedScene" uid="uid://cpc2jnhpnofqn" path="res://Scenes/Kartarian_rat.tscn" id="3_8xikn"]
 [ext_resource type="PackedScene" uid="uid://c5i1pjey6fn3x" path="res://Scenes/Wild_rat.tscn" id="3_oemdt"]
+[ext_resource type="PackedScene" uid="uid://rsbcw678vxe3" path="res://Scenes/boss_rat.tscn" id="5_2ij20"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="5_oemdt"]
 [ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="6_8xikn"]
 [ext_resource type="Texture2D" uid="uid://ckil7mi13t0rl" path="res://box.png" id="6_d65p1"]
@@ -92,6 +93,7 @@ johovian_sprite_scene = ExtResource("2_oemdt")
 kartarian_sprite_scene = ExtResource("3_8xikn")
 enemy_spawn = NodePath("Marker2D2")
 enemy_scene = ExtResource("3_oemdt")
+boss_scene = ExtResource("5_2ij20")
 current_rat_level = NodePath("Label2")
 enemy_rat_level = NodePath("Label")
 

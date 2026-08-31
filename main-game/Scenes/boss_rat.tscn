@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://rsbcw678vxe3"]
+
+[ext_resource type="Texture2D" uid="uid://bg33ckul2vqko" path="res://boss_rat_default_attack.png" id="1_i3v3j"]
+[ext_resource type="Texture2D" uid="uid://vu4k6lq3fvkp" path="res://boss_rat.png" id="1_yr8vy"]
+[ext_resource type="Texture2D" uid="uid://dhvpyar3mkcuq" path="res://boss_rat_power_attack.png" id="3_3euub"]
+[ext_resource type="Texture2D" uid="uid://dpcrj7hf5nbkg" path="res://boss_rat_quick_attack.png" id="4_w56sw"]
+[ext_resource type="Script" uid="uid://dxfsiwvo80a1a" path="res://Scripts/boss_rat.gd" id="5_wuwme"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3v3j"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("1_i3v3j")
+}, {
+"duration": 3.1,
+"texture": ExtResource("1_yr8vy")
+}],
+"loop": true,
+"name": &"basic_attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yr8vy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("3_3euub")
+}, {
+"duration": 3.1,
+"texture": ExtResource("1_yr8vy")
+}],
+"loop": true,
+"name": &"power_attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("4_w56sw")
+}, {
+"duration": 3.1,
+"texture": ExtResource("1_yr8vy")
+}],
+"loop": true,
+"name": &"quick_attack",
+"speed": 4.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1430940436]
+rotation = 1.5227308
+scale = Vector2(1.08, 1)
+sprite_frames = SubResource("SpriteFrames_i3v3j")
+autoplay = "default"
+script = ExtResource("5_wuwme")

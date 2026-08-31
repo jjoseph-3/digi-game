@@ -30,6 +30,9 @@ var boss_stats: Dictionary = {
 	}
 }
 
+@export var boss_scene: PackedScene
+
+
 func _ready() -> void:
 	var rat_data = boss_stats[FIRST_KEY]
 	var base_stats = FINAL_BOSS_STATS[FIRST_KEY]
@@ -54,6 +57,8 @@ func _ready() -> void:
 	print("catch chance: ", Global.wild_rat_catch_rate)
 	
 	Global.base_yield = base_stats[STATS_BASE_YEILD]
+	
+	Global.enemy_sprite = boss_scene
 
 
 func _process(delta: float) -> void:
@@ -62,4 +67,6 @@ func _process(delta: float) -> void:
 
 func boss_challenged(body: Node2D) -> void:
 	if body is Player:
-		pass
+		Global.boss_active = true
+		get_tree().call_deferred("change_scene_to_file", "res://Scenes/rat_screen.tscn")
+		queue_free()

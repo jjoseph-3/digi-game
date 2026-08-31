@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://td5obiw7fkrd" path="res://boss_man0000.png" id="1_skx2t"]
 [ext_resource type="Script" uid="uid://cn3patu042s3b" path="res://Scripts/boss.gd" id="1_ukjjc"]
 [ext_resource type="Texture2D" uid="uid://byi5hj4afcr68" path="res://boss_man0001.png" id="2_lnbgr"]
+[ext_resource type="PackedScene" uid="uid://rsbcw678vxe3" path="res://Scenes/boss_rat.tscn" id="2_n725y"]
 [ext_resource type="Texture2D" uid="uid://d2dxo4w53agei" path="res://boss_man0002.png" id="3_o1i15"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mihky"]
@@ -30,6 +31,7 @@ size = Vector2(28, 44)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=625856921]
 script = ExtResource("1_ukjjc")
+boss_scene = ExtResource("2_n725y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1967657599]
 position = Vector2(0, 2.5)
