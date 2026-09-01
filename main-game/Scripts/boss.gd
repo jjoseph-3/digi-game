@@ -41,7 +41,7 @@ func _ready() -> void:
 	Global.wild_rat_level = RAT_LEVEL
 	
 	Global.wild_rat_hp = float(floor(LEVEL_SCALING * (base_stats[STATS_BASE_HP]) 
-	* RAT_LEVEL)) + RAT_LEVEL + BASE_HP 
+	* RAT_LEVEL)) + RAT_LEVEL + BASE_HP
 	Global.wild_rat_max_hp = Global.wild_rat_hp
 	
 	Global.wild_rat_attack = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_ATTACK] 
@@ -57,8 +57,8 @@ func _ready() -> void:
 	print("catch chance: ", Global.wild_rat_catch_rate)
 	
 	Global.base_yield = base_stats[STATS_BASE_YEILD]
-	
-	Global.enemy_sprite = boss_scene
+
+	Global.enemy_type = FIRST_KEY
 
 
 func _process(delta: float) -> void:
@@ -68,5 +68,6 @@ func _process(delta: float) -> void:
 func boss_challenged(body: Node2D) -> void:
 	if body is Player:
 		Global.boss_active = true
+		print("boss active")
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/rat_screen.tscn")
 		queue_free()

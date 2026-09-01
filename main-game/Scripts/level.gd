@@ -6,6 +6,7 @@ const ANIMATION_SIDE: String = "run_side"
 const ANIMATION_UP: String = "run_up"
 const ANIMATION_DOWN: String = "run_down"
 const ANIMATION_IDLE: String = "idle"
+const OUT_OF_BOUNDS: Vector2 = Vector2(1000, 1000)
 
 @export var wild_rat_spawn: PathFollow2D
 @export var wild_rat_scene: PackedScene
@@ -20,6 +21,11 @@ func _ready() -> void:
 	Global.relative_positon = relative_positon
 	Player_auto.remote_distance_matcher.remote_path = \
 	Player_auto.remote_distance_matcher.get_path_to(relative_positon)
+
+	var wild_rat = wild_rat_scene.instantiate()
+	wild_rat.global_position = OUT_OF_BOUNDS
+	add_child(wild_rat)
+
 
 func _process(delta: float) -> void:
 
@@ -44,6 +50,8 @@ func _process(delta: float) -> void:
 
 func tall_grass_entered(body: Node2D) -> void:
 	if body is Player:
+		for rat in get_tree().get_nodes_in_group("wild_rat"):
+			rat.despawn_triggered()
 		if randf() < SPAWN_CHANCE: # Codes for an 80% encounter chance
 			var wild_rat = wild_rat_scene.instantiate()
 			wild_rat_spawn.progress_ratio = randf()

@@ -63,7 +63,7 @@ var current_rat_max_hp_percent: float
 
 @onready var player_sprite: AnimatedSprite2D
 @onready var enemy: CharacterBody2D
-@onready var boss: AnimatedSprite2D
+@onready var boss: CharacterBody2D
 
 
 func _ready() -> void:
@@ -103,7 +103,7 @@ func _ready() -> void:
 		# Sets the name of the new rat (if caught)
 		
 	elif Global.boss_active == true:
-		boss = boss_scene.instantiate()
+		boss = enemy_scene.instantiate()
 		boss.scale = Vector2(BOSS_SCALE, BOSS_SCALE)
 		boss.global_position = enemy_spawn.global_position
 		add_child(boss)
@@ -383,6 +383,7 @@ func enemy_dead() -> void:
 func player_dead() -> void:
 	print("your rat is done")
 	await get_tree().create_timer(TURN_DELAY).timeout
+	Player_auto.reset_position()
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/game_over.tscn")
 
 

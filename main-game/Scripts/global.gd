@@ -79,6 +79,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if boss_active == false:
+		print("boss not active")
+	
 	if not player == null:
 		if player.lead_rat != lead_rat:
 			player.lead_changed()

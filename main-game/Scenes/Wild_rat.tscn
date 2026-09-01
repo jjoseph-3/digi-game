@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://pfwq2rry8le0" path="res://Scripts/wild_rat.gd" id="1_wi47e"]
 [ext_resource type="PackedScene" uid="uid://bxfa6qt5n5dr" path="res://Scenes/Johovian_rat.tscn" id="2_o354a"]
 [ext_resource type="PackedScene" uid="uid://cpc2jnhpnofqn" path="res://Scenes/Kartarian_rat.tscn" id="3_eii04"]
+[ext_resource type="PackedScene" uid="uid://rsbcw678vxe3" path="res://Scenes/boss_rat.tscn" id="4_g5bh1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bvg84"]
 size = Vector2(20, 8)
@@ -14,6 +15,7 @@ size = Vector2(26, 11)
 script = ExtResource("1_wi47e")
 johovian_sprite_scene = ExtResource("2_o354a")
 kartarian_sprite_scene = ExtResource("3_eii04")
+boss_scene = ExtResource("4_g5bh1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=346119089]
 shape = SubResource("RectangleShape2D_bvg84")

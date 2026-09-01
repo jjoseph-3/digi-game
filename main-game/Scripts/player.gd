@@ -187,7 +187,11 @@ func bag_opened() -> void:
 	var level = get_tree().get_first_node_in_group("Level")
 	level.add_child(new_scene)
 
+
 func shop_opened() -> void:
 	var new_scene = load("res://Scenes/shop.tscn").instantiate()
 	var level = get_tree().get_first_node_in_group("Level")
 	level.add_child(new_scene)
+
+func reset_position() -> void:
+	global_position = Global.saved_position
