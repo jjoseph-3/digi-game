@@ -10,6 +10,7 @@ func _process(delta: float) -> void:
 
 
 func retry_pressed() -> void:
+	Player_auto.global_position = Vector2.ZERO
 	Global.reset()
 	Player_auto.reset()
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/Title.tscn")

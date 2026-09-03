@@ -1,6 +1,42 @@
 [gd_scene format=3 uid="uid://dtxtvxfa1vr0y"]
 
 [ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="1_l5sol"]
+[ext_resource type="Texture2D" uid="uid://ckil7mi13t0rl" path="res://box.png" id="2_awi1s"]
+[ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="3_bwc64"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_85imr"]
+font = ExtResource("3_bwc64")
+font_size = 161
+font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mf36t"]
+font = ExtResource("3_bwc64")
+font_size = 32
+font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_obtlk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wgu5v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1pdhp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3xlv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ablst"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwrlp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84h87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71b5n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t32dt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w1iyi"]
 
 [node name="Control" type="Control" unique_id=689070806]
 layout_mode = 3
@@ -12,3 +48,78 @@ offset_bottom = 40.0
 position = Vector2(575.5, 324.99997)
 scale = Vector2(6.005208, 5.9814816)
 texture = ExtResource("1_l5sol")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=358260636]
+layout_mode = 1
+offset_left = 399.0
+offset_top = 448.0
+offset_right = 614.0
+offset_bottom = 514.0
+texture = ExtResource("2_awi1s")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="." unique_id=771797177]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 82.0
+offset_right = 1157.0
+offset_bottom = 247.0
+theme_override_colors/font_color = Color(0.38431373, 0.4392157, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_bwc64")
+theme_override_font_sizes/font_size = 96
+text = "You won!"
+label_settings = SubResource("LabelSettings_85imr")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1443118980]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 271.0
+offset_right = 1156.0
+offset_bottom = 672.0
+theme_override_colors/font_color = Color(0.38431373, 0.4392157, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_bwc64")
+theme_override_font_sizes/font_size = 86
+text = "You beat the underground rat
+ syndicate and stopped all unjust
+ treatment of sewer rats across NCY"
+label_settings = SubResource("LabelSettings_mf36t")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1080551962]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 450.0
+offset_right = 710.0
+offset_bottom = 507.0
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("3_bwc64")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxEmpty_obtlk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wgu5v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1pdhp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f3xlv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ablst")
+text = "Quit"
+
+[node name="Button2" type="Button" parent="." unique_id=433196411]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 450.0
+offset_right = 601.0
+offset_bottom = 507.0
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("3_bwc64")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bwrlp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_84h87")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_71b5n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t32dt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w1iyi")
+text = "Play again"

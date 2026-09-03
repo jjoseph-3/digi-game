@@ -124,18 +124,18 @@ func _process(delta: float) -> void:
 	Global.player_not_controllable.emit()
 	
 	if enemy_moved or Global.player_moved == true:
-		if enemy_rat_hp.value <= 0 and enemy_alive == true and current_rat_hp.value > 0:
+		if enemy_rat_hp.value <= 0 and player_alive == true and Global.boss_active == true:
+			enemy_alive = false
+			Global.boss_active = false
+			game_won()
+		
+		elif enemy_rat_hp.value <= 0 and enemy_alive == true and current_rat_hp.value > 0:
 			enemy_alive = false
 			enemy_dead()
 		
 		elif current_rat_hp.value <= 0 and player_alive == true:
 			player_alive = false
 			player_dead()
-			
-		elif enemy_rat_hp.value <= 0 and player_alive == true and Global.boss_active == true:
-			enemy_alive = false
-			Global.boss_active == false
-			game_won()
 			
 	
 	if enemy_moved and Global.player_moved == true:
@@ -399,7 +399,7 @@ func enemy_dead() -> void:
 
 func player_dead() -> void:
 	print("your rat is done")
-	Global.boss_active == false
+	Global.boss_active = false
 	await get_tree().create_timer(TURN_DELAY).timeout
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/game_over.tscn")
 
@@ -411,6 +411,6 @@ func pause_menu() -> void:
 
 func game_won() -> void:
 	print("you beat the evel man and stopped the unehtical treatment of sewer rats in NYC")
-	Global.boss_active == false
+	Global.boss_active = false
 	await get_tree().create_timer(TURN_DELAY).timeout
-	get_tree().call_deferred("change_scene_to_file", "res://Scenes/game_over.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/win_screen.tscn")
