@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dtxtvxfa1vr0y"]
+
+[ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="1_l5sol"]
+
+[node name="Control" type="Control" unique_id=689070806]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameBackground" type="Sprite2D" parent="." unique_id=464836222]
+position = Vector2(575.5, 324.99997)
+scale = Vector2(6.005208, 5.9814816)
+texture = ExtResource("1_l5sol")

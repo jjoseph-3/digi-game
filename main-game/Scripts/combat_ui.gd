@@ -1,6 +1,6 @@
 extends Control
 
-const JOHOVIAN_NAME: Array = ["Johovian", "Wild Johovian"]
+const JOHOVIAN_NAME: Array = ["Johovian", "Wild Johovian", "Cheats"]
 const KARTARIAN_NAME: Array = ["Kartarian", "Wild Kartarian"]
 const WILD_NAME_MODIFYER: String = "Wild "
 const NEW_RAT_LEVEL: String = "level"
@@ -63,10 +63,15 @@ var current_rat_max_hp_percent: float
 
 @onready var player_sprite: AnimatedSprite2D
 @onready var enemy: CharacterBody2D
-@onready var boss: CharacterBody2D
+@onready var boss: AnimatedSprite2D
 
 
 func _ready() -> void:
+	Global.in_combat = true
+	
+	# Resets player position
+	Player_auto.reset_position()
+	
 	current_rat_hp.max_value = Player_auto.party[Global.lead_rat]["max_hp"]
 	current_rat_hp.value = Player_auto.party[Global.lead_rat]["current_hp"]
 	enemy_rat_hp.max_value = Global.wild_rat_hp
@@ -103,7 +108,8 @@ func _ready() -> void:
 		# Sets the name of the new rat (if caught)
 		
 	elif Global.boss_active == true:
-		boss = enemy_scene.instantiate()
+		boss = boss_scene.instantiate()
+		Global.enemy_sprite = boss
 		boss.scale = Vector2(BOSS_SCALE, BOSS_SCALE)
 		boss.global_position = enemy_spawn.global_position
 		add_child(boss)
@@ -118,13 +124,18 @@ func _process(delta: float) -> void:
 	Global.player_not_controllable.emit()
 	
 	if enemy_moved or Global.player_moved == true:
-		if enemy_rat_hp.value <= 0 and enemy_alive == true:
+		if enemy_rat_hp.value <= 0 and enemy_alive == true and current_rat_hp.value > 0:
 			enemy_alive = false
 			enemy_dead()
 		
 		elif current_rat_hp.value <= 0 and player_alive == true:
 			player_alive = false
 			player_dead()
+			
+		elif enemy_rat_hp.value <= 0 and player_alive == true and Global.boss_active == true:
+			enemy_alive = false
+			Global.boss_active == false
+			game_won()
 			
 	
 	if enemy_moved and Global.player_moved == true:
@@ -148,9 +159,9 @@ func enemy_turn() -> void:
 			Global.wild_rat_speed = Global.wild_rat_speed / SPEED_MULTI
 			print("enemy did: ", enemy_damage, "damage")
 			Global.enemy_sprite.animation = QUICK_ATTACK_ANIMATION
+			enemy_moved = true
 			await get_tree().create_timer(TURN_DELAY).timeout
 			Global.enemy_sprite.animation = DEFAULT_ANIMATION
-			enemy_moved = true
 			# If player hp is less than 1/4 of max enemy does a quick attack
 			
 		elif Global.wild_rat_hp <= enemy_rat_hp.max_value * LOW_HP_THRESHOLD:
@@ -162,9 +173,9 @@ func enemy_turn() -> void:
 			Global.wild_rat_speed = Global.wild_rat_speed / SPEED_MULTI
 			print("enemy did: ", enemy_damage, "damage")
 			Global.enemy_sprite.animation = QUICK_ATTACK_ANIMATION
+			enemy_moved = true
 			await get_tree().create_timer(TURN_DELAY).timeout
 			Global.enemy_sprite.animation = DEFAULT_ANIMATION
-			enemy_moved = true
 			# If own hp is less than 1/4 of max enemy does a quick attack
 			
 		else:
@@ -176,9 +187,9 @@ func enemy_turn() -> void:
 				Global.rat_hp = current_rat_hp.value
 				print("enemy did: ", enemy_damage, "damage")
 				Global.enemy_sprite.animation = BASIC_ATTACK_ANIMATION
+				enemy_moved = true
 				await get_tree().create_timer(TURN_DELAY).timeout
 				Global.enemy_sprite.animation = DEFAULT_ANIMATION
-				enemy_moved = true
 			
 			if enemy_attack == OPTION_TWO: 
 				if randf() < HIT_CHANCE:
@@ -189,9 +200,9 @@ func enemy_turn() -> void:
 					Global.rat_hp = current_rat_hp.value
 					print("enemy did: ", enemy_damage, "damage")
 					Global.enemy_sprite.animation = POWER_ATTACK_ANIMATION
+					enemy_moved = true
 					await get_tree().create_timer(TURN_DELAY).timeout
 					Global.enemy_sprite.animation = DEFAULT_ANIMATION
-					enemy_moved = true
 				else:
 					print("enemy missed")
 					enemy_moved = true
@@ -201,6 +212,8 @@ func basic_attack() -> void:
 	if Global.player_moved == false:
 		if Global.wild_rat_speed > Global.rat_speed:
 			enemy_turn()
+			await get_tree().create_timer(TURN_DELAY).timeout
+			# Ensures player can't move when enemy is faster
 			damage = int(floor((DAMAGE_SCALING * Global.rat_level) + DAMAGE_FLOOR 
 			* BASIC_ATTACK_POWER * (Global.rat_attack /  max(Global.wild_rat_defence, 1))))
 			enemy_rat_hp.value = enemy_rat_hp.value - damage
@@ -228,6 +241,8 @@ func power_attack() -> void:
 	if Global.player_moved == false:
 		if Global.wild_rat_speed > Global.rat_speed:
 			enemy_turn()
+			await get_tree().create_timer(TURN_DELAY).timeout
+			# Ensures player can't move when enemy is faster
 			if randf() < HIT_CHANCE:
 				damage = int(floor((DAMAGE_SCALING * Global.rat_level) + DAMAGE_FLOOR
 				* POWER_ATTACK_POWER * (Global.rat_attack / max(Global.wild_rat_defence, 1))))
@@ -270,6 +285,8 @@ func quick_attack() -> void:
 		Global.rat_speed = Global.rat_speed * SPEED_MULTI
 		if Global.wild_rat_speed > Global.rat_speed:
 			enemy_turn()
+			await get_tree().create_timer(TURN_DELAY).timeout
+			# Ensures player can't move when enemy is faster
 			damage = int(floor((DAMAGE_SCALING * Global.rat_level) + DAMAGE_FLOOR 
 			* QUICK_ATTACK_POWER * (Global.rat_attack / max(Global.wild_rat_defence, 1))))
 			enemy_rat_hp.value = enemy_rat_hp.value - damage
@@ -382,12 +399,18 @@ func enemy_dead() -> void:
 
 func player_dead() -> void:
 	print("your rat is done")
+	Global.boss_active == false
 	await get_tree().create_timer(TURN_DELAY).timeout
-	Player_auto.reset_position()
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/game_over.tscn")
-
 
 
 func pause_menu() -> void:
 	var new_scene = load("res://Scenes/pause_menu.tscn").instantiate()
 	add_child(new_scene)
+
+
+func game_won() -> void:
+	print("you beat the evel man and stopped the unehtical treatment of sewer rats in NYC")
+	Global.boss_active == false
+	await get_tree().create_timer(TURN_DELAY).timeout
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/game_over.tscn")

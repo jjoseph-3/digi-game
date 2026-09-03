@@ -33,6 +33,14 @@ const RAT_STATS = {
 		"catch_rate" : 0.7,
 		"base_yeild" : 60
 	},
+	"Cheats" : {
+		"base_hp" : 100,
+		"base_attack" : 100,
+		"base_defence" : 100,
+		"base_speed" : 100,
+		"catch_rate" : 0.7,
+		"base_yeild" : 100
+	}
 }
 
 signal player_controllable
@@ -69,6 +77,7 @@ var has_saved_position: bool = false
 var player_moved: bool = false
 var relative_positon: Node2D
 var boss_active: bool = false
+var in_combat: bool = false
 
 @onready var enemy_sprite: AnimatedSprite2D
 

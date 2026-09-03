@@ -19,6 +19,13 @@ const PARTY_BASE: Dictionary = {
 		"max_hp": 0,
 		"exp" : 0
 	},
+	"Cheats" :
+		{
+			"level" : 200,
+			"current_hp" : 0,
+			"max_hp": 0,
+			"exp" : 0
+		}
 }
 const PARTY_LEVEL: String = "level"
 const PARTY_MAX_HP: String = "max_hp"

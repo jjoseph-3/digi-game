@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c8ig5l2autll0" path="res://Scripts/game_over.gd" id="1_ojehl"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="2_8fo1c"]
 [ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="2_ek8ke"]
+[ext_resource type="Texture2D" uid="uid://ckil7mi13t0rl" path="res://box.png" id="3_eoghk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ek8ke"]
 font = ExtResource("2_8fo1c")
@@ -10,6 +11,26 @@ font_size = 120
 font_color = Color(0.54681724, 0, 0.060349457, 1)
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_14u15"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j3ryr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjluv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjtdd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uylih"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3817r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mitgx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gs2es"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_asocn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_61f6c"]
 
 [node name="Control" type="Control" unique_id=1666646319]
 layout_mode = 3
@@ -25,12 +46,40 @@ position = Vector2(575.5, 324.99997)
 scale = Vector2(6.005208, 5.9814816)
 texture = ExtResource("2_ek8ke")
 
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1345367577]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 402.0
+offset_right = 680.0
+offset_bottom = 510.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_eoghk")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=465644855]
+layout_mode = 0
+offset_left = 594.0
+offset_top = 402.0
+offset_right = 778.0
+offset_bottom = 510.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_eoghk")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
 [node name="Label" type="Label" parent="." unique_id=2054724244]
 layout_mode = 0
 offset_left = -2.0
-offset_top = 258.0
+offset_top = 197.0
 offset_right = 1152.0
-offset_bottom = 423.0
+offset_bottom = 362.0
 theme_override_colors/font_color = Color(0.38431373, 0.4392157, 0.101960786, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_8fo1c")
@@ -48,6 +97,11 @@ offset_bottom = 455.0
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("2_8fo1c")
 theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxEmpty_14u15")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_j3ryr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rjluv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gjtdd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uylih")
 text = "Retry"
 
 [node name="Button2" type="Button" parent="." unique_id=1722456638]
@@ -59,6 +113,11 @@ offset_bottom = 456.0
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("2_8fo1c")
 theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3817r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mitgx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gs2es")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_asocn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_61f6c")
 text = "Quit"
 
 [connection signal="pressed" from="Button" to="." method="retry_pressed"]

@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://b2lx41we68ujc"]
 
 [ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="1_prnvy"]
+[ext_resource type="Script" uid="uid://ds2ak0gdqbafl" path="res://Scripts/options.gd" id="1_qyyw6"]
+[ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="3_ww8vx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0w1u"]
+font = ExtResource("3_ww8vx")
+font_size = 99
+font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control" unique_id=1270880793]
 layout_mode = 3
@@ -11,6 +20,7 @@ offset_top = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qyyw6")
 
 [node name="GameBackground" type="Sprite2D" parent="." unique_id=945381217]
 position = Vector2(575.5, 324.99997)
@@ -19,9 +29,27 @@ texture = ExtResource("1_prnvy")
 
 [node name="Label" type="Label" parent="." unique_id=69562105]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 173.0
-offset_right = 1002.0
-offset_bottom = 242.0
-theme_override_font_sizes/font_size = 50
-text = "Pretend there is an options menu"
+offset_left = -2.0
+offset_top = 222.0
+offset_right = 1152.0
+offset_bottom = 387.0
+theme_override_colors/font_color = Color(0.38431373, 0.4392157, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ww8vx")
+theme_override_font_sizes/font_size = 86
+text = "Options"
+label_settings = SubResource("LabelSettings_k0w1u")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=131424299]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 390.0
+offset_right = 651.0
+offset_bottom = 447.0
+theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("3_ww8vx")
+theme_override_font_sizes/font_size = 56
+text = "Leave"
+
+[connection signal="pressed" from="Button" to="." method="options_left"]

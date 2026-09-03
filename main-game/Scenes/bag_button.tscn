@@ -3,12 +3,28 @@
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="1_fxe6q"]
 [ext_resource type="Script" uid="uid://c78flyciug1wl" path="res://Scripts/button.gd" id="2_smycg"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fxe6q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d7aei"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v4ftb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aifrr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ng7ss"]
+
 [node name="Button" type="Button" unique_id=482543754]
-offset_right = 110.0
-offset_bottom = 57.0
+z_index = 2
+offset_right = 102.0
+offset_bottom = 49.0
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("1_fxe6q")
 theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxTexture_fxe6q")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d7aei")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_v4ftb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_aifrr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ng7ss")
 text = "Filler"
 script = ExtResource("2_smycg")
 

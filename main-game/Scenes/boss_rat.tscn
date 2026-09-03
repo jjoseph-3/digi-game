@@ -55,5 +55,5 @@ rotation = 1.7188278
 scale = Vector2(1.08, 1)
 sprite_frames = SubResource("SpriteFrames_i3v3j")
 autoplay = "default"
-frame_progress = 0.6646083
+frame_progress = 0.848569
 script = ExtResource("5_wuwme")

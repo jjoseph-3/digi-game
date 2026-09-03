@@ -3,8 +3,19 @@
 [ext_resource type="Script" uid="uid://bdprtnk8vdjyg" path="res://Scripts/bag.gd" id="1_5tw1m"]
 [ext_resource type="PackedScene" uid="uid://itivmqx4d6lm" path="res://Scenes/bag_button.tscn" id="2_yeinl"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="3_5bm2g"]
+[ext_resource type="Texture2D" uid="uid://ckil7mi13t0rl" path="res://box.png" id="3_57iao"]
 
 [sub_resource type="Theme" id="Theme_yeinl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_722nh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dtdv7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3582x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7e1x1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ajtqt"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1798331572]
 
@@ -27,6 +38,20 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0.5411765)
 
+[node name="NinePatchRect" type="NinePatchRect" parent="Control" unique_id=197515143]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 107.0
+offset_right = 262.0
+offset_bottom = 177.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_57iao")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
 [node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1284565475]
 layout_mode = 0
 offset_left = 454.0
@@ -46,6 +71,11 @@ offset_bottom = 140.0
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("3_5bm2g")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_722nh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_dtdv7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3582x")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7e1x1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ajtqt")
 text = "Exit"
 
 [connection signal="pressed" from="Control/Button" to="Control" method="bag_closed"]

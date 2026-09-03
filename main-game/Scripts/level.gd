@@ -22,10 +22,6 @@ func _ready() -> void:
 	Player_auto.remote_distance_matcher.remote_path = \
 	Player_auto.remote_distance_matcher.get_path_to(relative_positon)
 
-	var wild_rat = wild_rat_scene.instantiate()
-	wild_rat.global_position = OUT_OF_BOUNDS
-	add_child(wild_rat)
-
 
 func _process(delta: float) -> void:
 

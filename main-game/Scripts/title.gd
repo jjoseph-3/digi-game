@@ -15,7 +15,8 @@ func play_pressed() -> void:
 
 
 func options_opened() -> void:
-	get_tree().call_deferred("change_scene_to_file", "res://Scenes/options.tscn")
+	var new_scene = load("res://Scenes/options.tscn").instantiate()
+	add_child(new_scene)
 
 
 func quit_pressed() -> void:
