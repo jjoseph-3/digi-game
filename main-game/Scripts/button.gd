@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 
 func item_used() -> void:
 	if item == RAT_NET_NAME:
-		if Global.bag.has(item) and Global.wild_rat_catch_rate > 0 \
+		if Global.bag[item] > 0 and Global.wild_rat_catch_rate > 0 \
 		and Global.player_moved == false:
 			Global.bag[item] -= 1
 			get_tree().get_first_node_in_group("bag").bag = Global.bag
@@ -31,7 +31,7 @@ func item_used() -> void:
 			get_tree().call_deferred("change_scene_to_file", "res://combat_ui/bag.tscn")
 		
 	elif item == HEAL_SPRAY_NAME:
-		if Global.bag.has(item) and Global.player_moved == false and Global.in_combat == true:
+		if Global.bag[item] > 0 and Global.player_moved == false and Global.in_combat == true:
 			Global.bag[item] -= 1
 			get_tree().get_first_node_in_group("bag").bag = Global.bag
 			print(Global.bag)

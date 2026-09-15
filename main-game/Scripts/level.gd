@@ -14,6 +14,7 @@ const OUT_OF_BOUNDS: Vector2 = Vector2(1000, 1000)
 
 @onready var player_sprite: AnimatedSprite2D = $Node2D/Player_sprite
 
+
 func _ready() -> void:
 	Global.player_controllable.emit()
 	

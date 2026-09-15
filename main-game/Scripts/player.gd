@@ -135,6 +135,8 @@ func lead_changed(called_from_combat: bool = false) -> void:
 	* Global.RAT_STATS[lead_rat][STATS_BASE_HP]) 
 	* party[lead_rat][PARTY_LEVEL]) + party[lead_rat][PARTY_LEVEL] + BASE_HP
 	
+	Global.rat_max_hp = party[lead_rat][PARTY_MAX_HP]
+	
 	# Keeps the rats hp between battles
 	if called_from_combat:
 		print("called from combat")
@@ -142,8 +144,12 @@ func lead_changed(called_from_combat: bool = false) -> void:
 		if Global.current_rat_max_hp_percent \
 		== 0 else roundf(Global.current_rat_max_hp_percent * party[lead_rat][PARTY_MAX_HP])
 		
+		Global.rat_hp = party[lead_rat][PARTY_CURRENT_HP]
+		
 	else: 
 		party[lead_rat][PARTY_CURRENT_HP] = party[lead_rat][PARTY_CURRENT_HP]
+		
+		Global.rat_hp = party[lead_rat][PARTY_CURRENT_HP]
 		
 	Global.rat_attack = float(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat][STATS_BASE_ATTACK]) 
 	* party[lead_rat][PARTY_LEVEL]) + BASE_STAT
@@ -199,6 +205,7 @@ func shop_opened() -> void:
 	var new_scene = load("res://Scenes/shop.tscn").instantiate()
 	var level = get_tree().get_first_node_in_group("Level")
 	level.add_child(new_scene)
+
 
 func reset_position() -> void:
 	global_position = Global.saved_position

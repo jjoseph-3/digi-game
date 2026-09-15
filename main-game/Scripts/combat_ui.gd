@@ -208,6 +208,7 @@ func enemy_turn() -> void:
 					enemy_moved = true
 			# Random chance for "normal attack" or "power attack" for enemy
 
+
 func basic_attack() -> void:
 	if Global.player_moved == false:
 		if Global.wild_rat_speed > Global.rat_speed:
@@ -312,6 +313,7 @@ func quick_attack() -> void:
 			enemy_turn()
 			# "Quick attack" 
 
+
 func block() -> void:
 	if Global.player_moved == false:
 		Global.rat_speed = Global.rat_speed * BLOCK_SPEED_MULTI
@@ -400,6 +402,7 @@ func enemy_dead() -> void:
 func player_dead() -> void:
 	print("your rat is done")
 	Global.boss_active = false
+	Global.player_moved = true
 	await get_tree().create_timer(TURN_DELAY).timeout
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/game_over.tscn")
 

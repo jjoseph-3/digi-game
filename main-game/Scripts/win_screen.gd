@@ -10,7 +10,7 @@ func _process(delta: float) -> void:
 
 
 func quit_pressed() -> void:
-		get_tree().quit()
+	get_tree().quit()
 
 
 func play_pressed() -> void:
