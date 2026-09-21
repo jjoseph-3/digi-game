@@ -8,7 +8,8 @@
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="5_oemdt"]
 [ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="6_8xikn"]
 [ext_resource type="Texture2D" uid="uid://ckil7mi13t0rl" path="res://box.png" id="6_d65p1"]
-[ext_resource type="Texture2D" uid="uid://c81g657t7k1wk" path="res://icon.svg" id="7_bcns5"]
+[ext_resource type="Texture2D" uid="uid://b4cl1spgic7nj" path="res://pause icon 2.png" id="9_2ij20"]
+[ext_resource type="Texture2D" uid="uid://12iptnn6n06e" path="res://pause icon.png" id="10_84nwx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bcns5"]
 font = ExtResource("5_oemdt")
@@ -77,6 +78,8 @@ bg_color = Color(0.2816431, 0.5114015, 2.8878452e-07, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nber6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hlxbc"]
+
+[sub_resource type="Theme" id="Theme_3ldhc"]
 
 [node name="Combat" type="Control" unique_id=1663985225 node_paths=PackedStringArray("current_rat_hp", "enemy_rat_hp", "player_spawn", "enemy_spawn", "current_rat_level", "enemy_rat_level") groups=["combat_ui"]]
 layout_mode = 3
@@ -342,18 +345,19 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_nber6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hlxbc")
 text = "Bag"
 
-[node name="Button2" type="Button" parent="." unique_id=812599717]
+[node name="TextureButton" type="TextureButton" parent="." unique_id=326943739]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 38.0
-offset_right = 112.0
-offset_bottom = 74.0
-icon = ExtResource("7_bcns5")
-expand_icon = true
+offset_left = 55.0
+offset_top = 34.0
+offset_right = 103.0
+offset_bottom = 82.0
+theme = SubResource("Theme_3ldhc")
+texture_normal = ExtResource("9_2ij20")
+texture_hover = ExtResource("10_84nwx")
 
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/Button" to="." method="basic_attack"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/Button2" to="." method="block"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer2/Button" to="." method="power_attack"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer2/Button2" to="." method="quick_attack"]
 [connection signal="pressed" from="Button" to="." method="bag_opened"]
-[connection signal="pressed" from="Button2" to="." method="pause_menu"]
+[connection signal="pressed" from="TextureButton" to="." method="pause_menu"]

@@ -84,14 +84,14 @@ func _ready() -> void:
 	* party[lead_rat][PARTY_LEVEL]) + party[lead_rat][PARTY_LEVEL] + BASE_HP
 	Global.rat_hp = Global.rat_max_hp
 	
-	Global.rat_attack = float(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat][STATS_BASE_ATTACK]) 
-	* party[lead_rat][PARTY_LEVEL]) + BASE_STAT
+	Global.rat_attack = float(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat][STATS_BASE_ATTACK] 
+	* party[lead_rat][PARTY_LEVEL])) + BASE_STAT
 	
 	Global.rat_defence = float(floor(LEVEL_SCALING 
-	* Global.RAT_STATS[lead_rat][STATS_BASE_DEFENCE]) * party[lead_rat][PARTY_LEVEL]) + BASE_STAT
+	* Global.RAT_STATS[lead_rat][STATS_BASE_DEFENCE] * party[lead_rat][PARTY_LEVEL])) + BASE_STAT
 	
-	Global.rat_speed = float(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat][STATS_BASE_SPEED]) 
-	* party[lead_rat][PARTY_LEVEL]) + BASE_STAT
+	Global.rat_speed = float(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat][STATS_BASE_SPEED] 
+	* party[lead_rat][PARTY_LEVEL])) + BASE_STAT
 	
 	Global.rat_level = party[lead_rat][PARTY_LEVEL]
 	
@@ -151,14 +151,14 @@ func lead_changed(called_from_combat: bool = false) -> void:
 		
 		Global.rat_hp = party[lead_rat][PARTY_CURRENT_HP]
 		
-	Global.rat_attack = float(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat][STATS_BASE_ATTACK]) 
-	* party[lead_rat][PARTY_LEVEL]) + BASE_STAT
+	Global.rat_attack = float(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat][STATS_BASE_ATTACK] 
+	* party[lead_rat][PARTY_LEVEL])) + BASE_STAT
 	
 	Global.rat_defence = float(floor(LEVEL_SCALING 
-	* Global.RAT_STATS[lead_rat][STATS_BASE_DEFENCE]) * party[lead_rat][PARTY_LEVEL]) + BASE_STAT
+	* Global.RAT_STATS[lead_rat][STATS_BASE_DEFENCE] * party[lead_rat][PARTY_LEVEL])) + BASE_STAT
 	
-	Global.rat_speed = float(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat][STATS_BASE_SPEED]) 
-	* party[lead_rat][PARTY_LEVEL]) + BASE_STAT
+	Global.rat_speed = float(floor(LEVEL_SCALING * Global.RAT_STATS[lead_rat][STATS_BASE_SPEED] 
+	* party[lead_rat][PARTY_LEVEL])) + BASE_STAT
 	
 	Global.rat_level = party[lead_rat][PARTY_LEVEL]
 	

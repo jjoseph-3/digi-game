@@ -336,6 +336,7 @@ func bag_opened() -> void:
 func heal_used() -> void:
 	if Global.player_moved == false:
 		current_rat_hp.value = Global.rat_max_hp
+		Global.rat_hp = current_rat_hp.value
 		Global.player_moved = true
 		await get_tree().create_timer(TURN_DELAY).timeout
 		enemy_turn()

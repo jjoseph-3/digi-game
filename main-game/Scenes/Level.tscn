@@ -225,6 +225,14 @@ wild_rat_spawn = NodePath("Path2D/PathFollow2D")
 wild_rat_scene = ExtResource("2_8rbpu")
 relative_positon = NodePath("Node2D")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1517117486]
+z_index = -10
+offset_left = -5293.0
+offset_top = -2904.0
+offset_right = 4437.0
+offset_bottom = 3223.0
+color = Color(0, 0, 0, 1)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=241281228]
 y_sort_enabled = true
 scale = Vector2(2, 2)
