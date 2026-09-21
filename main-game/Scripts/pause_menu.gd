@@ -14,7 +14,7 @@ func resume_pressed() -> void:
 
 
 func options_pressed() -> void:
-	var new_scene = load("res://Scenes/options.tscn.tscn").instantiate()
+	var new_scene = load("res://Scenes/options.tscn").instantiate()
 	add_child(new_scene)
 
 
