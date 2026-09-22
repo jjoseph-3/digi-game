@@ -20,7 +20,7 @@ func _ready() -> void:
 	button_spawn.add_child(button)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 

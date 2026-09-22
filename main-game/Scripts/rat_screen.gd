@@ -14,5 +14,5 @@ func _ready() -> void:
 		vbox.add_child(party_rat_button)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	Global.player_not_controllable.emit()

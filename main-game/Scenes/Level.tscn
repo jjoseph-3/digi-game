@@ -217,13 +217,12 @@ size = Vector2(40.666664, 32.791668)
 [sub_resource type="CircleShape2D" id="CircleShape2D_17mqb"]
 radius = 128.0039
 
-[node name="Level" type="Node2D" unique_id=2114800605 node_paths=PackedStringArray("wild_rat_spawn", "relative_positon") groups=["Level"]]
+[node name="Level" type="Node2D" unique_id=2114800605 node_paths=PackedStringArray("wild_rat_spawn") groups=["Level"]]
 y_sort_enabled = true
 position = Vector2(-4, 0)
 script = ExtResource("1_vsvp5")
 wild_rat_spawn = NodePath("Path2D/PathFollow2D")
 wild_rat_scene = ExtResource("2_8rbpu")
-relative_positon = NodePath("Node2D")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1517117486]
 z_index = -10
@@ -231,6 +230,7 @@ offset_left = -5293.0
 offset_top = -2904.0
 offset_right = 4437.0
 offset_bottom = 3223.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=241281228]

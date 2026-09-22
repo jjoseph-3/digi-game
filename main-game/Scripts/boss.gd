@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 const FINAL_BOSS_STATS: Dictionary = {
-	"The one" : {
-		"base_hp" : 80,
-		"base_attack" : 70,
-		"base_defence" : 80,
-		"base_speed" : 60,
-		"catch_rate" : "not_catchable",
-		"base_yeild" : 100
+	"The one": {
+		"base_hp": 80,
+		"base_attack": 70,
+		"base_defence": 80,
+		"base_speed": 60,
+		"catch_rate": "not_catchable",
+		"base_yeild": 100
 		}
 }
 const FIRST_KEY: String = "The one"
@@ -24,44 +24,44 @@ const BASE_HP: float = 10
 const BASE_STAT: float = 5
 const RAT_LEVEL: float = 30.0
 
+@export var boss_scene: PackedScene
+
 var boss_stats: Dictionary = {
 	"The one": {
-		
+
 	}
 }
-
-@export var boss_scene: PackedScene
 
 
 func _ready() -> void:
 	var rat_data = boss_stats[FIRST_KEY]
 	var base_stats = FINAL_BOSS_STATS[FIRST_KEY]
-	
+
 	# Calculations of stats
 	Global.wild_rat_level = RAT_LEVEL
-	
-	Global.wild_rat_hp = float(floor(LEVEL_SCALING * (base_stats[STATS_BASE_HP]) 
-	* RAT_LEVEL)) + RAT_LEVEL + BASE_HP
+
+	Global.wild_rat_hp = float(floor(LEVEL_SCALING * (base_stats[STATS_BASE_HP])
+			* RAT_LEVEL)) + RAT_LEVEL + BASE_HP
 	Global.wild_rat_max_hp = Global.wild_rat_hp
-	
-	Global.wild_rat_attack = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_ATTACK] 
-	* RAT_LEVEL)) + BASE_STAT
-	
-	Global.wild_rat_defence = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_DEFENCE] 
-	* RAT_LEVEL)) + BASE_STAT
-	
-	Global.wild_rat_speed = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_SPEED] 
-	* RAT_LEVEL)) + BASE_STAT
-	
+
+	Global.wild_rat_attack = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_ATTACK]
+			* RAT_LEVEL)) + BASE_STAT
+
+	Global.wild_rat_defence = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_DEFENCE]
+			* RAT_LEVEL)) + BASE_STAT
+
+	Global.wild_rat_speed = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_SPEED]
+			* RAT_LEVEL)) + BASE_STAT
+
 	Global.wild_rat_catch_rate = base_stats[STATS_CATCH_RATE]
 	print("catch chance: ", Global.wild_rat_catch_rate)
-	
+
 	Global.base_yield = base_stats[STATS_BASE_YEILD]
 
 	Global.enemy_type = FIRST_KEY
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -71,26 +71,26 @@ func boss_challenged(body: Node2D) -> void:
 		print("boss active")
 		var rat_data = boss_stats[FIRST_KEY]
 		var base_stats = FINAL_BOSS_STATS[FIRST_KEY]
-		
+
 		# Calculations of stats
 		Global.wild_rat_level = RAT_LEVEL
-		
-		Global.wild_rat_hp = float(floor(LEVEL_SCALING * (base_stats[STATS_BASE_HP]) 
-		* RAT_LEVEL)) + RAT_LEVEL + BASE_HP
+
+		Global.wild_rat_hp = float(floor(LEVEL_SCALING * (base_stats[STATS_BASE_HP])
+				* RAT_LEVEL)) + RAT_LEVEL + BASE_HP
 		Global.wild_rat_max_hp = Global.wild_rat_hp
-		
-		Global.wild_rat_attack = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_ATTACK] 
-		* RAT_LEVEL)) + BASE_STAT
-		
-		Global.wild_rat_defence = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_DEFENCE] 
-		* RAT_LEVEL)) + BASE_STAT
-		
-		Global.wild_rat_speed = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_SPEED] 
-		* RAT_LEVEL)) + BASE_STAT
-		
+
+		Global.wild_rat_attack = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_ATTACK]
+				* RAT_LEVEL)) + BASE_STAT
+
+		Global.wild_rat_defence = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_DEFENCE]
+				* RAT_LEVEL)) + BASE_STAT
+
+		Global.wild_rat_speed = float(floor(LEVEL_SCALING * base_stats[STATS_BASE_SPEED]
+				* RAT_LEVEL)) + BASE_STAT
+
 		Global.wild_rat_catch_rate = base_stats[STATS_CATCH_RATE]
 		print("catch chance: ", Global.wild_rat_catch_rate)
-		
+
 		Global.base_yield = base_stats[STATS_BASE_YEILD]
 
 		Global.enemy_type = FIRST_KEY

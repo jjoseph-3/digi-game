@@ -10,58 +10,58 @@ const OUT_OF_BOUNDS: Vector2 = Vector2(1000, 1000)
 
 @export var wild_rat_spawn: PathFollow2D
 @export var wild_rat_scene: PackedScene
-@export var relative_positon: Node2D
+@export var relative_position: Node2D
 
 @onready var player_sprite: AnimatedSprite2D = $Node2D/Player_sprite
 
 
 func _ready() -> void:
 	Global.player_controllable.emit()
-	
-	# Sets up the Node2D as players relative position for y-sorting 
-	Global.relative_positon = relative_positon
-	Player_auto.remote_distance_matcher.remote_path = \
-	Player_auto.remote_distance_matcher.get_path_to(relative_positon)
+
+	# Sets up the Node2D as players relative position for y-sorting
+	Global.relative_position = relative_position
+	Player_auto.remote_distance_matcher.remote_path = (
+			Player_auto.remote_distance_matcher.get_path_to(relative_position))
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 
-# Codes for sprite animations on the player for y-sort
+	# Codes for sprite animations on the player for y-sort
 	if Player_auto.direction == Vector2.LEFT:
 		player_sprite.flip_h = true
 		player_sprite.animation = ANIMATION_SIDE
-		
+
 	elif Player_auto.direction == Vector2.RIGHT:
 		player_sprite.flip_h = false
 		player_sprite.animation = ANIMATION_SIDE
-	
+
 	elif Player_auto.direction == Vector2.UP:
 		player_sprite.animation = ANIMATION_UP
-		
+
 	elif Player_auto.direction == Vector2.DOWN:
 		player_sprite.animation = ANIMATION_DOWN
-	
+
 	else:
 		player_sprite.animation = ANIMATION_IDLE
-		
+
 
 func tall_grass_entered(body: Node2D) -> void:
 	if body is Player:
 		for rat in get_tree().get_nodes_in_group("wild_rat"):
 			rat.despawn_triggered()
 		if randf() < SPAWN_CHANCE: # Codes for an 80% encounter chance
+			# Spawns the wild rats
 			var wild_rat = wild_rat_scene.instantiate()
 			wild_rat_spawn.progress_ratio = randf()
 			wild_rat.global_position = wild_rat_spawn.global_position
-			add_child(wild_rat) 
-			# Spawns the wild rats 
+			add_child(wild_rat)
 
 
 func left_tall_grass(body: Node2D) -> void:
 	if body is Player:
+		# Despawns the wild rats when player leaves area
 		for rat in get_tree().get_nodes_in_group("wild_rat"):
 			rat.despawn_triggered()
-			# Despawns the wild rats when player leaves area
 
 
 func shop_opened(body: Node2D) -> void:

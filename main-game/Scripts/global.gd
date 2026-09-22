@@ -1,50 +1,50 @@
 extends Node
 
-const RAT_STATS = {
-	"Johovian" : {
-		"base_hp" : 50,
-		"base_attack" : 50,
-		"base_defence" : 60,
-		"base_speed" : 20,
-		"catch_rate" : 0.9,
-		"base_yeild" : 60
-	},
-	"Wild Johovian" : {
-		"base_hp" : 50,
-		"base_attack" : 50,
-		"base_defence" : 60,
-		"base_speed" : 20,
-		"catch_rate" : 0.9,
-		"base_yeild" : 60
-	},
-	"Kartarian" : {
-		"base_hp" : 50,
-		"base_attack" : 20,
-		"base_defence" : 80,
-		"base_speed" : 30,
-		"catch_rate" : 0.7,
-		"base_yeild" : 90
-	},
-	"Wild Kartarian" : {
-		"base_hp" : 50,
-		"base_attack" : 20,
-		"base_defence" : 80,
-		"base_speed" : 30,
-		"catch_rate" : 0.7,
-		"base_yeild" : 60
-	},
-	"Cheats" : {
-		"base_hp" : 100,
-		"base_attack" : 100,
-		"base_defence" : 100,
-		"base_speed" : 100,
-		"catch_rate" : 0.7,
-		"base_yeild" : 100
-	}
-}
-
 signal player_controllable
 signal player_not_controllable
+
+const RAT_STATS = {
+	"Johovian": {
+		"base_hp": 50,
+		"base_attack": 50,
+		"base_defence": 60,
+		"base_speed": 20,
+		"catch_rate": 0.9,
+		"base_yeild": 60
+	},
+	"Wild Johovian": {
+		"base_hp": 50,
+		"base_attack": 50,
+		"base_defence": 60,
+		"base_speed": 20,
+		"catch_rate": 0.9,
+		"base_yeild": 60
+	},
+	"Kartarian": {
+		"base_hp": 50,
+		"base_attack": 20,
+		"base_defence": 80,
+		"base_speed": 30,
+		"catch_rate": 0.7,
+		"base_yeild": 90
+	},
+	"Wild Kartarian": {
+		"base_hp": 50,
+		"base_attack": 20,
+		"base_defence": 80,
+		"base_speed": 30,
+		"catch_rate": 0.7,
+		"base_yeild": 60
+	},
+	"Cheats": {
+		"base_hp": 100,
+		"base_attack": 100,
+		"base_defence": 100,
+		"base_speed": 100,
+		"catch_rate": 0.7,
+		"base_yeild": 100
+	}
+}
 
 
 var rat_max_hp: float
@@ -57,7 +57,7 @@ var wild_rat_hp: float
 var wild_rat_max_hp: float
 var current_rat_max_hp_percent: float
 var wild_rat_attack: float
-var wild_rat_defence: float 
+var wild_rat_defence: float
 var wild_rat_speed: float
 var wild_rat_level: float
 var wild_rat_catch_rate: float
@@ -75,7 +75,7 @@ var player: CharacterBody2D
 var saved_position: Vector2 = Vector2.ZERO
 var has_saved_position: bool = false
 var player_moved: bool = false
-var relative_positon: Node2D
+var relative_position: Node2D
 var boss_active: bool = false
 var in_combat: bool = false
 
@@ -87,10 +87,9 @@ func _ready() -> void:
 		player = node
 
 
-func _process(delta: float) -> void:
-	if boss_active == false:
-		print("boss not active")
-	
+func _process(_delta: float) -> void:
+	pass
+
 	if not player == null:
 		if player.lead_rat != lead_rat:
 			player.lead_changed()
