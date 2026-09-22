@@ -3,6 +3,52 @@
 [ext_resource type="Script" uid="uid://bhax661e8qmhg" path="res://Scripts/shop.gd" id="1_2shtd"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="1_a0mxf"]
 [ext_resource type="PackedScene" uid="uid://itivmqx4d6lm" path="res://Scenes/bag_button.tscn" id="2_fdj0q"]
+[ext_resource type="Texture2D" uid="uid://ckil7mi13t0rl" path="res://box.png" id="3_fdj0q"]
+[ext_resource type="StyleBox" uid="uid://b1wfo3m20r6p2" path="res://empty_button.tres" id="5_k6jq0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdj0q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5xp22"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ow1eo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k6pkm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1sjcd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1cyt5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vsm1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3568l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mjtuy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cuuv1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yl1pv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m13ki"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mbjb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhx1v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvu38"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7yfq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rctg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k6jq0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ps1r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymrm4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8dlv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tyrku"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1830272983 groups=["shop"]]
 
@@ -23,12 +69,83 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0.5411765)
 
+[node name="NinePatchRect5" type="NinePatchRect" parent="Control" unique_id=2057984517]
+layout_mode = 1
+offset_left = 586.0
+offset_top = 267.0
+offset_right = 780.0
+offset_bottom = 341.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_fdj0q")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="Control" unique_id=1336284895]
+layout_mode = 1
+offset_left = 585.0
+offset_top = 311.0
+offset_right = 779.0
+offset_bottom = 385.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_fdj0q")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="Control" unique_id=1814730114]
+layout_mode = 1
+offset_left = 475.0
+offset_top = 311.0
+offset_right = 691.0
+offset_bottom = 385.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_fdj0q")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Control" unique_id=1774280456]
+layout_mode = 1
+offset_left = 474.0
+offset_top = 267.0
+offset_right = 692.0
+offset_bottom = 341.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_fdj0q")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control" unique_id=1454225614]
+layout_mode = 1
+offset_left = 150.0
+offset_top = 108.0
+offset_right = 256.0
+offset_bottom = 174.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_fdj0q")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
 [node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=756321611]
 layout_mode = 0
 offset_left = 478.0
 offset_top = 268.0
 offset_right = 676.0
 offset_bottom = 346.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fdj0q")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer" unique_id=211879192]
 layout_mode = 2
@@ -42,6 +159,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("1_a0mxf")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("5_k6jq0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5xp22")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ow1eo")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_k6pkm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1sjcd")
 text = "Heal Spray"
 
 [node name="Button2" type="Button" parent="Control/PanelContainer/HBoxContainer/VBoxContainer" unique_id=971603858]
@@ -49,6 +171,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("1_a0mxf")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("5_k6jq0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1cyt5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vsm1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3568l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mjtuy")
 text = "Rat net"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/PanelContainer/HBoxContainer" unique_id=1917150481]
@@ -60,6 +187,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("1_a0mxf")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("5_k6jq0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cuuv1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yl1pv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m13ki")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3mbjb")
 text = "Buy ($50)"
 
 [node name="Button2" type="Button" parent="Control/PanelContainer/HBoxContainer/VBoxContainer2" unique_id=1051941936]
@@ -67,6 +199,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("1_a0mxf")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("5_k6jq0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jhx1v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dvu38")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_k7yfq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6rctg")
 text = "Buy ($20)"
 
 [node name="Button" type="Button" parent="Control" unique_id=378396481]
@@ -78,6 +215,11 @@ offset_bottom = 140.0
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("1_a0mxf")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k6jq0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3ps1r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ymrm4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_s8dlv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tyrku")
 text = "Exit"
 
 [node name="Marker2D" type="Marker2D" parent="Control" unique_id=1792526335]

@@ -36,9 +36,9 @@ const EXP_CURVE: float = 3.0
 const MONEY: String = "Money"
 const JOHO_MONEY_MULTI: float = 5.0
 const KART_MONEY_MULTI: float = 8.0
-const BASIC_ATTACK_POWER: float = 5
-const POWER_ATTACK_POWER: float = 8
-const QUICK_ATTACK_POWER: float = 3
+const BASIC_ATTACK_POWER: float = 5.0
+const POWER_ATTACK_POWER: float = 8.0
+const QUICK_ATTACK_POWER: float = 3.0
 
 @export var current_rat_hp: ProgressBar
 @export var enemy_rat_hp: ProgressBar

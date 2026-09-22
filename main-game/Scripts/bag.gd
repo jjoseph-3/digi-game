@@ -13,7 +13,7 @@ var item_buttons: Dictionary
 func _ready() -> void:
 	bag = Global.bag
 	print(Global.bag)
-	
+
 	# Creates buttons using the bag dictionary
 	for item in bag:
 		var button = button_scene.instantiate()

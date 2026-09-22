@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ba5pnrhp35ilw" path="res://game_background.png" id="1_prnvy"]
 [ext_resource type="Script" uid="uid://ds2ak0gdqbafl" path="res://Scripts/options.gd" id="1_qyyw6"]
+[ext_resource type="Texture2D" uid="uid://ckil7mi13t0rl" path="res://box.png" id="3_kftxf"]
 [ext_resource type="FontFile" uid="uid://dibyr15oxrosn" path="res://ithaca-font/Ithaca-LVB75.ttf" id="3_ww8vx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k0w1u"]
@@ -10,6 +11,16 @@ font_size = 99
 font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_663nc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvj8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_38txh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5a0sy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5vgl"]
 
 [node name="Control" type="Control" unique_id=1270880793]
 layout_mode = 3
@@ -26,6 +37,19 @@ script = ExtResource("1_qyyw6")
 position = Vector2(575.5, 324.99997)
 scale = Vector2(6.005208, 5.9814816)
 texture = ExtResource("1_prnvy")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1635414289]
+layout_mode = 1
+offset_left = 507.0
+offset_top = 388.0
+offset_right = 646.0
+offset_bottom = 454.0
+texture = ExtResource("3_kftxf")
+region_rect = Rect2(24, 60, 156, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 
 [node name="Label" type="Label" parent="." unique_id=69562105]
 layout_mode = 0
@@ -50,6 +74,11 @@ offset_bottom = 447.0
 theme_override_colors/font_color = Color(0.44705883, 0.44313726, 0.09803922, 1)
 theme_override_fonts/font = ExtResource("3_ww8vx")
 theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxEmpty_663nc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hvj8k")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_38txh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5a0sy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g5vgl")
 text = "Leave"
 
 [connection signal="pressed" from="Button" to="." method="options_left"]
